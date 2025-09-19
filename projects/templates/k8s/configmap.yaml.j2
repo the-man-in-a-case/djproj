@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ project.name }}-{{ container.name }}-cm
+  namespace: {{ project.namespace }}
+data:
+{%- for k, v in container.configmap_data.items() %}
+  {{ k }}: |-
+    {{ v | replace('\n','\n    ') }}
+{%- endfor %}

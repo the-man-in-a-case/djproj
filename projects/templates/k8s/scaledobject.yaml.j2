@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ project.name }}-worker
+  namespace: {{ project.namespace }}
+spec:
+  scaleTargetRef: { name: {{ project.name }}-worker }
+  minReplicaCount: 0
+  maxReplicaCount: {{ project.max_workers }}
+  triggers:
+    - type: rabbitmq
+      metadata:
+        queueName: {{ project.queue_name }}
+        mode: QueueLength
+        value: "{{ project.scale_threshold }}"
+        hostFromEnv: "CELERY_BROKER_URL"

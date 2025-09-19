@@ -1,0 +1,9 @@
+FROM python:3.10-alpine
+WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY requirements.txt ./
+RUN pip install -U pip && pip install -r requirements.txt
+COPY worker ./worker
+ENV TARGET_QUEUE_NAME=celery
+# CMD ["bash","-lc","celery -A worker.worker_app worker -Q ${TARGET_QUEUE_NAME} -l info --concurrency=1"]
+CMD ["tail", "-f", "/dev/null"]

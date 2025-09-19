@@ -1,0 +1,16 @@
+FROM python:3.10-alpine
+WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY requirements.txt ./
+RUN apk update && apk add sqlite sqlite-dev && rm -rf /var/lib/apk/*
+RUN pip install -U pip && pip install -r requirements.txt
+COPY . ./
+EXPOSE 8000
+# 确保数据库目录存在且可写
+RUN mkdir -p /app/data && chmod 777 /app/data
+
+# 添加数据库迁移步骤
+RUN python manage.py makemigrations projects || echo "No migrations to create"
+RUN python manage.py migrate
+# CMD ["daphne","-b","0.0.0.0","-p","8000","config.asgi:application"]
+CMD ["tail", "-f", "/dev/null"]

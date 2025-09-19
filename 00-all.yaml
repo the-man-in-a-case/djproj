@@ -1,0 +1,375 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: djproj
+
+---
+# 供 Django 读取 RabbitMQ 连接串：amqp://user:password@rabbitmq:5672//
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rabbitmq-conn
+  namespace: djproj
+type: Opaque
+stringData:
+  broker_url: amqp://user:password@rabbitmq.djproj.svc.cluster.local:5672//
+
+---
+# 统一环境变量
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: djproj-env
+  namespace: djproj
+data:
+  DJANGO_SECRET_KEY: "jd%9*!s+ng317(k(e8tsdt0i*wz(dy057l-50h&z@@tv5qij(("
+  DEBUG: "1"
+  ALLOWED_HOSTS: "*"
+  # Channels / Celery / Worker 结果 Redis
+  CHANNEL_REDIS_URL: "redis://redis.djproj.svc.cluster.local:6379/0"
+  CELERY_RESULT_BACKEND: "redis://redis.djproj.svc.cluster.local:6379/1"
+  WORKER_RESULT_REDIS: "redis://redis.djproj.svc.cluster.local:6379/2"
+  # 配置序列化
+  CELERY_TASK_SERIALIZER: "json"
+  CELERY_RESULT_SERIALIZER: "json"
+  CELERY_ACCEPT_CONTENT: "json"
+  CELERY_BROKER_URL: "amqp://user:password@rabbitmq.djproj.svc.cluster.local:5672//"
+  # InfluxDB v2（已在下方 Deployment 中做初始化）
+  INFLUX_URL: "http://influxdb.djproj.svc.cluster.local:8086"
+  INFLUX_TOKEN: "dev-token"
+  INFLUX_ORG: "dev-org"
+  INFLUX_BUCKET: "dev-bucket"
+  # 让 Django 走 in-cluster 配置 + 默认命名空间
+  K8S_INCLUSTER: "1"
+  K8S_DEFAULT_NAMESPACE: "djproj"
+  WORKER_QUEUE_NAME: celery
+  DB_ENGINE: django.db.backends.sqlite3
+  DB_NAME: /app/data/db.sqlite3
+---
+# 让 Django Web Pod 能创建/更新 ConfigMap、Deployment、ScaledObject
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: djproj-web-sa
+  namespace: djproj
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: djproj-web-role
+  namespace: djproj
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get","list","watch","create","patch","update","delete"]
+  - apiGroups: ["apps"]
+    resources: ["deployments"]
+    verbs: ["get","list","watch","create","patch","update","delete"]
+  - apiGroups: ["keda.sh"]
+    resources: ["scaledobjects"]
+    verbs: ["get","list","watch","create","patch","update","delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: djproj-web-rb
+  namespace: djproj
+subjects:
+  - kind: ServiceAccount
+    name: djproj-web-sa
+    namespace: djproj
+roleRef:
+  kind: Role
+  name: djproj-web-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+# Redis（单实例，无持久化，仅测试用）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: djproj
+  labels: { app: redis }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: redis } }
+  template:
+    metadata: { labels: { app: redis } }
+    spec:
+      containers:
+        - name: redis
+          image: redis:8.2.0-bookworm
+          args: ["--save","", "--appendonly","no"]
+          ports: [{ containerPort: 6379 }]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: djproj
+spec:
+  selector: { app: redis }
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+
+---
+# RabbitMQ（默认创建 user/password 用户，允许远程）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: djproj
+  labels: { app: rabbitmq }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: rabbitmq } }
+  template:
+    metadata: { labels: { app: rabbitmq } }
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3.13.7-management 
+          env:
+            - { name: RABBITMQ_DEFAULT_USER, value: "user" }
+            - { name: RABBITMQ_DEFAULT_PASS, value: "password" }
+            - { name: RABBITMQ_DEFAULT_VHOST, value: "/" }
+          ports:
+            - { name: amqp, containerPort: 5672 }
+            - { name: management, containerPort: 15672 }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: djproj
+spec:
+  selector: { app: rabbitmq }
+  ports:
+    - { name: amqp, port: 5672, targetPort: 5672 }
+    - { name: management, port: 15672, targetPort: 15672 }
+
+---
+# InfluxDB v2（使用官方初始化环境变量，自动创建 org/bucket/token）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  namespace: djproj
+  labels: { app: influxdb }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: influxdb } }
+  template:
+    metadata: { labels: { app: influxdb } }
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:2.7
+          env:
+            - { name: DOCKER_INFLUXDB_INIT_MODE, value: "setup" }
+            - { name: DOCKER_INFLUXDB_INIT_USERNAME, value: "admin" }
+            - { name: DOCKER_INFLUXDB_INIT_PASSWORD, value: "admin12345" }
+            - { name: DOCKER_INFLUXDB_INIT_ORG, valueFrom: { configMapKeyRef: { name: djproj-env, key: INFLUX_ORG } } }
+            - { name: DOCKER_INFLUXDB_INIT_BUCKET, valueFrom: { configMapKeyRef: { name: djproj-env, key: INFLUX_BUCKET } } }
+            - { name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN, valueFrom: { configMapKeyRef: { name: djproj-env, key: INFLUX_TOKEN } } }
+          ports:
+            - { name: http, containerPort: 8086 }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  namespace: djproj
+spec:
+  selector: { app: influxdb }
+  ports:
+    - { name: http, port: 8086, targetPort: 8086 }
+
+---
+# Django Web（ASGI：daphne），带 DB 迁移 initContainer + 监控 sidecar
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djproj-web
+  namespace: djproj
+  labels: { app: djproj-web }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: djproj-web } }
+  template:
+    metadata: { labels: { app: djproj-web } }
+    spec:
+      serviceAccountName: djproj-web-sa
+      # initContainers:
+      #   - name: migrate
+      #     image: djproj-web:v1    # 本地构建/加载的镜像，测试步骤会说明
+      #     env:
+      #       - name: CELERY_BROKER_URL
+      #         valueFrom:
+      #           secretKeyRef:
+      #             name: rabbitmq-conn
+      #             key: broker_url
+      #     envFrom:
+      #       - configMapRef: { name: djproj-env }
+      #     command: ["bash","-lc","python manage.py migrate --noinput"]
+      containers:
+        - name: web
+          image: djproj-web:v1
+          imagePullPolicy: Never
+          env:
+            - name: CELERY_BROKER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-conn
+                  key: broker_url
+          envFrom:
+            - configMapRef: { name: djproj-env }
+          ports:
+            - { name: http, containerPort: 8000 }
+          # daphne 启动 ASGI（镜像 CMD 已配置，此处可省略）
+        - name: monitor
+          image: djproj-web:v1
+          imagePullPolicy: Never
+          env:
+            - name: CELERY_BROKER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-conn
+                  key: broker_url
+          envFrom:
+            - configMapRef: { name: djproj-env }
+          # command: ["bash","-lc","python manage.py monitor_workers"]
+          # 监控进程会监听 Redis 事件，更新 Project 状态并通过 WS 推送
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: djproj-web
+  namespace: djproj
+spec:
+  selector: { app: djproj-web }
+  ports:
+    - { name: http, port: 80, targetPort: 8000, nodePort: 30080 }
+  type: NodePort
+  
+---
+# Worker Deployment（Celery Worker）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djproj-worker
+  namespace: djproj
+  labels: { app: djproj-worker }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: djproj-worker } }
+  template:
+    metadata: { labels: { app: djproj-worker } }
+    spec:
+      containers:
+        - name: worker
+          image: djproj-woker:v1
+          imagePullPolicy: Never
+          env:
+            - name: CELERY_BROKER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq-conn
+                  key: broker_url
+            - name: TARGET_QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: djproj-env
+                  key: WORKER_QUEUE_NAME
+          envFrom:
+            - configMapRef: { name: djproj-env }
+          # command: ["bash","-lc","celery -A worker.worker_app worker -Q ${TARGET_QUEUE_NAME} -l info --concurrency=1"]
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+
+---
+# KEDA ScaledObject（基于 RabbitMQ 队列长度自动伸缩）
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: djproj-worker-scaler
+  namespace: djproj
+spec:
+  scaleTargetRef:
+    name: djproj-worker
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+    - type: rabbitmq
+      metadata:
+        protocol: amqp
+        queueName: celery
+        # host: rabbitmq.djproj.svc.cluster.local
+        # port: "5672"
+        # username: user
+        # password: password
+        # vhost: /
+        # queueLength: "5"
+        mode: QueueLength
+        value: "5"
+      authenticationRef:
+        name: keda-rabbitmq-auth     # ← 与你的 authenticationRef.name 对应
+
+---
+
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-rabbitmq-auth     # ← 与你的 authenticationRef.name 对应
+  namespace: djproj
+spec:
+  secretTargetRef:
+    - parameter: host       # 或用 hostFromEnv，二选一
+      name: rmq-conn
+      key: host
+    - parameter: username
+      name: rmq-conn
+      key: username
+    - parameter: password
+      name: rmq-conn
+      key: password
+    - parameter: vhostName
+      name: rmq-conn
+      key: vhostName
+
+
+---
+# KEDA 认证 Secret
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: keda-rabbitmq-secret
+#   namespace: djproj
+# type: Opaque
+# stringData:
+#   host: amqp://user:password@rabbitmq.djproj.svc.cluster.local:5672/
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rmq-conn
+  namespace: djproj
+type: Opaque
+stringData:
+  host: amqp://rabbitmq.djproj.svc.cluster.local:5672/   # 可只写主机/端口与 vhost
+  username: user
+  password: password
+  vhostName: /

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ project.name }}-worker
+  namespace: {{ project.namespace }}
+  labels: { app: {{ project.name }}-worker }
+spec:
+  replicas: 0
+  selector: { matchLabels: { app: {{ project.name }}-worker } }
+  template:
+    metadata: { labels: { app: {{ project.name }}-worker } }
+    spec:
+      serviceAccountName: {{ project.params.get("serviceAccountName","default") }}
+      containers:
+      {%- for c in project.containers %}
+        - name: {{ c.name }}
+          image: {{ c.image }}
+          imagePullPolicy: IfNotPresent
+          {% if c.get('command') %}command: {{ c.command }}{% endif %}
+          {% if c.get('args') %}args: {{ c.args }}{% endif %}
+          env:
+            - name: PROJECT_ID
+              value: "{{ project.id }}"
+            - name: CELERY_BROKER_URL
+              valueFrom: { secretKeyRef: { name: {{ project.params.get("rabbitSecretName","rabbitmq-conn") }}, key: broker_url } }
+            - name: CELERY_RESULT_BACKEND
+              value: "{{ project.params.get('resultBackend','redis://redis:6379/1') }}"
+            - name: WORKER_RESULT_REDIS
+              value: "{{ project.params.get('workerResultRedis','redis://redis:6379/2') }}"
+            - name: WORKER_TASK_NAME
+              value: "{{ project.params.get('workerTaskName','worker.tasks.handle_target') }}"
+            - name: TARGET_QUEUE_NAME
+              value: "{{ project.queue_name }}"
+            {%- if c.get("env") %}
+            {%- for e in c.env %}
+            - name: {{ e.name }}
+              value: "{{ e.value }}"
+            {%- endfor %}
+            {%- endif %}
+          {%- if c.get("configmap_data") %}
+          volumeMounts:
+            - name: {{ c.name }}-cm
+              mountPath: /etc/{{ c.name }}
+          {%- endif %}
+      {%- endfor %}
+      volumes:
+      {%- for c in project.containers if c.get("configmap_data") %}
+        - name: {{ c.name }}-cm
+          configMap: { name: {{ project.name }}-{{ c.name }}-cm }
+      {%- endfor %}
