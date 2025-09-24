@@ -1,0 +1,43 @@
+! =============================================================
+!               线路定义 (Line Definitions)
+!               (已添加估算的阻抗和长度参数)
+! 注意: 所有线路长度 Length 暂定为 1 km，阻抗为该电压等级下的典型值 (单位: ahm/km)
+! =============================================================
+
+! --- 345kV 线路典型参数: r1=0.03 x1=0.35 r0=0.1 x0=1.0 ---
+new line.002_3_22_to_002_3_7 bus1=002_3_22_345kv_out bus2=002_3_7_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_22_to_002_3_57 bus1=002_3_22_345kv_out bus2=002_3_57_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_57_to_002_3_7 bus1=002_3_57_345kv_out bus2=002_3_7_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_1_2_to_002_3_7 bus1=002_1_2_345 bus2=002_3_7_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_9_to_002_3_7 bus1=002_3_9_345kv_out bus2=002_3_7_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_7_to_002_3_1 bus1=002_3_7_345kv_out bus2=002_3_1_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_1_4_to_002_3_1 bus1=002_1_4_345 bus2=002_3_1_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_1_to_002_3_11 bus1=002_3_1_345kv_out bus2=002_3_11_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+new line.002_3_11_to_002_3_13 bus1=002_3_11_345kv_out bus2=002_3_13_345kv_in phases=3 length=1 r1=0.03 x1=0.35 r0=0.1 x0=1.0
+
+! --- 161kV 线路典型参数: r1=0.05 x1=0.4 r0=0.15 x0=1.2 ---
+new line.002_1_9_to_002_3_22 bus1=002_1_9 bus2=002_3_22_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_22_to_002_3_72 bus1=002_3_22_161kv_out bus2=002_3_72_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_1_10_to_002_3_57 bus1=002_1_10 bus2=002_3_57_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_1_2_to_002_3_9 bus1=002_1_2_161 bus2=002_3_9_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_7_to_002_3_10 bus1=002_3_7_161kv_out bus2=002_3_10_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_7_to_002_3_72 bus1=002_3_7_161kv_out bus2=002_3_72_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_1_to_002_3_49 bus1=002_3_1_161kv_out bus2=002_3_49_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_1_to_002_3_80 bus1=002_3_1_161kv_out bus2=002_3_80_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_1_to_002_3_52 bus1=002_3_1_161kv_out bus2=002_3_52_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_1_to_002_3_13 bus1=002_3_1_161kv_out bus2=002_3_13_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_52_to_002_3_37 bus1=002_3_52_161kv_out bus2=002_3_37_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2 ! Bus2 修改为 37_in
+new line.002_1_3_to_002_3_13 bus1=002_1_3 bus2=002_3_13_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_1_3_to_002_3_67 bus1=002_1_3 bus2=002_3_67_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_11_to_002_3_53 bus1=002_3_11_161kv_out bus2=002_3_53_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_11_to_002_3_74 bus1=002_3_11_161kv_out bus2=002_3_74_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_13_to_002_3_53 bus1=002_3_13_161kv_out bus2=002_3_53_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+new line.002_3_13_to_002_3_67 bus1=002_3_13_161kv_out bus2=002_3_67_161kv_in phases=3 length=1 r1=0.05 x1=0.4 r0=0.15 x0=1.2
+
+! --- 69kV 线路典型参数: r1=0.1 x1=0.45 r0=0.25 x0=1.4 ---
+new line.002_3_10_to_002_3_73 bus1=002_3_10_69kv_out bus2=002_3_73_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4
+new line.002_3_72_to_002_3_79 bus1=002_3_72_69kv_out bus2=002_3_79_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4
+new line.002_3_49_to_002_3_78 bus1=002_3_49_69kv_out bus2=002_3_78_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4
+new line.002_3_80_to_002_3_77 bus1=002_3_80_69kv_out bus2=002_3_77_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4
+new line.002_3_53_to_002_3_75 bus1=002_3_53_69kv_out bus2=002_3_75_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4
+new line.002_3_67_to_002_3_76 bus1=002_3_67_69kv_out bus2=002_3_76_69kv_in phases=3 length=1 r1=0.1 x1=0.45 r0=0.25 x0=1.4

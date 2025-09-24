@@ -1,11 +1,17 @@
+{% set raw = layer.metadata.get('raw_text') if layer.metadata is not none else None %}
+{% if raw is not none %}{{ raw }}{% else %}
+{% set file_paths_node = (layer.nodes | selectattr('id','equalto','file_paths') | list) %}
+{% set simulator_node = (layer.nodes | selectattr('id','equalto','simulator') | list) %}
+{% set influx_node = (layer.nodes | selectattr('id','equalto','influxdb') | list) %}
+{% set states = layer.nodes | selectattr('type','equalto','state') | list %}
 {
-  "file_paths": {{ (layer.nodes | selectattr('id','equalto','file_paths') | list)[0].attrs | tojson }},
-  "simulator": {{ (layer.nodes | selectattr('id','equalto','simulator') | list)[0].attrs | tojson }},
+  "file_paths": {{ (file_paths_node[0].attrs if file_paths_node|length > 0 else {}) | tojson(indent=2) }},
+  "simulator": {{ (simulator_node[0].attrs if simulator_node|length > 0 else {}) | tojson(indent=2) }},
   "state": [
-  {% set states = layer.nodes | selectattr('type','equalto','state') | list %}
-  {% for n in states %}
-    {{ n.attrs | tojson }}{% if not loop.last %},{% endif %}
-  {% endfor %}
+{% for n in states %}
+    {{ n.attrs | tojson(indent=4) }}{% if not loop.last %},{% endif %}
+{% endfor %}
   ],
-  "influxdb": {{ (layer.nodes | selectattr('id','equalto','influxdb') | list)[0].attrs | tojson }}
+  "influxdb": {{ (influx_node[0].attrs if influx_node|length > 0 else {}) | tojson(indent=2) }}
 }
+{% endif %}

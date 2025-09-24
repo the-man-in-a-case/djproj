@@ -1,0 +1,11 @@
+New Generator.002_1_9 bus1=002_1_9 kV=161.0 kW=208000  maxkvar=550000.0   minkvar=-330000.0 vpu=1.03
+New Generator.002_1_10 bus1=002_1_10 kV=161.0 kW=121000  maxkvar=550000.0   minkvar=-330000.0 vpu=1.03
+New Generator.002_1_2_345 bus1=002_1_2_345 kV=345.0 kW=216300 maxkvar=550000.0   minkvar=-330000.0 vpu=1.03  !21630->216300
+New Generator.002_1_2_161 bus1=002_1_2_161 kV=161.0 kW=216300 maxkvar=550000.0   minkvar=-330000.0 vpu=1.03  !21630->216300
+New Generator.002_1_4_345 bus1=002_1_4_345 kV=345.0 kW=13250 maxkvar=550000.0   minkvar=-330000.0 vpu=1.03
+New Generator.002_1_4_161 bus1=002_1_4_345 kV=161.0 kW=13250 maxkvar=550000.0   minkvar=-330000.0 vpu=1.03
+New Generator.002_1_3 bus1=002_1_3 kV=161.0 kW=11178 maxkvar=550000.0   minkvar=-330000.0 vpu=1.03
+
+!New Generator.002_1_9 bus1=002_1_9 kV=161.0 kW=630000
+
+

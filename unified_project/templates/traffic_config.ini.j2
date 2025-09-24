@@ -1,6 +1,10 @@
+{% set raw = layer.metadata.get('raw_text') if layer.metadata is not none else None %}
+{% if raw is not none %}{{ raw }}{% else %}
 [DEFAULT]
-
-{% set node = (layer.nodes | selectattr('id','equalto','DEFAULT') | list)[0] %}
-{% for k, v in node.attrs.items() %}
-{{ k }} = {{ v }}
+{% set node_list = layer.nodes | selectattr('id','equalto','DEFAULT') | list %}
+{% if node_list %}
+{% for key, value in node_list[0].attrs.items() %}
+{{ key }} = {{ value }}
 {% endfor %}
+{% endif %}
+{% endif %}

@@ -1,0 +1,19 @@
+! --- 69kV 等级的负荷 ---
+!New Load.load_69_10 bus1=002_3_10_69kv_out  kV=69.0 phases=3 conn=wye kW=45000  pf=0.92 model=1
+!New Load.load_69_72 bus1=002_3_72_69kv_out  kV=69.0 phases=3 conn=wye kW=50000   pf=0.90 model=1
+!New Load.load_69_49 bus1=002_3_49_69kv_out  kV=69.0 phases=3 conn=wye kW=600000  pf=0.92 model=1
+!New Load.load_69_80 bus1=002_3_80_69kv_out  kV=69.0 phases=3 conn=wye kW=55000  pf=0.92
+!New Load.load_69_53 bus1=002_3_53_69kv_out  kV=69.0 phases=3 conn=wye kW=65000  pf=0.92
+!New Load.load_69_67 bus1=002_3_67_69kv_out  kV=69.0 phases=3 conn=wye kW=68000  pf=0.92
+
+! --- 22kV 等级的负荷 ---
+New Load.load_22_73 bus1=002_3_73_22kv_out  kV=22.0 phases=3 conn=wye kW=581.643   pf=0.90 model=1
+New Load.load_22_74 bus1=002_3_74_22kv_out  kV=22.0 phases=3 conn=wye kW=81328  pf=0.90 model=1
+New Load.load_22_75 bus1=002_3_75_22kv_out  kV=22.0 phases=3 conn=wye kW=99306   pf=0.90 model=1
+New Load.load_22_76 bus1=002_3_76_22kv_out  kV=22.0 phases=3 conn=wye kW=180635   pf=0.90 model=1
+New Load.load_22_78 bus1=002_3_78_22kv_out  kV=22.0 phases=3 conn=wye kW=80000   pf=0.90 model=1
+New Load.load_22_77 bus1=002_3_77_22kv_out  kV=22.0 phases=3 conn=wye kW=95000   pf=0.90 model=1
+New Load.load_22_79 bus1=002_3_79_22kv_out  kV=22.0 phases=3 conn=wye kW=90000   pf=0.90 model=1
+
+!New Load.load_22_37 bus1=002_3_37_22kv_out  kV=22.0 phases=3 conn=wye kW=10000  pf=0.90
+

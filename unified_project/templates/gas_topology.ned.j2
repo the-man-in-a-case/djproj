@@ -1,6 +1,5 @@
-{% if layer.metadata.ned_raw is defined and layer.metadata.ned_raw|length > 0 %}
-{{ layer.metadata.ned_raw }}
-{% else %}
+{% set raw = layer.metadata.get('topology_raw_text') if layer.metadata is not none else None %}
+{% if raw is not none %}{{ raw }}{% else %}
 // Auto-generated topology from edges
 network topology
 {
