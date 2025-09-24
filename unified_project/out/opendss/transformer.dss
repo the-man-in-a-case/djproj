@@ -1,0 +1,177 @@
+New Transformer.002_3_22 windings=3
+~ buses=[002_3_22_161kv_in,002_3_22_161kv_out,002_3_22_345kv_out]
+~ kVs=[161.0, 161.0, 345.0]
+~ kVAs=[240000, 240000,3500000]
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye, wye]
+
+New Transformer.002_3_57 windings=3 
+~ buses=[002_3_57_345kv_in,002_3_57_161kv_in,002_3_57_345kv_out]
+~ kVs=[345.0, 161.0, 345]
+~ kVAs=[3500000, 300000, 3500000]
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye, wye]
+
+New Transformer.002_3_9 windings=2 
+~ buses=[002_3_9_161kv_in,002_3_9_345kv_out]
+~ kVs=[161.0, 345.0]
+~ kVAs=[780000, 1500000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_7 windings=3 
+~ buses=[002_3_7_345kv_in,002_3_7_161kv_out,002_3_7_345kv_out]
+~ kVs=[345.0, 161.0, 345.0]
+~ kVAs=[3500000, 3500000, 3500000] !数据中没有低压侧容量
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye, wye]
+
+New Transformer.002_3_10 windings=2 
+~ buses=[002_3_10_161kv_in,002_3_10_69kv_out]
+~ kVs=[161.0, 69.0]
+~ kVAs=[600000, 170000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_72 windings=2 
+~ buses=[002_3_72_161kv_in,002_3_72_69kv_out]
+~ kVs=[161.0, 69.0]
+~ kVAs=[75000, 75000] !容量无数据，设为75，使用002_3_73数据
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_1 windings=3 
+~ buses=[002_3_1_345kv_in,002_3_1_161kv_out,002_3_1_345kv_out]
+~ kVs=[345, 161.0, 345.0]
+~ kVAs=[3000000, 720000, 3000000] 
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye, wye]
+
+New Transformer.002_3_49 windings=2 
+~ buses=[002_3_49_161kv_in,002_3_49_69kv_out]  !缺少线路数据 002_3_49_to_002_3_78
+~ kVs=[161.0, 69.0]
+~ kVAs=[800000, 60000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_78 windings=2 !填充变压器 69/22
+~ buses=[002_3_78_69kv_in,002_3_78_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_73 windings=2 !有数据，但是连接到003_2_1没有数据，且数据不对，69->161升压，暂时用69->22,填充变压器
+~ buses=[002_3_73_69kv_in,002_3_73_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[60000, 60000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_79 windings=2 !填充变压器 69/22
+~ buses=[002_3_79_69kv_in,002_3_79_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_80 windings=2 !填充变压器 161/69
+~ buses=[002_3_80_161kv_in,002_3_80_69kv_out]  
+~ kVs=[161.0, 69.0]
+~ kVAs=[800000, 60000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_77 windings=2 !填充变压器 69/22
+~ buses=[002_3_77_69kv_in,002_3_77_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_52 windings=2 
+~ buses=[002_3_52_161kv_in,002_3_52_161kv_out]
+~ kVs=[161.0, 161.0]
+~ kVAs=[120000, 120000] !低压容量未知 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_37 windings=2
+~ buses=[002_3_37_161kv_in,002_3_37_22kv_out]
+~ kVs=[161.0, 22.0]
+~ kVAs=[120000, 120000]
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_11 windings=3
+~ buses=[002_3_11_345kv_in,002_3_11_161kv_out,002_3_11_345kv_out]  
+~ kVs=[345.0, 161.0, 345]
+~ kVAs=[1000000, 600000, 1000000] 
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye, wye]
+
+New Transformer.002_3_13 windings=3 
+~ buses=[002_3_13_161kv_in,002_3_13_345kv_in,002_3_13_161kv_out]  
+~ kVs=[161.0, 345.0, 161.0]
+~ kVAs=[520000, 1000000, 520000]
+~ %rs=[0.0005, 0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye ,wye]
+
+New Transformer.002_3_74 windings=2 !填充变压器 161/22，套用002_3_37,002_3_37缺少低压容量，且低压为22/11
+~ buses=[002_3_74_161kv_in,002_3_74_22kv_out]
+~ kVs=[161.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_53 windings=2 !填充变压器 161/69
+~ buses=[002_3_53_161kv_in,002_3_53_69kv_out]  
+~ kVs=[161.0, 69.0]
+~ kVAs=[800000, 60000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_75 windings=2 !填充变压器 69/22
+~ buses=[002_3_75_69kv_in,002_3_75_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_67 windings=2 !填充变压器 161/69
+~ buses=[002_3_67_161kv_in,002_3_67_69kv_out]  
+~ kVs=[161.0, 69.0]
+~ kVAs=[800000, 60000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+New Transformer.002_3_76 windings=2 !填充变压器 69/22
+~ buses=[002_3_76_69kv_in,002_3_76_22kv_out]
+~ kVs=[69.0, 22.0]
+~ kVAs=[120000, 120000] 
+~ %rs=[0.0005, 0.0005]
+~ Xhl=3.88
+~ conns=[wye, wye]
+
+

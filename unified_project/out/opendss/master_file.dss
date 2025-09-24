@@ -1,0 +1,33 @@
+Clear
+
+set DefaultBaseFrequency=60
+
+New Circuit.PowerSystem
+~ basekv=345 phases=3 pu=1.0 angle=0 frequency=60 baseMVA=100
+~ bus1=002_1_2_345
+
+! 载入所有元件模
+redirect transformer.dss
+redirect line.dss
+redirect generator.dss
+redirect load.dss
+
+! 设置电压基准
+Set VoltageBases = [22.0, 69.0, 161.0, 345.0]
+CalcVoltageBases  
+
+! 求解器设
+! set algorithm=NCIM
+! Set maxiterations=100
+
+! 求解潮流
+Solve 
+
+! --- 调试与结果---
+! plot circuit Power dots=y labels=y C1=Blue C2=Red
+
+! 显示结果
+!Show Voltages LN Nodes
+!Show Powers kVA Elements
+!Show Currents Elements
+!Show Losses
