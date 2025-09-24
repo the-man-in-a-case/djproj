@@ -1,5 +1,106 @@
-// Auto-generated topology from edges
+import ned.IdealChannel;
+
+
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+// 
+// You should have received a copy of the GNU Lesser General Public License
+// along with this program.  If not, see http://www.gnu.org/licenses/.
+//
+//
+// TODO documentation
+//
 network topology
 {
-  connections:
+    @display("bgb=4432,3116");
+    submodules:
+        gas_1_1: DistributionStation {
+            @display("p=3033,1878");
+        }
+        gas_1_4: DistributionStation {
+            @display("p=3675,1373");
+        }
+        gas_1_6: DistributionStation {
+            @display("p=2278,1373");
+        }
+        gas_1_17: DistributionStation {
+            @display("p=855,1891");
+        }
+        gas_1_8: DistributionStation {
+            @display("p=2278,1878");
+        }
+        gas_2_1: DistributionStation {
+            @display("p=1435,1891");
+        }
+        gas_1_7: DistributionStation {
+            @display("p=2596,1878");
+        }
+        gas_1_9: DistributionStation {
+            @display("p=1435,1373");
+        }
+        gas_1_10: DistributionStation {
+            @display("p=855,1373");
+        }
+        valve1: Valve {
+            @display("p=3039,2477");
+        }
+        valve4: Valve {
+            @display("p=3700,743");
+        }
+        valve10: Valve {
+            @display("p=530,880");
+        }
+        valve9: Valve {
+            @display("p=1435,743");
+        }
+        gas9: GasFlowSink {
+            @display("p=1884,743");
+        }
+        gas10: GasFlowSink {
+            @display("p=512,374");
+        }
+        gas1: GasFlowSink {
+            @display("p=3039,2920");
+        }
+        gas4: GasFlowSink {
+            @display("p=3694,256");
+        }
+        valve21: Valve {
+            @display("p=1429,2459");
+        }
+        gas21: GasFlowSink {
+            @display("p=1429,2914");
+        }
+        receivingStationInput: ReceivingStationInput {
+            @display("p=842,2527");
+        }
+    connections:
+        gas_1_1.out++ --> GasPipe {  diameter = 600mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 12.845km; ValveInitialOpening = 1; elevationChange = 4; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_4.in++;
+        gas_2_1.out++ --> GasPipe {  diameter = 750mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 11.975km; ValveInitialOpening = 1; elevationChange = 14; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_8.in++;
+        gas_2_1.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 17.9km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_6.in++;
+        gas_2_1.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 17.279km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_17.in++;
+        gas_1_8.out++ --> GasPipe {  diameter = 600mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 7.840km; ValveInitialOpening = 1; elevationChange = 2; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_7.in++;
+        gas_1_7.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 10.042km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_1.in++;
+        gas_1_6.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 20km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_9.in++;
+        gas_1_17.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 80km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_10.in++;
+        gas_1_1.out++ --> GasPipe --> valve1.in++;
+        gas_1_4.out++ --> GasPipe --> valve4.in++;
+        gas_1_10.out++ --> GasPipe --> valve10.in++;
+        gas_1_9.out++ --> GasPipe --> valve9.in++;
+        valve9.out++ --> GasPipe --> gas9.in++;
+        valve10.out++ --> GasPipe --> gas10.in++;
+        valve4.out++ --> GasPipe --> gas4.in++;
+        valve1.out++ --> GasPipe --> gas1.in++;
+        gas_2_1.out++ --> IdealChannel --> valve21.in++;
+        valve21.out++ --> IdealChannel --> gas21.in++;
+        receivingStationInput.out++ --> IdealChannel --> gas_2_1.in++;
 }
+

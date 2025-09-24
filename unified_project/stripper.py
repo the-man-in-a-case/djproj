@@ -4,8 +4,11 @@ from pathlib import Path
 from configparser import ConfigParser
 from xml.etree import ElementTree as ET
 
+BASE_DIR = Path(__file__).resolve().parent
+
 def parse_hysys_orv_json(p: Path):
-    data = json.loads(p.read_text(encoding="utf-8"))
+    raw_text = p.read_text(encoding="utf-8")
+    data = json.loads(raw_text)
     nodes = [{"id": "simulation_file", "type": "file", "attrs": {"path": data.get("simulation_file")}}]
     for st in data.get("states", []):
         sid = st.get("state_name", "state")
@@ -16,14 +19,15 @@ def parse_hysys_orv_json(p: Path):
         "name": "HYSYS_ORV",
         "simulator": "hysys_orv",
         "version": "1.0",
-        "metadata": {},
+        "metadata": {"raw_text": raw_text},
         "nodes": nodes,
         "edges": [],
         "mechanismRelationships": []
     }
 
 def parse_hysys_tank_json(p: Path):
-    data = json.loads(p.read_text(encoding="utf-8"))
+    raw_text = p.read_text(encoding="utf-8")
+    data = json.loads(raw_text)
     nodes = []
     if "file_paths" in data:
         nodes.append({"id": "file_paths", "type": "paths", "attrs": data["file_paths"]})
@@ -37,29 +41,31 @@ def parse_hysys_tank_json(p: Path):
         "name": "HYSYS_TANK",
         "simulator": "hysys_tank",
         "version": "1.0",
-        "metadata": {},
+        "metadata": {"raw_text": raw_text},
         "nodes": nodes,
         "edges": [],
         "mechanismRelationships": []
     }
 
 def parse_traffic_ini(p: Path):
+    raw_text = p.read_text(encoding="utf-8")
     cp = ConfigParser()
-    cp.read(p, encoding="utf-8")
+    cp.read_string(raw_text)
     defaults = dict(cp.defaults())
     nodes = [{"id": "DEFAULT", "type": "traffic_params", "attrs": defaults}]
     return {
         "name": "TRAFFIC",
         "simulator": "traffic",
         "version": "1.0",
-        "metadata": {},
+        "metadata": {"raw_text": raw_text},
         "nodes": nodes,
         "edges": [],
         "mechanismRelationships": []
     }
 
 def parse_gas_omnetpp_ini(p: Path):
-    lines = p.read_text(encoding="utf-8").splitlines()
+    raw_text = p.read_text(encoding="utf-8")
+    lines = raw_text.splitlines()
     general = {}
     gas_nodes_order = []
     gas_nodes = {}
@@ -121,15 +127,15 @@ def parse_gas_omnetpp_ini(p: Path):
         "name": "OMNET_GAS",
         "simulator": "omnetpp",
         "version": "1.0",
-        "metadata": {"source_file": "gas_omnetpp.ini"},
+        "metadata": {"source_file": "gas_omnetpp.ini", "raw_ini_text": raw_text},
         "nodes": nodes,
         "edges": [],
         "mechanismRelationships": []
     }
 
 def parse_gas_topology_ned(p: Path):
-    text = p.read_text(encoding="utf-8", errors="ignore")
-    no_comments = re.sub(r"//.*", "", text)
+    raw_text = p.read_text(encoding="utf-8", errors="ignore")
+    no_comments = re.sub(r"//.*", "", raw_text)
     edge_set = []
     for m in re.finditer(r"(gas_\d+_\d+)\s*<[-=]*>\s*(gas_\d+_\d+)", no_comments):
         a, b = m.group(1), m.group(2)
@@ -137,11 +143,11 @@ def parse_gas_topology_ned(p: Path):
     for m in re.finditer(r"(gas_\d+_\d+)\s*-->\s*(gas_\d+_\d+)", no_comments):
         a, b = m.group(1), m.group(2)
         edge_set.append({"id": f"{a}->{b}", "source": a, "target": b, "type": "directed"})
-    return edge_set
+    return {"edges": edge_set, "raw_text": raw_text}
 
 def parse_exchange_xml(p: Path):
-    xml = ET.parse(p)
-    root = xml.getroot()
+    raw_text = p.read_text(encoding="utf-8")
+    root = ET.fromstring(raw_text)
     rels = []
     for obj in root.findall(".//objectClass"):
         name = obj.attrib.get("name", "")
@@ -175,19 +181,20 @@ def parse_exchange_xml(p: Path):
                 "mechanism": "HLA_InteractionClass",
                 "attrs": {"class": name}
             })
-    return rels
+    return {"relationships": rels, "raw_text": raw_text}
 
 # --------- Parsing Files ---------
 files = {
-    "hysys_orv": Path("out/hy_config.json"),
-    "hysys_tank": Path("out/tank_config.json"),
-    "traffic": Path("out/traffic_config.ini"),
-    "omnet_ini": Path("out/gas_omnetpp.ini"),
-    "omnet_ned": Path("out/gas_topology.ned"),
-    "exchange": Path("out/exchange.xml")
+    "hysys_orv": BASE_DIR / "out" / "hy_config.json",
+    "hysys_tank": BASE_DIR / "out" / "tank_config.json",
+    "traffic": BASE_DIR / "out" / "traffic_config.ini",
+    "omnet_ini": BASE_DIR / "out" / "gas_omnetpp.ini",
+    "omnet_ned": BASE_DIR / "out" / "gas_topology.ned",
+    "exchange": BASE_DIR / "out" / "exchange.xml"
 }
 
 layers = []
+exchange_raw_text = None
 if files["hysys_orv"].exists():
     layers.append(parse_hysys_orv_json(files["hysys_orv"]))
 if files["hysys_tank"].exists():
@@ -197,13 +204,16 @@ if files["traffic"].exists():
 if files["omnet_ini"].exists():
     omnet_layer = parse_gas_omnetpp_ini(files["omnet_ini"])
     if files["omnet_ned"].exists():
-        edges = parse_gas_topology_ned(files["omnet_ned"])
-        omnet_layer["edges"] = edges
+        topology_info = parse_gas_topology_ned(files["omnet_ned"])
+        omnet_layer["edges"] = topology_info["edges"]
+        omnet_layer.setdefault("metadata", {})["topology_raw_text"] = topology_info["raw_text"]
     layers.append(omnet_layer)
 
 mechanisms = []
 if files["exchange"].exists():
-    mechanisms = parse_exchange_xml(files["exchange"])
+    exchange_info = parse_exchange_xml(files["exchange"])
+    mechanisms = exchange_info["relationships"]
+    exchange_raw_text = exchange_info["raw_text"]
 
 unified = {
     "project": {"id": "demo-001", "name": "Unified-Multi-Sim"},
@@ -211,7 +221,10 @@ unified = {
     "mechanismRelationships": mechanisms
 }
 
+if exchange_raw_text is not None:
+    unified["metadata"] = {"exchange_raw_text": exchange_raw_text}
+
 # Write output
-output_file = Path("output_unified_layers.json")
+output_file = BASE_DIR / "output_unified_layers.json"
 output_file.write_text(json.dumps(unified, ensure_ascii=False, indent=2), encoding="utf-8")
 print(f"Output written to: {output_file}")
