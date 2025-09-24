@@ -1,0 +1,23 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE objectModel SYSTEM "hla.dtd">
+<objectModel DTDversion="1516.2" name="Unified Simulation FOM" type="FOM" version="{{ layer.version|default('1.0') }}">
+<objects>
+{% for r in layer.mechanismRelationships if r.type == "object" -%}
+    <objectClass name="{{r.name}}" sharing="PublishSubscribe">
+    {% for a in r.attrs -%}
+        <attribute name="{{a}}" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+    {% endfor -%}
+    </objectClass>
+{% endfor -%}
+</objects>
+<interactions>
+{% for r in layer.mechanismRelationships if r.type == "interaction" -%}
+    <interactionClass name="{{r.name}}" sharing="PublishSubscribe">
+    {% for p in r.attrs -%}
+        <parameter name="{{p}}" dataType="HLAunicodeString"/>
+    {% endfor -%}
+    </interactionClass>
+{% endfor -%}
+</interactions>
+</objectModel>

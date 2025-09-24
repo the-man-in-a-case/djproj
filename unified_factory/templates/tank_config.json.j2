@@ -1,0 +1,17 @@
+
+{
+  {% if layer.metadata.file_paths is defined %}
+  "file_paths": {{ layer.metadata.file_paths | tojson }},
+  {% endif %}
+  {% if layer.metadata.simulator is defined %}
+  "simulator": {{ layer.metadata.simulator | tojson }},
+  {% endif %}
+  "state": [
+  {% for n in layer.nodes if n.type == "state" -%}
+    {{ n.attrs | tojson }}{{ "," if not loop.last }}
+  {% endfor -%}
+  ]
+  {% if layer.metadata.influxdb is defined %}
+  , "influxdb": {{ layer.metadata.influxdb | tojson }}
+  {% endif %}
+}

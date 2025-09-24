@@ -1,0 +1,12 @@
+
+{
+  "simulation_file": "{{ layer.metadata.simulation_file if layer.metadata.simulation_file is defined else 'C:\\work\\HYSYS_DOCKER\\case.hsc' }}",
+  "states": [
+  {% for n in layer.nodes if n.type == "state" -%}
+    {{ n.attrs | tojson }}{{ "," if not loop.last }}
+  {% endfor -%}
+  ],
+  {% if layer.metadata.influxdb is defined %}
+  "influxdb": {{ layer.metadata.influxdb | tojson }}
+  {% endif %}
+}
