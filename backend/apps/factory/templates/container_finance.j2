@@ -1,0 +1,8 @@
+- name: finance
+  image: ghcr.io/demo/fin-risk:{{ version | default("latest") }}
+  env:
+    - name: RISK_MODE
+      value: "VaR"
+  volumeMounts:
+    - name: cm-finance
+      mountPath: /etc/finance

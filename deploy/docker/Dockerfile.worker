@@ -1,0 +1,15 @@
+FROM python:3.10-alpine
+WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+
+# 配置国内pip镜像源
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+    pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn
+
+COPY worker/worker_app/requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY worker /app/worker
+WORKDIR /app/worker
+# 参数示例：celery -A worker_app.celery_app worker -Q actions -l INFO --concurrency=1 --max-tasks-per-child=1 --pool=solo
+CMD ["sleep","infinity"]
+# CMD ["celery", "-A", "worker_app.celery_app", "worker", "-Q", "actions", "-l", "INFO", "--concurrency=1", "--max-tasks-per-child=1", "--pool=solo"]

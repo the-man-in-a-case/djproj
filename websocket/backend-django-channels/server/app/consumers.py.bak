@@ -1,0 +1,78 @@
+import json, os, datetime
+from channels.generic.websocket import AsyncWebsocketConsumer
+from django.conf import settings
+from .utils import parse_ts, lerp_ts
+from influxdb_client import InfluxDBClient
+
+def _rfc3339(ts):
+    return datetime.datetime.fromtimestamp(ts, tz=datetime.timezone.utc).isoformat()
+
+class DataConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        await self.accept()
+        await self.send_json({"type":"info","message":"connected"})
+
+    async def receive(self, text_data=None, bytes_data=None):
+        try:
+            msg = json.loads(text_data or "{}")
+        except Exception:
+            return await self.send_json({"type":"error","message":"invalid json"})
+
+        action = msg.get("action")
+        if action == "percent":
+            percent   = msg.get("value", 0)
+            windowSec = int(msg.get("windowSec", settings.DEFAULT_WINDOW_SEC))
+            payload = await self.query_by_percent(percent, windowSec)
+            await self.send_json({"type":"data","payload": payload})
+        else:
+            await self.send_json({"type":"error","message":"unknown action"})
+
+    async def disconnect(self, code):
+        return
+
+    async def query_by_percent(self, percent, windowSec):
+        start_dt = parse_ts(settings.DATA_START_TS)
+        end_dt   = parse_ts(settings.DATA_END_TS)
+        target   = lerp_ts(start_dt, end_dt, percent)
+
+        lower = target.timestamp() - windowSec
+        upper = target.timestamp() + windowSec
+
+        flux = f'''
+from(bucket: "{settings.INFLUX_BUCKET}")
+  |> range(start: time(v: "{_rfc3339(lower)}"), stop: time(v: "{_rfc3339(upper)}"))
+  |> filter(fn: (r) => r["_measurement"] == "{settings.MEASUREMENT}")
+  |> sort(columns: ["_time"])
+'''
+        # Influx 客户端（同步 API 在异步中调用，一般量级足够；重载时可用线程池/自建 async wrapper）
+        client = InfluxDBClient(url=settings.INFLUX_URL, token=settings.INFLUX_TOKEN, org=settings.INFLUX_ORG, timeout=10000)
+        tables = client.query_api().query(flux, org=settings.INFLUX_ORG)
+
+        series=[]
+        for table in tables:
+            for rec in table.records:
+                row = {
+                    "time": rec.get_time().isoformat(),
+                    "field": rec.get_field(),
+                    "value": rec.get_value()
+                }
+                for k,v in rec.values.items():
+                    if k.startswith("_") or k in ("result","table"): continue
+                    row[k]=v
+                series.append(row)
+
+        # 选最近点
+        def ts_sec(iso):
+            return datetime.datetime.fromisoformat(iso.replace("Z","+00:00")).timestamp()
+        point = min(series, key=lambda r: abs(ts_sec(r["time"])-target.timestamp())) if series else None
+
+        client.close()
+        return {
+            "target_time": target.isoformat(),
+            "window_sec": windowSec,
+            "point": point,
+            "series": series
+        }
+
+    async def send_json(self, data):
+        await self.send(text_data=json.dumps(data))

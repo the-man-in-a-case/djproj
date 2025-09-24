@@ -1,0 +1,340 @@
+{
+  "project": {
+    "name": "Recovered",
+    "version": "unknown"
+  },
+  "layers": [
+    {
+      "name": "project",
+      "simulator": "omnet",
+      "version": "unknown",
+      "nodes": [
+        {
+          "id": "gas_1_1",
+          "name": "gas_1_1",
+          "type": "station",
+          "pos": {
+            "lon": 120.378998,
+            "lat": 22.635799
+          },
+          "attrs": {
+            "outPressure": 49.5,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_2",
+          "name": "gas_1_2",
+          "type": "station",
+          "pos": {
+            "lon": 120.447996,
+            "lat": 22.6506
+          },
+          "attrs": {
+            "outPressure": 19.9,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_3",
+          "name": "gas_1_3",
+          "type": "station",
+          "pos": {
+            "lon": 120.406998,
+            "lat": 22.498699
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_4",
+          "name": "gas_1_4",
+          "type": "station",
+          "pos": {
+            "lon": 120.359001,
+            "lat": 22.521299
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 48.3,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_5",
+          "name": "gas_1_5",
+          "type": "station",
+          "pos": {
+            "lon": 120.675003,
+            "lat": 24.482599
+          },
+          "attrs": {
+            "outPressure": 68.5,
+            "inPressure": 68.5,
+            "inFlow": 540.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_6",
+          "name": "gas_1_6",
+          "type": "station",
+          "pos": {
+            "lon": 120.280998,
+            "lat": 22.879999
+          },
+          "attrs": {
+            "outPressure": 60.7,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_7",
+          "name": "gas_1_7",
+          "type": "station",
+          "pos": {
+            "lon": 120.333,
+            "lat": 22.7187
+          },
+          "attrs": {
+            "outPressure": 53.2,
+            "inPressure": 59.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_8",
+          "name": "gas_1_8",
+          "type": "station",
+          "pos": {
+            "lon": 120.323997,
+            "lat": 22.789
+          },
+          "attrs": {
+            "outPressure": 60.9,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_9",
+          "name": "gas_1_9",
+          "type": "station",
+          "pos": {
+            "lon": 120.259003,
+            "lat": 23.050501
+          },
+          "attrs": {
+            "outPressure": 57.2,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_10",
+          "name": "gas_1_10",
+          "type": "station",
+          "pos": {
+            "lon": 120.414001,
+            "lat": 23.5455
+          },
+          "attrs": {
+            "outPressure": 52.6,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_11",
+          "name": "gas_1_11",
+          "type": "station",
+          "pos": {
+            "lon": 120.525002,
+            "lat": 24.049101
+          },
+          "attrs": {
+            "outPressure": 51.2,
+            "inPressure": 51.4,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_12",
+          "name": "gas_1_12",
+          "type": "station",
+          "pos": {
+            "lon": 120.667999,
+            "lat": 24.208599
+          },
+          "attrs": {
+            "outPressure": 50.6,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_13",
+          "name": "gas_1_13",
+          "type": "station",
+          "pos": {
+            "lon": 120.429001,
+            "lat": 23.4685
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_14",
+          "name": "gas_1_14",
+          "type": "station",
+          "pos": {
+            "lon": 120.273003,
+            "lat": 23.295099
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_16",
+          "name": "gas_1_16",
+          "type": "station",
+          "pos": {
+            "lon": 120.326354870162,
+            "lat": 22.8736393318874
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_1_17",
+          "name": "gas_1_17",
+          "type": "station",
+          "pos": {
+            "lon": 120.25,
+            "lat": 22.9548
+          },
+          "attrs": {
+            "outPressure": 0.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0,
+            "outFlow": 0.0
+          }
+        },
+        {
+          "id": "gas_2_1",
+          "name": "gas_2_1",
+          "type": "station",
+          "pos": {
+            "lon": 120.210999,
+            "lat": 22.8158304
+          },
+          "attrs": {
+            "outFlow": 18325.0,
+            "outPressure": 7.0,
+            "inPressure": 0.0,
+            "inFlow": 0.0
+          }
+        },
+        {
+          "id": "*",
+          "name": "*",
+          "type": "station",
+          "pos": {},
+          "attrs": {}
+        },
+        {
+          "id": "receivingStationInput",
+          "name": "receivingStationInput",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "pollInterval": 1.0,
+            "id": 1.0
+          }
+        },
+        {
+          "id": "valve1",
+          "name": "valve1",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "R": 50.0,
+            "opening": 1.0
+          }
+        },
+        {
+          "id": "valve4",
+          "name": "valve4",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "R": 50.0,
+            "opening": 1.0
+          }
+        },
+        {
+          "id": "valve9",
+          "name": "valve9",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "R": 50.0,
+            "opening": 1.0
+          }
+        },
+        {
+          "id": "valve10",
+          "name": "valve10",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "R": 50.0,
+            "opening": 1.0
+          }
+        },
+        {
+          "id": "valve21",
+          "name": "valve21",
+          "type": "station",
+          "pos": {},
+          "attrs": {
+            "R": 50.0,
+            "opening": 1.0
+          }
+        }
+      ],
+      "lines": [],
+      "metadata": {}
+    }
+  ],
+  "exchange_links": []
+}

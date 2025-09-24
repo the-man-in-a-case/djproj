@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: influx-seed-cronjob
+  namespace: realtime
+spec:
+  # 这个时间表表示：在2099年12月31日23:59执行一次
+  schedule: "59 23 31 12 ? 2099"
+  # 设置为只保留一个成功和失败的任务历史记录
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: seed
+            image: your-registry/influx-seed:latest
+            envFrom:
+            - secretRef:
+                name: influx-secrets
+            - configMapRef:
+                name: backend-env
+            resources:
+              requests: { cpu: "100m", memory: "128Mi" }
+              limits: { cpu: "200m", memory: "256Mi" }
+          restartPolicy: OnFailure

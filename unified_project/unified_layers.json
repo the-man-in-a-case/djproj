@@ -1,0 +1,118 @@
+{
+  "project": {
+    "id": "v2",
+    "name": "Unified-V2-From-Uploads"
+  },
+  "layers": [
+    {
+      "name": "HYSYS_ORV",
+      "simulator": "hysys_orv",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "simulation_file",
+          "type": "file",
+          "attrs": {
+            "path": "C:\\work\\HYSYS_DOCKER\\case.hsc"
+          }
+        },
+        {
+          "id": "state:T1",
+          "type": "state",
+          "attrs": {
+            "lng_in_pressure_kPa": 131.3,
+            "lng_in_temp_C": -162.0,
+            "lng_in_flow": 30000,
+            "lp_out_pressure_kPa": 1000,
+            "hp_out_pressure_kPa": 7200,
+            "seawater_in_flow": 3000000,
+            "seawater_in_pressure_kPa": 101.3,
+            "seawater_in_temp_C": 25,
+            "seawater_out_temp_C": 18.2
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "HYSYS_TANK",
+      "simulator": "hysys_tank",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "file_paths",
+          "type": "paths",
+          "attrs": {
+            "data_output": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\tank_send.csv",
+            "hysys_case": "C:\\work\\HYSYS_DOCKER\\tank\\stable.hsc",
+            "stop_signal": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\stop_receive.csv",
+            "valve_commands": "C:\\work\\HYSYS_DOCKER\\tank\\valveChange.csv"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "TRAFFIC",
+      "simulator": "traffic",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "DEFAULT",
+          "type": "traffic_params",
+          "attrs": {
+            "k": "1.0",
+            "c": "0",
+            "stop_threshold": "0.75"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "OMNET_GAS",
+      "simulator": "omnetpp",
+      "version": "1.0",
+      "metadata": {
+        "source_file": "gas_omnetpp.ini"
+      },
+      "nodes": [
+        {
+          "id": "General",
+          "type": "general",
+          "attrs": {
+            "network": "topology"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    }
+  ],
+  "mechanismRelationships": [
+    {
+      "id": "TankToPipeData",
+      "from": "TANK",
+      "to": "PIPE",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "TankToPipeData"
+      }
+    },
+    {
+      "id": "PowerToTrafficData1",
+      "from": "POWER",
+      "to": "TRAFFIC",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToTrafficData1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE objectModel SYSTEM "hla.dtd">
+<objectModel DTDversion="1516.2" name="Tank Pipe Gas Power Traffic Simulation FOM" type="FOM" version="1.0" date="2025-08-27" other="Tank, Pipe, Gas, Power and Traffic System Simulation">
+<objects>
+    <objectClass name="HLAobjectRoot" sharing="Neither">
+        <attribute name="HLAprivilegeToDeleteObject" dataType="NA" updateType="NA" updateCondition="NA" ownership="DivestAcquire" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp"/>
+        {% for rel in global_mechanisms if rel.mechanism == 'HLA_ObjectClass' %}
+        <objectClass name="{{ rel.attrs.class }}" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        {% endfor %}
+    </objectClass>
+</objects>
+<interactions>
+    <interactionClass name="HLAinteractionRoot" sharing="Neither" dimensions="NA" transportation="HLAreliable" order="Receive">
+        {% for rel in global_mechanisms if rel.mechanism == 'HLA_InteractionClass' %}
+        <interactionClass name="{{ rel.attrs.class }}" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp">
+            <parameter name="Step" dataType="HLAinteger32LE"/>
+            {% if rel.attrs.class == 'StopSignalInteraction' %}
+            <parameter name="Tag" dataType="HLAinteger32LE"/>
+            {% endif %}
+        </interactionClass>
+        {% endfor %}
+    </interactionClass>
+</interactions>
+<synchronizations>
+    <synchronization label="ReadyToRun" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="StepComplete" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="ReadyToResign" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="SimulationEnd" dataType="NA" capability="RegisterAchieve"/>
+</synchronizations>
+</objectModel>

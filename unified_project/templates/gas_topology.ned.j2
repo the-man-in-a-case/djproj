@@ -1,0 +1,12 @@
+{% if layer.metadata.ned_raw is defined and layer.metadata.ned_raw|length > 0 %}
+{{ layer.metadata.ned_raw }}
+{% else %}
+// Auto-generated topology from edges
+network topology
+{
+  connections:
+  {% for e in layer.edges %}
+    {{ e.source }} <--> {{ e.target }};
+  {% endfor %}
+}
+{% endif %}

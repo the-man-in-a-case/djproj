@@ -1,0 +1,9 @@
+- name: power
+  image: ghcr.io/demo/power-sim:{{ version | replace("v","") | default("latest") }}
+  args: ["--mode=grid","--region=CN"]
+  env:
+    - name: INDUSTRY
+      value: "power"
+  volumeMounts:
+    - name: cm-power
+      mountPath: /etc/power

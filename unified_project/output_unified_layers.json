@@ -1,0 +1,341 @@
+{
+  "project": {
+    "id": "demo-001",
+    "name": "Unified-Multi-Sim"
+  },
+  "layers": [
+    {
+      "name": "HYSYS_ORV",
+      "simulator": "hysys_orv",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "simulation_file",
+          "type": "file",
+          "attrs": {
+            "path": "C:\\work\\HYSYS_DOCKER\\case.hsc"
+          }
+        },
+        {
+          "id": "state:T1",
+          "type": "state",
+          "attrs": {
+            "lng_in_pressure_kPa": 131.3,
+            "lng_in_temp_C": -162.0,
+            "lng_in_flow": 30000,
+            "lp_out_pressure_kPa": 1000,
+            "hp_out_pressure_kPa": 7200,
+            "seawater_in_flow": 3000000,
+            "seawater_in_pressure_kPa": 101.3,
+            "seawater_in_temp_C": 25,
+            "seawater_out_temp_C": 18.2,
+            "hp_pump_power": 2093910
+          }
+        },
+        {
+          "id": "influxdb",
+          "type": "influx",
+          "attrs": {
+            "url": "http://192.168.122.12:8087",
+            "token": "JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==",
+            "org": "my-org",
+            "bucket": "hysys"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "HYSYS_TANK",
+      "simulator": "hysys_tank",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "file_paths",
+          "type": "paths",
+          "attrs": {
+            "hysys_case": "C:\\work\\HYSYS_DOCKER\\tank\\stable.hsc",
+            "stop_signal": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\stop_receive.csv",
+            "valve_commands": "C:\\work\\HYSYS_DOCKER\\tank\\valveChange.csv",
+            "data_output": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\tank_send.csv"
+          }
+        },
+        {
+          "id": "simulator",
+          "type": "sim_state",
+          "attrs": {
+            "runState": 100,
+            "changeFlow": 25,
+            "stage": 1
+          }
+        },
+        {
+          "id": "state:0",
+          "type": "state",
+          "attrs": {
+            "pressIn": 131.3,
+            "flowIn": 90057,
+            "pressOut": 111,
+            "flowOut": 90057,
+            "valve": 100,
+            "tankV": 160000
+          }
+        },
+        {
+          "id": "influxdb",
+          "type": "influx",
+          "attrs": {
+            "url": "http://192.168.122.12:8087",
+            "token": "xpb4eogNENqxDiV2UmfW7TNx9litirQM--MGzfPXhXHRWFvrvjLgEQLlO2EIf1hiKpxQS1Y1ZCI-CznCyoyB6Q==",
+            "org": "my-org",
+            "bucket": "tank",
+            "org_id": "87c1afa6d561f2c3"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "TRAFFIC",
+      "simulator": "traffic",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "DEFAULT",
+          "type": "traffic_params",
+          "attrs": {
+            "k": "1.0",
+            "c": "0",
+            "stop_threshold": "0.75"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "OMNET_GAS",
+      "simulator": "omnetpp",
+      "version": "1.0",
+      "metadata": {
+        "source_file": "gas_omnetpp.ini"
+      },
+      "nodes": [
+        {
+          "id": "General",
+          "type": "general",
+          "attrs": {
+            "network": "topology",
+            "topology.gas_1_1.longitude": "120.378998",
+            "topology.gas_1_1.latitude": "22.635799",
+            "topology.gas_1_1.outPressure": "49.5",
+            "topology.gas_1_1.inPressure": "0",
+            "topology.gas_1_1.inFlow": "0",
+            "topology.gas_1_1.outFlow": "0",
+            "topology.gas_1_2.longitude": "120.447996",
+            "topology.gas_1_2.latitude": "22.6506",
+            "topology.gas_1_2.outPressure": "19.9",
+            "topology.gas_1_2.inPressure": "0",
+            "topology.gas_1_2.inFlow": "0",
+            "topology.gas_1_2.outFlow": "0",
+            "topology.gas_1_3.longitude": "120.406998",
+            "topology.gas_1_3.latitude": "22.498699",
+            "topology.gas_1_3.outPressure": "0",
+            "topology.gas_1_3.inPressure": "0",
+            "topology.gas_1_3.inFlow": "0",
+            "topology.gas_1_3.outFlow": "0",
+            "topology.gas_1_4.longitude": "120.359001",
+            "topology.gas_1_4.latitude": "22.521299",
+            "topology.gas_1_4.outPressure": "0",
+            "topology.gas_1_4.inPressure": "48.3",
+            "topology.gas_1_4.inFlow": "0",
+            "topology.gas_1_4.outFlow": "0",
+            "topology.gas_1_5.longitude": "120.675003",
+            "topology.gas_1_5.latitude": "24.482599",
+            "topology.gas_1_5.outPressure": "68.5",
+            "topology.gas_1_5.inPressure": "68.5",
+            "topology.gas_1_5.inFlow": "540",
+            "topology.gas_1_5.outFlow": "0",
+            "topology.gas_1_6.longitude": "120.280998",
+            "topology.gas_1_6.latitude": "22.879999",
+            "topology.gas_1_6.outPressure": "60.7",
+            "topology.gas_1_6.inPressure": "0",
+            "topology.gas_1_6.inFlow": "0",
+            "topology.gas_1_6.outFlow": "0",
+            "topology.gas_1_7.longitude": "120.333",
+            "topology.gas_1_7.latitude": "22.7187",
+            "topology.gas_1_7.outPressure": "53.2",
+            "topology.gas_1_7.inPressure": "59",
+            "topology.gas_1_7.inFlow": "0",
+            "topology.gas_1_7.outFlow": "0",
+            "topology.gas_1_8.longitude": "120.323997",
+            "topology.gas_1_8.latitude": "22.789",
+            "topology.gas_1_8.outPressure": "60.9",
+            "topology.gas_1_8.inPressure": "0",
+            "topology.gas_1_8.inFlow": "0",
+            "topology.gas_1_8.outFlow": "0",
+            "topology.gas_1_9.longitude": "120.259003",
+            "topology.gas_1_9.latitude": "23.050501",
+            "topology.gas_1_9.outPressure": "57.2",
+            "topology.gas_1_9.inPressure": "0",
+            "topology.gas_1_9.inFlow": "0",
+            "topology.gas_1_9.outFlow": "0",
+            "topology.gas_1_10.longitude": "120.414001",
+            "topology.gas_1_10.latitude": "23.5455",
+            "topology.gas_1_10.outPressure": "52.6",
+            "topology.gas_1_10.inPressure": "0",
+            "topology.gas_1_10.inFlow": "0",
+            "topology.gas_1_10.outFlow": "0",
+            "topology.gas_1_11.longitude": "120.525002",
+            "topology.gas_1_11.latitude": "24.049101",
+            "topology.gas_1_11.outPressure": "51.2",
+            "topology.gas_1_11.inPressure": "51.4",
+            "topology.gas_1_11.inFlow": "0",
+            "topology.gas_1_11.outFlow": "0",
+            "topology.gas_1_12.longitude": "120.667999",
+            "topology.gas_1_12.latitude": "24.208599",
+            "topology.gas_1_12.outPressure": "50.6",
+            "topology.gas_1_12.inPressure": "0",
+            "topology.gas_1_12.inFlow": "0",
+            "topology.gas_1_12.outFlow": "0",
+            "topology.gas_1_13.longitude": "120.429001",
+            "topology.gas_1_13.latitude": "23.4685",
+            "topology.gas_1_13.outPressure": "0",
+            "topology.gas_1_13.inPressure": "0",
+            "topology.gas_1_13.inFlow": "0",
+            "topology.gas_1_13.outFlow": "0",
+            "topology.gas_1_14.longitude": "120.273003",
+            "topology.gas_1_14.latitude": "23.295099",
+            "topology.gas_1_14.outPressure": "0",
+            "topology.gas_1_14.inPressure": "0",
+            "topology.gas_1_14.inFlow": "0",
+            "topology.gas_1_14.outFlow": "0",
+            "topology.gas_1_16.longitude": "120.326354870162",
+            "topology.gas_1_16.latitude": "22.8736393318874",
+            "topology.gas_1_16.outPressure": "0",
+            "topology.gas_1_16.inPressure": "0",
+            "topology.gas_1_16.inFlow": "0",
+            "topology.gas_1_16.outFlow": "0",
+            "topology.gas_1_17.longitude": "120.25",
+            "topology.gas_1_17.latitude": "22.9548",
+            "topology.gas_1_17.outPressure": "0",
+            "topology.gas_1_17.inPressure": "0",
+            "topology.gas_1_17.inFlow": "0",
+            "topology.gas_1_17.outFlow": "0",
+            "topology.gas_2_1.longitude": "120.210999",
+            "topology.gas_2_1.latitude": "22.8158304",
+            "topology.gas_2_1.outFlow": "18325",
+            "topology.gas_2_1.outPressure": "7",
+            "topology.gas_2_1.inPressure": "0",
+            "topology.gas_2_1.inFlow": "0",
+            "topology.*.outputJsonFile": "\"db1.json\"",
+            "topology.receivingStationInput.fileName": "\"/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_receive.csv\"",
+            "topology.receivingStationInput.pollInterval": "1",
+            "topology.receivingStationInput.id": "001",
+            "topology.*.outputFileName": "\"/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_send.csv\"",
+            "topology.valve1.R": "50",
+            "topology.valve1.opening": "1",
+            "topology.valve4.R": "50",
+            "topology.valve4.opening": "1",
+            "topology.valve9.R": "50",
+            "topology.valve9.opening": "1",
+            "topology.valve10.R": "50",
+            "topology.valve10.opening": "1",
+            "topology.valve21.R": "50",
+            "topology.valve21.opening": "1"
+          }
+        }
+      ],
+      "edges": [],
+      "mechanismRelationships": []
+    }
+  ],
+  "mechanismRelationships": [
+    {
+      "id": "TankToPipeData",
+      "from": "TANK",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "TankToPipeData"
+      }
+    },
+    {
+      "id": "PowerToPipeData1",
+      "from": "POWER",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToPipeData1"
+      }
+    },
+    {
+      "id": "PowerToPipeData2",
+      "from": "POWER",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToPipeData2"
+      }
+    },
+    {
+      "id": "PowerToTrafficData1",
+      "from": "POWER",
+      "to": "TRAFFICDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToTrafficData1"
+      }
+    },
+    {
+      "id": "PowerToTrafficData2",
+      "from": "POWER",
+      "to": "TRAFFICDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToTrafficData2"
+      }
+    },
+    {
+      "id": "SimulationControl",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "SimulationControl"
+      }
+    },
+    {
+      "id": "DataTransferComplete",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "DataTransferComplete"
+      }
+    },
+    {
+      "id": "StepSynchronization",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "StepSynchronization"
+      }
+    },
+    {
+      "id": "StopSignalInteraction",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "StopSignalInteraction"
+      }
+    }
+  ]
+}

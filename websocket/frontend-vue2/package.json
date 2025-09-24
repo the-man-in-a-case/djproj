@@ -1,0 +1,19 @@
+{
+  "name": "ws-realtime-vue2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "core-js": "^3.37.1",
+    "element-ui": "^2.15.14",
+    "vue": "^2.7.16"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "vue-template-compiler": "^2.7.16"
+  }
+}

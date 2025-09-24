@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  namespace: realtime
+spec:
+  type: NodePort  # 修改为 NodePort 类型以暴露到集群外部
+  ports:
+    - name: http
+      port: 8086
+      targetPort: 8086
+      nodePort: 30086  # 指定节点端口（范围：30000-32767）
+  selector: { app: influxdb }
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: influxdb
+  namespace: realtime
+spec:
+  serviceName: influxdb
+  replicas: 1
+  selector: { matchLabels: { app: influxdb } }
+  template:
+    metadata: { labels: { app: influxdb } }
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:2.7
+          ports: [{ containerPort: 8086 }]
+          env:
+            - { name: DOCKER_INFLUXDB_INIT_MODE, value: "setup" }
+            - { name: DOCKER_INFLUXDB_INIT_USERNAME, value: "admin" }
+            - { name: DOCKER_INFLUXDB_INIT_PASSWORD, value: "admin123456" }
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              valueFrom: { configMapKeyRef: { name: backend-env, key: INFLUX_ORG } }
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              valueFrom: { configMapKeyRef: { name: backend-env, key: INFLUX_BUCKET } }
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              valueFrom: { secretKeyRef: { name: influx-secrets, key: INFLUX_TOKEN } }
+          volumeMounts: [{ name: data, mountPath: /var/lib/influxdb2 }]
+  volumeClaimTemplates:
+    - metadata: { name: data }
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources: { requests: { storage: 10Gi } }

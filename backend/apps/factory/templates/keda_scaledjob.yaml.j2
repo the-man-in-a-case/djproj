@@ -1,0 +1,39 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: celery-action-worker
+spec:
+  pollingInterval: 5           # 轮询间隔（秒）
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  scalingStrategy:
+    strategy: "default"
+  triggers:
+  - type: rabbitmq
+    metadata:
+      mode: QueueLength
+      value: "1"
+      queueName: {{ queue_name }}
+      hostFromEnv: RABBITMQ_CONN
+  jobTargetRef:
+    parallelism: 1
+    completions: 1
+    template:
+      spec:
+        restartPolicy: Never
+        containers:
+        - name: worker
+          image: your-registry/worker:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: RABBITMQ_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: worker-config
+                  key: rabbitmq_conn
+            - name: REDIS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: worker-config
+                  key: redis_url
+          command: ["celery","-A","worker_app.celery_app","worker","-Q","actions","-l","INFO","--concurrency=1","--max-tasks-per-child=1","--pool=solo"]

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ project.name | replace("_","-") }}-biz
+  labels:
+    app: {{ project.name | replace("_","-") }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ project.name | replace("_","-") }}
+  template:
+    metadata:
+      labels:
+        app: {{ project.name | replace("_","-") }}
+    spec:
+      containers:
+        - name: sidecar
+          image: dkci-worker:1.1
+          # command: ["sh","-c","while true; do echo sidecar alive; sleep 30; done"]
+          command: ["tail", "-f", "/dev/null"]
+          resources:
+            requests: {cpu: "10m", memory: "16Mi"}
+        # === 行业容器（按行业模板片段插入）===
+        {% for snippet in container_snippets %}
+        {{ snippet | indent(12, True) }}
+        {% endfor %}
+      volumes:
+        {% for ind in industries %}
+        - name: cm-{{ind}}
+          configMap:
+            name: cm-{{ind}}
+        {% endfor %}

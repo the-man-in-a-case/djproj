@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hez
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-env
+  namespace: hez
+data:
+  DEBUG: "1"
+  SECRET_KEY: "changeme-in-prod"
+  DJANGO_SETTINGS_MODULE: "project.settings"
+  ALLOWED_HOSTS: "*"
+  RABBITMQ_URL: "amqp://admin:password@rabbitmq.hez.svc.cluster.local:5672//"
+  RABBITMQ_CONN: "amqp://admin:password@rabbitmq.hez.svc.cluster.local:5672//"
+  RABBITMQ_QUEUE: "actions"
+  REDIS_URL: "redis://redis.hez.svc.cluster.local:6379/0"
+  INFLUX_URL: "http://influxdb.hez.svc.cluster.local:8086"
+  REDIS_URL: "redis://redis.hez.svc.cluster.local:6379/0"
+  INFLUX_URL: "http://influxdb.hez.svc.cluster.local:8086"
+  INFLUX_TOKEN: "dev-token"
+  INFLUX_ORG: "demo-org"
+  INFLUX_BUCKET: "demo-bucket"

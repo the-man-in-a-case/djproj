@@ -1,0 +1,11 @@
+{
+  "file_paths": {{ (layer.nodes | selectattr('id','equalto','file_paths') | list)[0].attrs | tojson }},
+  "simulator": {{ (layer.nodes | selectattr('id','equalto','simulator') | list)[0].attrs | tojson }},
+  "state": [
+  {% set states = layer.nodes | selectattr('type','equalto','state') | list %}
+  {% for n in states %}
+    {{ n.attrs | tojson }}{% if not loop.last %},{% endif %}
+  {% endfor %}
+  ],
+  "influxdb": {{ (layer.nodes | selectattr('id','equalto','influxdb') | list)[0].attrs | tojson }}
+}

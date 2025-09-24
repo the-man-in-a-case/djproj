@@ -1,0 +1,90 @@
+{
+  "project": {
+    "id": "stripped",
+    "name": "Stripped-Project"
+  },
+  "layers": [],
+  "mechanismRelationships": [
+    {
+      "id": "TankToPipeData",
+      "from": "TANK",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "TankToPipeData"
+      }
+    },
+    {
+      "id": "PowerToPipeData1",
+      "from": "POWER",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToPipeData1"
+      }
+    },
+    {
+      "id": "PowerToPipeData2",
+      "from": "POWER",
+      "to": "PIPEDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToPipeData2"
+      }
+    },
+    {
+      "id": "PowerToTrafficData1",
+      "from": "POWER",
+      "to": "TRAFFICDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToTrafficData1"
+      }
+    },
+    {
+      "id": "PowerToTrafficData2",
+      "from": "POWER",
+      "to": "TRAFFICDATA",
+      "mechanism": "HLA_ObjectClass",
+      "attrs": {
+        "class": "PowerToTrafficData2"
+      }
+    },
+    {
+      "id": "SimulationControl",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "SimulationControl"
+      }
+    },
+    {
+      "id": "DataTransferComplete",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "DataTransferComplete"
+      }
+    },
+    {
+      "id": "StepSynchronization",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "StepSynchronization"
+      }
+    },
+    {
+      "id": "StopSignalInteraction",
+      "from": "ALL",
+      "to": "ALL",
+      "mechanism": "HLA_InteractionClass",
+      "attrs": {
+        "class": "StopSignalInteraction"
+      }
+    }
+  ]
+}

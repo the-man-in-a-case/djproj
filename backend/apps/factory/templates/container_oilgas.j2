@@ -1,0 +1,10 @@
+- name: oilgas
+  image: ghcr.io/demo/oilgas-pipeline:{{ version | default("latest") }}
+  env:
+    - name: PIPE_ROUGHNESS
+      value: "0.00015"
+    - name: INDUSTRY
+      value: "oilgas"
+  volumeMounts:
+    - name: cm-oilgas
+      mountPath: /etc/oilgas

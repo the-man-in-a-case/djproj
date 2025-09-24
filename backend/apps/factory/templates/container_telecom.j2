@@ -1,0 +1,9 @@
+- name: telecom
+  image: ghcr.io/demo/telecom-sim:stable
+  command: ["sh","-c","/bin/telecom-sim --profile {{version}}; sleep 3600"]
+  env:
+    - name: INDUSTRY
+      value: "telecom"
+  volumeMounts:
+    - name: cm-telecom
+      mountPath: /etc/telecom

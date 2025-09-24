@@ -1,0 +1,6 @@
+[DEFAULT]
+
+{% set node = (layer.nodes | selectattr('id','equalto','DEFAULT') | list)[0] %}
+{% for k, v in node.attrs.items() %}
+{{ k }} = {{ v }}
+{% endfor %}

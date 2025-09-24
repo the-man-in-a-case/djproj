@@ -1,0 +1,40 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports: ["5672:5672", "15672:15672"]
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+  redis:
+    image: redis:7
+    ports: ["6379:6379"]
+  influxdb:
+    image: influxdb:2.7
+    ports: ["8086:8086"]
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: password
+      DOCKER_INFLUXDB_INIT_ORG: demo-org
+      DOCKER_INFLUXDB_INIT_BUCKET: demo-bucket
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: dev-token
+  app:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.app
+    env_file: ../../.env
+    environment:
+      RABBITMQ_URL: amqp://admin:password@rabbitmq:5672//
+      REDIS_URL: redis://redis:6379/0
+    depends_on: [rabbitmq, redis, influxdb]
+    ports: ["8000:8000"]
+  worker:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.worker
+    env_file: ../../.env
+    environment:
+      RABBITMQ_URL: amqp://admin:password@rabbitmq:5672//
+      REDIS_URL: redis://redis:6379/0
+    depends_on: [rabbitmq, redis]
+    command: ["celery","-A","worker_app.celery_app","worker","-Q","actions","-l","INFO","--concurrency=1","--max-tasks-per-child=1","--pool=solo"]

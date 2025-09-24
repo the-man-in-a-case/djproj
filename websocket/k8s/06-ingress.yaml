@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: realtime
+  namespace: realtime
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+spec:
+  ingressClassName: nginx
+  rules:
+    # - host: realtime.local       # 替换为你的域名或删除使用默认
+    - http:
+        paths:
+          - path: /ws
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port: { number: 8000 }
+          - path: /              # 前端
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port: { number: 8080 }

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: realtime
+spec:
+  selector: { app: frontend }
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: realtime
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: frontend } }
+  template:
+    metadata: { labels: { app: frontend } }
+    spec:
+      containers:
+        - name: frontend
+          image: realtime-frontend:1.0.0  # 替换你的镜像
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          imagePullPolicy: IfNotPresent
+          ports: [{ containerPort: 8080 }]

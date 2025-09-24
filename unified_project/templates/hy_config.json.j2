@@ -1,0 +1,18 @@
+{% set sim_node = (layer.nodes | selectattr('id','equalto','simulation_file') | list) %}
+{% set sim_node = (layer.nodes | selectattr('id','equalto','simulation_file') | list) %}
+{% set sim_path = (sim_node[0].attrs.path if sim_node|length > 0 else '') %}
+{% set influx_node = (layer.nodes | selectattr('id','equalto','influxdb') | list) %}
+{% set influx = (influx_node[0].attrs if influx_node|length > 0 else {}) %}
+{% set states = layer.nodes | selectattr('type','equalto','state') | list %}
+{
+  "simulation_file": {{ sim_path | tojson }},
+  "states": [
+{% for n in states %}
+    {
+      "state_name": {{ (n.id.split(':',1)[1] if ':' in n.id else 'state') | tojson }}{% for k,v in n.attrs.items() %}
+      "{{ k }}": {{ v | tojson }}{% endfor %}
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+  ],
+  "influxdb": {{ influx | tojson }}
+}

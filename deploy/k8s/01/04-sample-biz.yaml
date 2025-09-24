@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-power
+  namespace: hez
+data:
+  config.yaml: |
+    key: value
+    industry: power
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-telecom
+  namespace: hez
+data:
+  config.yaml: |
+    key: value
+    industry: telecom
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-biz
+  namespace: hez
+  labels: { app: demo-biz }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: demo-biz } }
+  template:
+    metadata: { labels: { app: demo-biz } }
+    spec:
+      containers:
+      - name: sidecar
+        image: busybox:1.36
+        command: ["sh","-c","while true; do echo sidecar alive; sleep 30; done"]
+      - name: power
+        image: alpine:3.20
+        command: ["sh","-c","echo power v1; sleep 3600"]
+        volumeMounts:
+        - { name: cm-power, mountPath: /etc/power }
+      - name: telecom
+        image: alpine:3.20
+        command: ["sh","-c","echo telecom v1; sleep 3600"]
+        volumeMounts:
+        - { name: cm-telecom, mountPath: /etc/telecom }
+      volumes:
+      - name: cm-power
+        configMap: { name: cm-power }
+      - name: cm-telecom
+        configMap: { name: cm-telecom }

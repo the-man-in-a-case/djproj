@@ -1,0 +1,17 @@
+{
+  "project": {
+    "name": "Recovered",
+    "version": "unknown"
+  },
+  "layers": [
+    {
+      "name": "project",
+      "simulator": "omnet",
+      "version": "unknown",
+      "nodes": [],
+      "lines": [],
+      "metadata": {}
+    }
+  ],
+  "exchange_links": []
+}

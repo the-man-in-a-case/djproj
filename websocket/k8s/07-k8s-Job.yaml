@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: influx-seed-job
+  namespace: realtime
+spec:
+  template:
+    spec:
+      containers:
+      - name: seed
+        image: python:3.10-alpine
+        command: ["sh", "-c", "pip install influxdb-client && python /jobs/seed_data.py"]
+        envFrom:
+        - secretRef:
+            name: influx-secrets
+        - configMapRef:
+            name: backend-env
+        volumeMounts:
+        - name: jobs
+          mountPath: /jobs
+        resources:
+          requests: { cpu: "100m", memory: "128Mi" }
+          limits: { cpu: "200m", memory: "256Mi" }
+      restartPolicy: Never
+      volumes:
+      - name: jobs
+        configMap:
+          name: seed-job-script
+  backoffLimit: 1

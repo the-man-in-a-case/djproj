@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"/>
+<title>WS Metrics + SSE Events Demo</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 20px; }
+  pre { background: #111; color: #0f0; padding: 10px; height: 200px; overflow: auto; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+  h2 { margin: 0 0 8px; }
+</style>
+<body>
+<h1>最小前端：WebSocket 指标 + SSE 事件</h1>
+<div>
+  <label>WS URL: <input id="wsurl" value="ws://127.0.0.1:8000/ws/metrics/"></label>
+  <label style="margin-left:10px;">Project: <input id="pid"></label>
+  <label>Action: <input id="aid"></label>
+  <label>Percentage: <input id="pct" value="50"></label>
+  <button id="connect">连接 WS</button>
+  <button id="send">发送请求</button>
+</div>
+<div class="row">
+  <div class="card">
+    <h2>WebSocket Metrics</h2>
+    <pre id="wslog"></pre>
+  </div>
+  <div class="card">
+    <h2>SSE Events</h2>
+    <div>
+      <label>SSE URL: <input id="sseurl" style="width:60%" value="http://127.0.0.1:8000/api/sse/events"></label>
+      <button id="sseconnect">连接 SSE</button>
+    </div>
+    <pre id="sselog"></pre>
+  </div>
+</div>
+<script>
+  let ws;
+  const wslog = document.getElementById('wslog');
+  const sselog = document.getElementById('sselog');
+
+  document.getElementById('connect').onclick = () => {
+    const url = document.getElementById('wsurl').value;
+    ws = new WebSocket(url);
+    ws.onopen = () => wslog.textContent += "[WS] open\n";
+    ws.onmessage = (ev) => wslog.textContent += ev.data + "\n";
+    ws.onclose = () => wslog.textContent += "[WS] close\n";
+    ws.onerror = (e) => wslog.textContent += "[WS] error\n";
+  };
+  document.getElementById('send').onclick = () => {
+    const payload = {
+      project_id: document.getElementById('pid').value || null,
+      action_id:  document.getElementById('aid').value || null,
+      percentage: parseFloat(document.getElementById('pct').value || "50"),
+    };
+    ws && ws.send(JSON.stringify(payload));
+  };
+  document.getElementById('sseconnect').onclick = () => {
+    const base = document.getElementById('sseurl').value;
+    const pid = document.getElementById('pid').value || "";
+    const url = base + (pid ? ("?project_id=" + encodeURIComponent(pid)) : "");
+    const es = new EventSource(url);
+    es.onopen  = () => sselog.textContent += "[SSE] open\n";
+    es.onerror = () => sselog.textContent += "[SSE] error\n";
+    es.onmessage = (e) => {
+      sselog.textContent += e.data + "\n";
+    };
+  };
+</script>
+</body>
+</html>
