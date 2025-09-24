@@ -1,5 +1,9 @@
-{% if layer.metadata.ned_raw is defined and layer.metadata.ned_raw|length > 0 %}
-{{ layer.metadata.ned_raw }}
+{% set raw = layer.metadata.get('topology_raw_text') if layer.metadata is not none else None %}
+{% if raw is not none and raw.get('lines') is not none %}
+{%- for entry in raw.lines -%}
+{{ entry.text }}{% if not loop.last or raw.endswith_newline %}
+{% endif %}
+{%- endfor -%}
 {% else %}
 // Auto-generated topology from edges
 network topology

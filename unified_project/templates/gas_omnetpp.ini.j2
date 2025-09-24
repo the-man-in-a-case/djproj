@@ -1,46 +1,15 @@
+{% set raw = layer.metadata.get('raw_ini_text') if layer.metadata is not none else None %}
+{% if raw is not none and raw.get('lines') is not none %}
+{%- for entry in raw.lines -%}
+{{ entry.text }}{% if not loop.last or raw.endswith_newline %}
+{% endif %}
+{%- endfor -%}
+{% else %}
 [General]
-
-{% set gen_list = (layer.nodes | selectattr('id','equalto','General') | list) %}
-{% set general = (gen_list[0].attrs if gen_list|length > 0 else {}) %}
-{% for k,v in general.items() %}
-{{ k }} = {{ v }}
+{% set general_list = layer.nodes | selectattr('id','equalto','General') | list %}
+{% if general_list %}
+{% for key, value in general_list[0].attrs.items() %}
+{{ key }} = {{ value }}
 {% endfor %}
-
-#配气站
-{% set cm = {'longitude':'经度','latitude':'纬度','outPressure':'出站压力','inPressure':'进站压力','inFlow':'进站流量','outFlow':'出站流量'} %}
-{% for n in layer.nodes if n.type == 'gas_node' %}
-topology.{{ n.id }}.longitude = {{ n.attrs.get('longitude',"") }} #{{ cm['longitude'] }}
-topology.{{ n.id }}.latitude =  {{ n.attrs.get('latitude',"") }}  #{{ cm['latitude'] }}
-{% for key in ['outPressure','inPressure','inFlow','outFlow'] %}
-{% if key in n.attrs %}
-topology.{{ n.id }}.{{ key }} = {{ n.attrs[key] }}     #{{ cm[key] }}
-{% endif %}
-{% endfor %}
-
-{% endfor %}
-
-{% set outputs = (layer.nodes | selectattr('id','equalto','outputs') | list) %}
-{% if outputs|length > 0 %}
-{% set o = outputs[0].attrs %}
-{% if 'outputJsonFile' in o %}
-topology.*.outputJsonFile = "{{ o['outputJsonFile'] }}"
-{% endif %}
-{% if 'outputFileName' in o %}
-topology.*.outputFileName = "{{ o['outputFileName'] }}"
 {% endif %}
 {% endif %}
-
-#接收
-{% set recv_list = (layer.nodes | selectattr('id','equalto','receivingStationInput') | list) %}
-{% if recv_list|length > 0 %}
-{% set recv = recv_list[0] %}
-topology.receivingStationInput.fileName = "{{ recv.attrs.get('fileName','') }}"
-topology.receivingStationInput.pollInterval = {{ recv.attrs.get('pollInterval','') }}
-topology.receivingStationInput.id = {{ recv.attrs.get('id','') }}
-{% endif %}
-
-#阀门
-{% for n in layer.nodes if n.type == 'valve' %}
-topology.{{ n.id }}.R = {{ n.attrs.get('R','') }}
-topology.{{ n.id }}.opening = {{ n.attrs.get('opening','') }}
-{% endfor %}

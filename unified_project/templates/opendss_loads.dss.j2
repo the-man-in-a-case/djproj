@@ -1,0 +1,8 @@
+{% set opendss_meta = layer.metadata.get('opendss_files') if layer.metadata is not none else None %}
+{% set file_meta = (opendss_meta.files.get('loads.dss') if opendss_meta is not none else None) %}
+{% if file_meta is not none and file_meta.get('lines') is not none %}
+{%- for entry in file_meta.lines -%}
+{{ entry.text }}{% if not loop.last or file_meta.endswith_newline %}
+{% endif %}
+{%- endfor -%}
+{% endif %}

@@ -1,0 +1,6 @@
+New Vsource.Source phases=3 bus1=SourceBus kv=12.47 pu=1.00 angle=0 frequency=60
+New BusCoords.SourceBus x=0 y=0
+New BusCoords.Bus1 x=1.2 y=0.5
+New BusCoords.Bus2 x=2.4 y=0.5
+set voltagebases=[12.47]
+CalcVoltageBases

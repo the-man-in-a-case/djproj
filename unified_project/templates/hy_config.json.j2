@@ -1,4 +1,10 @@
-{% set sim_node = (layer.nodes | selectattr('id','equalto','simulation_file') | list) %}
+{% set raw = layer.metadata.get('raw_text') if layer.metadata is not none else None %}
+{% if raw is not none and raw.get('lines') is not none %}
+{%- for entry in raw.lines -%}
+{{ entry.text }}{% if not loop.last or raw.endswith_newline %}
+{% endif %}
+{%- endfor -%}
+{% else %}
 {% set sim_node = (layer.nodes | selectattr('id','equalto','simulation_file') | list) %}
 {% set sim_path = (sim_node[0].attrs.path if sim_node|length > 0 else '') %}
 {% set influx_node = (layer.nodes | selectattr('id','equalto','influxdb') | list) %}
@@ -9,10 +15,18 @@
   "states": [
 {% for n in states %}
     {
-      "state_name": {{ (n.id.split(':',1)[1] if ':' in n.id else 'state') | tojson }}{% for k,v in n.attrs.items() %}
-      "{{ k }}": {{ v | tojson }}{% endfor %}
+{% set state_items = [('state_name', (n.id.split(':',1)[1] if ':' in n.id else 'state'))] %}
+{% set state_items = state_items + (n.attrs.items() | list) %}
+{% for key, value in state_items %}
+      "{{ key }}": {{ value | tojson }}{% if not loop.last %},{% endif %}
+{% endfor %}
     }{% if not loop.last %},{% endif %}
 {% endfor %}
   ],
-  "influxdb": {{ influx | tojson }}
+  "influxdb": {
+{% for key, value in influx.items() %}
+    "{{ key }}": {{ value | tojson }}{% if not loop.last %},{% endif %}
+{% endfor %}
+  }
 }
+{% endif %}
