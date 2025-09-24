@@ -1,0 +1,8 @@
+Clear
+New Circuit.Feeder basekv=12.47 pu=1.00 phases=3
+Redirect circuit.dss
+Redirect lines.dss
+Redirect transformers.dss
+Redirect loads.dss
+Redirect capacitors.dss
+Solve Mode=Snap

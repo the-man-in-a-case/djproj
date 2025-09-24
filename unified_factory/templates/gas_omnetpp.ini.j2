@@ -1,0 +1,29 @@
+
+[General]
+network = topology
+
+{# node attributes #}
+{% for n in layer.nodes if n.type in ["gas_station","receiving_station"] -%}
+{% for k, v in n.attrs.items() -%}
+topology.{{n.id}}.{{k}} = {{ '"' ~ v ~ '"' if v is string else v }}
+{% endfor %}
+
+{% endfor -%}
+
+{# valves and other named nodes #}
+{% for n in layer.nodes if n.type == "valve" -%}
+{% for k, v in n.attrs.items() -%}
+topology.{{n.id}}.{{k}} = {{ '"' ~ v ~ '"' if v is string else v }}
+{% endfor %}
+
+{% endfor -%}
+
+{# globals #}
+{% for k, v in layer.metadata.globals.items() -%}
+topology.*.{{k}} = {{ '"' ~ v ~ '"' if v is string else v }}
+{% endfor %}
+
+{# others #}
+{% for k, v in layer.metadata.others.items() -%}
+{{k}} = {{v}}
+{% endfor -%}

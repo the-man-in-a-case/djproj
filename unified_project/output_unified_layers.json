@@ -8,7 +8,109 @@
       "name": "HYSYS_ORV",
       "simulator": "hysys_orv",
       "version": "1.0",
-      "metadata": {},
+      "metadata": {
+        "raw_text": {
+          "lines": [
+            {
+              "number": 1,
+              "text": "{"
+            },
+            {
+              "number": 2,
+              "text": "  \"simulation_file\": \"C:\\\\work\\\\HYSYS_DOCKER\\\\case.hsc\","
+            },
+            {
+              "number": 3,
+              "text": "  \"states\": ["
+            },
+            {
+              "number": 4,
+              "text": "    {"
+            },
+            {
+              "number": 5,
+              "text": "      \"state_name\": \"T1\","
+            },
+            {
+              "number": 6,
+              "text": "      \"lng_in_pressure_kPa\": 131.3,"
+            },
+            {
+              "number": 7,
+              "text": "      \"lng_in_temp_C\": -162.0,"
+            },
+            {
+              "number": 8,
+              "text": "      \"lng_in_flow\": 30000,"
+            },
+            {
+              "number": 9,
+              "text": "      \"lp_out_pressure_kPa\": 1000,"
+            },
+            {
+              "number": 10,
+              "text": "      \"hp_out_pressure_kPa\": 7200,"
+            },
+            {
+              "number": 11,
+              "text": "      \"seawater_in_flow\": 3000000,"
+            },
+            {
+              "number": 12,
+              "text": "      \"seawater_in_pressure_kPa\": 101.3,"
+            },
+            {
+              "number": 13,
+              "text": "      \"seawater_in_temp_C\": 25,"
+            },
+            {
+              "number": 14,
+              "text": "      \"seawater_out_temp_C\": 18.2,"
+            },
+            {
+              "number": 15,
+              "text": "      \"hp_pump_power\": 2093910"
+            },
+            {
+              "number": 16,
+              "text": "    }"
+            },
+            {
+              "number": 17,
+              "text": "  ],"
+            },
+            {
+              "number": 18,
+              "text": "  \"influxdb\": {"
+            },
+            {
+              "number": 19,
+              "text": "    \"url\": \"http://192.168.122.12:8087\","
+            },
+            {
+              "number": 20,
+              "text": "    \"token\": \"JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==\","
+            },
+            {
+              "number": 21,
+              "text": "    \"org\": \"my-org\","
+            },
+            {
+              "number": 22,
+              "text": "    \"bucket\": \"hysys\""
+            },
+            {
+              "number": 23,
+              "text": "  }"
+            },
+            {
+              "number": 24,
+              "text": "}"
+            }
+          ],
+          "endswith_newline": true
+        }
+      },
       "nodes": [
         {
           "id": "simulation_file",
@@ -51,7 +153,137 @@
       "name": "HYSYS_TANK",
       "simulator": "hysys_tank",
       "version": "1.0",
-      "metadata": {},
+      "metadata": {
+        "raw_text": {
+          "lines": [
+            {
+              "number": 1,
+              "text": "{"
+            },
+            {
+              "number": 2,
+              "text": "  \"file_paths\": {"
+            },
+            {
+              "number": 3,
+              "text": "    \"hysys_case\": \"C:\\\\work\\\\HYSYS_DOCKER\\\\tank\\\\stable.hsc\","
+            },
+            {
+              "number": 4,
+              "text": "    \"stop_signal\": \"C:\\\\work\\\\HYSYS_DOCKER\\\\tank\\\\MySimpleExample\\\\stop_receive.csv\","
+            },
+            {
+              "number": 5,
+              "text": "    \"valve_commands\": \"C:\\\\work\\\\HYSYS_DOCKER\\\\tank\\\\valveChange.csv\","
+            },
+            {
+              "number": 6,
+              "text": "    \"data_output\": \"C:\\\\work\\\\HYSYS_DOCKER\\\\tank\\\\MySimpleExample\\\\tank_send.csv\""
+            },
+            {
+              "number": 7,
+              "text": "  },"
+            },
+            {
+              "number": 8,
+              "text": "  \"simulator\":"
+            },
+            {
+              "number": 9,
+              "text": "    {"
+            },
+            {
+              "number": 10,
+              "text": "      \"runState\": 100,"
+            },
+            {
+              "number": 11,
+              "text": "      \"changeFlow\":25,"
+            },
+            {
+              "number": 12,
+              "text": "      \"stage\": 1"
+            },
+            {
+              "number": 13,
+              "text": "    },"
+            },
+            {
+              "number": 14,
+              "text": "  \"state\": ["
+            },
+            {
+              "number": 15,
+              "text": "    {"
+            },
+            {
+              "number": 16,
+              "text": "      \"pressIn\": 131.3,"
+            },
+            {
+              "number": 17,
+              "text": "      \"flowIn\": 90057,"
+            },
+            {
+              "number": 18,
+              "text": "      \"pressOut\": 111,"
+            },
+            {
+              "number": 19,
+              "text": "      \"flowOut\": 90057,"
+            },
+            {
+              "number": 20,
+              "text": "      \"valve\": 100,"
+            },
+            {
+              "number": 21,
+              "text": "      \"tankV\": 160000"
+            },
+            {
+              "number": 22,
+              "text": "    }"
+            },
+            {
+              "number": 23,
+              "text": "  ],"
+            },
+            {
+              "number": 24,
+              "text": "  \"influxdb\": {"
+            },
+            {
+              "number": 25,
+              "text": "    \"url\": \"http://192.168.122.12:8087\","
+            },
+            {
+              "number": 26,
+              "text": "    \"token\": \"xpb4eogNENqxDiV2UmfW7TNx9litirQM--MGzfPXhXHRWFvrvjLgEQLlO2EIf1hiKpxQS1Y1ZCI-CznCyoyB6Q==\","
+            },
+            {
+              "number": 27,
+              "text": "    \"org\": \"my-org\","
+            },
+            {
+              "number": 28,
+              "text": "    \"bucket\": \"tank\","
+            },
+            {
+              "number": 29,
+              "text": "    \"org_id\": \"87c1afa6d561f2c3\""
+            },
+            {
+              "number": 30,
+              "text": "  }"
+            },
+            {
+              "number": 31,
+              "text": "}"
+            }
+          ],
+          "endswith_newline": false
+        }
+      },
       "nodes": [
         {
           "id": "file_paths",
@@ -103,7 +335,29 @@
       "name": "TRAFFIC",
       "simulator": "traffic",
       "version": "1.0",
-      "metadata": {},
+      "metadata": {
+        "raw_text": {
+          "lines": [
+            {
+              "number": 1,
+              "text": "[DEFAULT]"
+            },
+            {
+              "number": 2,
+              "text": "k = 1.0"
+            },
+            {
+              "number": 3,
+              "text": "c = 0"
+            },
+            {
+              "number": 4,
+              "text": "stop_threshold = 0.75"
+            }
+          ],
+          "endswith_newline": true
+        }
+      },
       "nodes": [
         {
           "id": "DEFAULT",
@@ -123,7 +377,1073 @@
       "simulator": "omnetpp",
       "version": "1.0",
       "metadata": {
-        "source_file": "gas_omnetpp.ini"
+        "source_file": "gas_omnetpp.ini",
+        "raw_ini_text": {
+          "lines": [
+            {
+              "number": 1,
+              "text": "[General]"
+            },
+            {
+              "number": 2,
+              "text": "network = topology"
+            },
+            {
+              "number": 3,
+              "text": ""
+            },
+            {
+              "number": 4,
+              "text": "#配气站"
+            },
+            {
+              "number": 5,
+              "text": "topology.gas_1_1.longitude = 120.378998 #经度"
+            },
+            {
+              "number": 6,
+              "text": "topology.gas_1_1.latitude =  22.635799  #纬度"
+            },
+            {
+              "number": 7,
+              "text": "topology.gas_1_1.outPressure = 49.5     #出站压力"
+            },
+            {
+              "number": 8,
+              "text": "topology.gas_1_1.inPressure = 0         #进站压力"
+            },
+            {
+              "number": 9,
+              "text": "topology.gas_1_1.inFlow = 0          #进站流量"
+            },
+            {
+              "number": 10,
+              "text": "topology.gas_1_1.outFlow = 0 "
+            },
+            {
+              "number": 11,
+              "text": ""
+            },
+            {
+              "number": 12,
+              "text": "topology.gas_1_2.longitude = 120.447996"
+            },
+            {
+              "number": 13,
+              "text": "topology.gas_1_2.latitude = 22.6506"
+            },
+            {
+              "number": 14,
+              "text": "topology.gas_1_2.outPressure = 19.9"
+            },
+            {
+              "number": 15,
+              "text": "topology.gas_1_2.inPressure = 0"
+            },
+            {
+              "number": 16,
+              "text": "topology.gas_1_2.inFlow = 0"
+            },
+            {
+              "number": 17,
+              "text": "topology.gas_1_2.outFlow = 0"
+            },
+            {
+              "number": 18,
+              "text": ""
+            },
+            {
+              "number": 19,
+              "text": "topology.gas_1_3.longitude = 120.406998"
+            },
+            {
+              "number": 20,
+              "text": "topology.gas_1_3.latitude = 22.498699"
+            },
+            {
+              "number": 21,
+              "text": "topology.gas_1_3.outPressure = 0"
+            },
+            {
+              "number": 22,
+              "text": "topology.gas_1_3.inPressure = 0"
+            },
+            {
+              "number": 23,
+              "text": "topology.gas_1_3.inFlow = 0"
+            },
+            {
+              "number": 24,
+              "text": "topology.gas_1_3.outFlow = 0"
+            },
+            {
+              "number": 25,
+              "text": ""
+            },
+            {
+              "number": 26,
+              "text": "topology.gas_1_4.longitude = 120.359001"
+            },
+            {
+              "number": 27,
+              "text": "topology.gas_1_4.latitude = 22.521299"
+            },
+            {
+              "number": 28,
+              "text": "topology.gas_1_4.outPressure = 0"
+            },
+            {
+              "number": 29,
+              "text": "topology.gas_1_4.inPressure = 48.3"
+            },
+            {
+              "number": 30,
+              "text": "topology.gas_1_4.inFlow = 0"
+            },
+            {
+              "number": 31,
+              "text": "topology.gas_1_4.outFlow = 0"
+            },
+            {
+              "number": 32,
+              "text": ""
+            },
+            {
+              "number": 33,
+              "text": "topology.gas_1_5.longitude = 120.675003"
+            },
+            {
+              "number": 34,
+              "text": "topology.gas_1_5.latitude = 24.482599"
+            },
+            {
+              "number": 35,
+              "text": "topology.gas_1_5.outPressure = 68.5"
+            },
+            {
+              "number": 36,
+              "text": "topology.gas_1_5.inPressure = 68.5"
+            },
+            {
+              "number": 37,
+              "text": "topology.gas_1_5.inFlow = 540 #540(YONGaN)、745（TZ）"
+            },
+            {
+              "number": 38,
+              "text": "topology.gas_1_5.outFlow = 0"
+            },
+            {
+              "number": 39,
+              "text": ""
+            },
+            {
+              "number": 40,
+              "text": "topology.gas_1_6.longitude = 120.280998"
+            },
+            {
+              "number": 41,
+              "text": "topology.gas_1_6.latitude = 22.879999"
+            },
+            {
+              "number": 42,
+              "text": "topology.gas_1_6.outPressure = 60.7"
+            },
+            {
+              "number": 43,
+              "text": "topology.gas_1_6.inPressure = 0"
+            },
+            {
+              "number": 44,
+              "text": "topology.gas_1_6.inFlow = 0"
+            },
+            {
+              "number": 45,
+              "text": "topology.gas_1_6.outFlow = 0 "
+            },
+            {
+              "number": 46,
+              "text": ""
+            },
+            {
+              "number": 47,
+              "text": "topology.gas_1_7.longitude = 120.333"
+            },
+            {
+              "number": 48,
+              "text": "topology.gas_1_7.latitude = 22.7187"
+            },
+            {
+              "number": 49,
+              "text": "topology.gas_1_7.outPressure = 53.2"
+            },
+            {
+              "number": 50,
+              "text": "topology.gas_1_7.inPressure = 59"
+            },
+            {
+              "number": 51,
+              "text": "topology.gas_1_7.inFlow = 0"
+            },
+            {
+              "number": 52,
+              "text": "topology.gas_1_7.outFlow = 0"
+            },
+            {
+              "number": 53,
+              "text": ""
+            },
+            {
+              "number": 54,
+              "text": "topology.gas_1_8.longitude = 120.323997"
+            },
+            {
+              "number": 55,
+              "text": "topology.gas_1_8.latitude = 22.789"
+            },
+            {
+              "number": 56,
+              "text": "topology.gas_1_8.outPressure = 60.9"
+            },
+            {
+              "number": 57,
+              "text": "topology.gas_1_8.inPressure = 0"
+            },
+            {
+              "number": 58,
+              "text": "topology.gas_1_8.inFlow = 0"
+            },
+            {
+              "number": 59,
+              "text": "topology.gas_1_8.outFlow = 0"
+            },
+            {
+              "number": 60,
+              "text": ""
+            },
+            {
+              "number": 61,
+              "text": "topology.gas_1_9.longitude = 120.259003"
+            },
+            {
+              "number": 62,
+              "text": "topology.gas_1_9.latitude = 23.050501"
+            },
+            {
+              "number": 63,
+              "text": "topology.gas_1_9.outPressure = 57.2"
+            },
+            {
+              "number": 64,
+              "text": "topology.gas_1_9.inPressure = 0"
+            },
+            {
+              "number": 65,
+              "text": "topology.gas_1_9.inFlow = 0"
+            },
+            {
+              "number": 66,
+              "text": "topology.gas_1_9.outFlow = 0 "
+            },
+            {
+              "number": 67,
+              "text": ""
+            },
+            {
+              "number": 68,
+              "text": "topology.gas_1_10.longitude = 120.414001"
+            },
+            {
+              "number": 69,
+              "text": "topology.gas_1_10.latitude = 23.5455"
+            },
+            {
+              "number": 70,
+              "text": "topology.gas_1_10.outPressure = 52.6"
+            },
+            {
+              "number": 71,
+              "text": "topology.gas_1_10.inPressure = 0"
+            },
+            {
+              "number": 72,
+              "text": "topology.gas_1_10.inFlow = 0"
+            },
+            {
+              "number": 73,
+              "text": "topology.gas_1_10.outFlow = 0"
+            },
+            {
+              "number": 74,
+              "text": ""
+            },
+            {
+              "number": 75,
+              "text": "topology.gas_1_11.longitude = 120.525002"
+            },
+            {
+              "number": 76,
+              "text": "topology.gas_1_11.latitude = 24.049101"
+            },
+            {
+              "number": 77,
+              "text": "topology.gas_1_11.outPressure = 51.2"
+            },
+            {
+              "number": 78,
+              "text": "topology.gas_1_11.inPressure = 51.4"
+            },
+            {
+              "number": 79,
+              "text": "topology.gas_1_11.inFlow = 0"
+            },
+            {
+              "number": 80,
+              "text": "topology.gas_1_11.outFlow = 0"
+            },
+            {
+              "number": 81,
+              "text": ""
+            },
+            {
+              "number": 82,
+              "text": "topology.gas_1_12.longitude = 120.667999"
+            },
+            {
+              "number": 83,
+              "text": "topology.gas_1_12.latitude = 24.208599"
+            },
+            {
+              "number": 84,
+              "text": "topology.gas_1_12.outPressure = 50.6"
+            },
+            {
+              "number": 85,
+              "text": "topology.gas_1_12.inPressure = 0"
+            },
+            {
+              "number": 86,
+              "text": "topology.gas_1_12.inFlow = 0"
+            },
+            {
+              "number": 87,
+              "text": "topology.gas_1_12.outFlow = 0 "
+            },
+            {
+              "number": 88,
+              "text": ""
+            },
+            {
+              "number": 89,
+              "text": "topology.gas_1_13.longitude = 120.429001"
+            },
+            {
+              "number": 90,
+              "text": "topology.gas_1_13.latitude = 23.4685"
+            },
+            {
+              "number": 91,
+              "text": "topology.gas_1_13.outPressure = 0"
+            },
+            {
+              "number": 92,
+              "text": "topology.gas_1_13.inPressure = 0"
+            },
+            {
+              "number": 93,
+              "text": "topology.gas_1_13.inFlow = 0"
+            },
+            {
+              "number": 94,
+              "text": "topology.gas_1_13.outFlow = 0"
+            },
+            {
+              "number": 95,
+              "text": ""
+            },
+            {
+              "number": 96,
+              "text": "topology.gas_1_14.longitude = 120.273003"
+            },
+            {
+              "number": 97,
+              "text": "topology.gas_1_14.latitude = 23.295099"
+            },
+            {
+              "number": 98,
+              "text": "topology.gas_1_14.outPressure = 0"
+            },
+            {
+              "number": 99,
+              "text": "topology.gas_1_14.inPressure = 0"
+            },
+            {
+              "number": 100,
+              "text": "topology.gas_1_14.inFlow = 0"
+            },
+            {
+              "number": 101,
+              "text": "topology.gas_1_14.outFlow = 0"
+            },
+            {
+              "number": 102,
+              "text": ""
+            },
+            {
+              "number": 103,
+              "text": "topology.gas_1_16.longitude = 120.326354870162"
+            },
+            {
+              "number": 104,
+              "text": "topology.gas_1_16.latitude = 22.8736393318874"
+            },
+            {
+              "number": 105,
+              "text": "topology.gas_1_16.outPressure = 0"
+            },
+            {
+              "number": 106,
+              "text": "topology.gas_1_16.inPressure = 0"
+            },
+            {
+              "number": 107,
+              "text": "topology.gas_1_16.inFlow = 0"
+            },
+            {
+              "number": 108,
+              "text": "topology.gas_1_16.outFlow = 0"
+            },
+            {
+              "number": 109,
+              "text": ""
+            },
+            {
+              "number": 110,
+              "text": "topology.gas_1_17.longitude = 120.25"
+            },
+            {
+              "number": 111,
+              "text": "topology.gas_1_17.latitude = 22.9548"
+            },
+            {
+              "number": 112,
+              "text": "topology.gas_1_17.outPressure = 0"
+            },
+            {
+              "number": 113,
+              "text": "topology.gas_1_17.inPressure = 0"
+            },
+            {
+              "number": 114,
+              "text": "topology.gas_1_17.inFlow = 0"
+            },
+            {
+              "number": 115,
+              "text": "topology.gas_1_17.outFlow = 0"
+            },
+            {
+              "number": 116,
+              "text": ""
+            },
+            {
+              "number": 117,
+              "text": "#接收站"
+            },
+            {
+              "number": 118,
+              "text": "topology.gas_2_1.longitude = 120.210999 #经度（°）"
+            },
+            {
+              "number": 119,
+              "text": "topology.gas_2_1.latitude = 22.8158304  #纬度（°）"
+            },
+            {
+              "number": 120,
+              "text": "topology.gas_2_1.outFlow = 18325     #出站流量（m³/h）"
+            },
+            {
+              "number": 121,
+              "text": "topology.gas_2_1.outPressure = 7        #出站压力（MPa）"
+            },
+            {
+              "number": 122,
+              "text": "topology.gas_2_1.inPressure = 0"
+            },
+            {
+              "number": 123,
+              "text": "topology.gas_2_1.inFlow = 0"
+            },
+            {
+              "number": 124,
+              "text": ""
+            },
+            {
+              "number": 125,
+              "text": "topology.*.outputJsonFile = \"db1.json\""
+            },
+            {
+              "number": 126,
+              "text": ""
+            },
+            {
+              "number": 127,
+              "text": "#接收"
+            },
+            {
+              "number": 128,
+              "text": "topology.receivingStationInput.fileName = \"/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_receive.csv\""
+            },
+            {
+              "number": 129,
+              "text": "topology.receivingStationInput.pollInterval = 1"
+            },
+            {
+              "number": 130,
+              "text": "topology.receivingStationInput.id = 001"
+            },
+            {
+              "number": 131,
+              "text": ""
+            },
+            {
+              "number": 132,
+              "text": ""
+            },
+            {
+              "number": 133,
+              "text": "#发送"
+            },
+            {
+              "number": 134,
+              "text": "topology.*.outputFileName = \"/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_send.csv\""
+            },
+            {
+              "number": 135,
+              "text": ""
+            },
+            {
+              "number": 136,
+              "text": ""
+            },
+            {
+              "number": 137,
+              "text": "#阀门1"
+            },
+            {
+              "number": 138,
+              "text": "topology.valve1.R = 50 \t\t\t#可调比"
+            },
+            {
+              "number": 139,
+              "text": "topology.valve1.opening = 1 \t#开度"
+            },
+            {
+              "number": 140,
+              "text": ""
+            },
+            {
+              "number": 141,
+              "text": "#阀门4"
+            },
+            {
+              "number": 142,
+              "text": "topology.valve4.R = 50\t\t\t"
+            },
+            {
+              "number": 143,
+              "text": "topology.valve4.opening = 1 \t"
+            },
+            {
+              "number": 144,
+              "text": ""
+            },
+            {
+              "number": 145,
+              "text": "#阀门9"
+            },
+            {
+              "number": 146,
+              "text": "topology.valve9.R = 50 \t\t\t"
+            },
+            {
+              "number": 147,
+              "text": "topology.valve9.opening = 1 \t"
+            },
+            {
+              "number": 148,
+              "text": ""
+            },
+            {
+              "number": 149,
+              "text": "#阀门10"
+            },
+            {
+              "number": 150,
+              "text": "topology.valve10.R = 50 \t\t\t"
+            },
+            {
+              "number": 151,
+              "text": "topology.valve10.opening = 1 \t"
+            },
+            {
+              "number": 152,
+              "text": ""
+            },
+            {
+              "number": 153,
+              "text": "#阀门21"
+            },
+            {
+              "number": 154,
+              "text": "topology.valve21.R = 50 \t\t\t"
+            },
+            {
+              "number": 155,
+              "text": "topology.valve21.opening = 1"
+            },
+            {
+              "number": 156,
+              "text": ""
+            },
+            {
+              "number": 157,
+              "text": ""
+            },
+            {
+              "number": 158,
+              "text": ""
+            }
+          ],
+          "endswith_newline": true
+        },
+        "topology_raw_text": {
+          "lines": [
+            {
+              "number": 1,
+              "text": "import ned.IdealChannel;"
+            },
+            {
+              "number": 2,
+              "text": ""
+            },
+            {
+              "number": 3,
+              "text": ""
+            },
+            {
+              "number": 4,
+              "text": "//"
+            },
+            {
+              "number": 5,
+              "text": "// This program is free software: you can redistribute it and/or modify"
+            },
+            {
+              "number": 6,
+              "text": "// it under the terms of the GNU Lesser General Public License as published by"
+            },
+            {
+              "number": 7,
+              "text": "// the Free Software Foundation, either version 3 of the License, or"
+            },
+            {
+              "number": 8,
+              "text": "// (at your option) any later version."
+            },
+            {
+              "number": 9,
+              "text": "// "
+            },
+            {
+              "number": 10,
+              "text": "// This program is distributed in the hope that it will be useful,"
+            },
+            {
+              "number": 11,
+              "text": "// but WITHOUT ANY WARRANTY; without even the implied warranty of"
+            },
+            {
+              "number": 12,
+              "text": "// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+            },
+            {
+              "number": 13,
+              "text": "// GNU Lesser General Public License for more details."
+            },
+            {
+              "number": 14,
+              "text": "// "
+            },
+            {
+              "number": 15,
+              "text": "// You should have received a copy of the GNU Lesser General Public License"
+            },
+            {
+              "number": 16,
+              "text": "// along with this program.  If not, see http://www.gnu.org/licenses/."
+            },
+            {
+              "number": 17,
+              "text": "//"
+            },
+            {
+              "number": 18,
+              "text": "//"
+            },
+            {
+              "number": 19,
+              "text": "// TODO documentation"
+            },
+            {
+              "number": 20,
+              "text": "//"
+            },
+            {
+              "number": 21,
+              "text": "network topology"
+            },
+            {
+              "number": 22,
+              "text": "{"
+            },
+            {
+              "number": 23,
+              "text": "    @display(\"bgb=4432,3116\");"
+            },
+            {
+              "number": 24,
+              "text": "    submodules:"
+            },
+            {
+              "number": 25,
+              "text": "        gas_1_1: DistributionStation {"
+            },
+            {
+              "number": 26,
+              "text": "            @display(\"p=3033,1878\");"
+            },
+            {
+              "number": 27,
+              "text": "        }"
+            },
+            {
+              "number": 28,
+              "text": "        gas_1_4: DistributionStation {"
+            },
+            {
+              "number": 29,
+              "text": "            @display(\"p=3675,1373\");"
+            },
+            {
+              "number": 30,
+              "text": "        }"
+            },
+            {
+              "number": 31,
+              "text": "        gas_1_6: DistributionStation {"
+            },
+            {
+              "number": 32,
+              "text": "            @display(\"p=2278,1373\");"
+            },
+            {
+              "number": 33,
+              "text": "        }"
+            },
+            {
+              "number": 34,
+              "text": "        gas_1_17: DistributionStation {"
+            },
+            {
+              "number": 35,
+              "text": "            @display(\"p=855,1891\");"
+            },
+            {
+              "number": 36,
+              "text": "        }"
+            },
+            {
+              "number": 37,
+              "text": "        gas_1_8: DistributionStation {"
+            },
+            {
+              "number": 38,
+              "text": "            @display(\"p=2278,1878\");"
+            },
+            {
+              "number": 39,
+              "text": "        }"
+            },
+            {
+              "number": 40,
+              "text": "        gas_2_1: DistributionStation {"
+            },
+            {
+              "number": 41,
+              "text": "            @display(\"p=1435,1891\");"
+            },
+            {
+              "number": 42,
+              "text": "        }"
+            },
+            {
+              "number": 43,
+              "text": "        gas_1_7: DistributionStation {"
+            },
+            {
+              "number": 44,
+              "text": "            @display(\"p=2596,1878\");"
+            },
+            {
+              "number": 45,
+              "text": "        }"
+            },
+            {
+              "number": 46,
+              "text": "        gas_1_9: DistributionStation {"
+            },
+            {
+              "number": 47,
+              "text": "            @display(\"p=1435,1373\");"
+            },
+            {
+              "number": 48,
+              "text": "        }"
+            },
+            {
+              "number": 49,
+              "text": "        gas_1_10: DistributionStation {"
+            },
+            {
+              "number": 50,
+              "text": "            @display(\"p=855,1373\");"
+            },
+            {
+              "number": 51,
+              "text": "        }"
+            },
+            {
+              "number": 52,
+              "text": "        valve1: Valve {"
+            },
+            {
+              "number": 53,
+              "text": "            @display(\"p=3039,2477\");"
+            },
+            {
+              "number": 54,
+              "text": "        }"
+            },
+            {
+              "number": 55,
+              "text": "        valve4: Valve {"
+            },
+            {
+              "number": 56,
+              "text": "            @display(\"p=3700,743\");"
+            },
+            {
+              "number": 57,
+              "text": "        }"
+            },
+            {
+              "number": 58,
+              "text": "        valve10: Valve {"
+            },
+            {
+              "number": 59,
+              "text": "            @display(\"p=530,880\");"
+            },
+            {
+              "number": 60,
+              "text": "        }"
+            },
+            {
+              "number": 61,
+              "text": "        valve9: Valve {"
+            },
+            {
+              "number": 62,
+              "text": "            @display(\"p=1435,743\");"
+            },
+            {
+              "number": 63,
+              "text": "        }"
+            },
+            {
+              "number": 64,
+              "text": "        gas9: GasFlowSink {"
+            },
+            {
+              "number": 65,
+              "text": "            @display(\"p=1884,743\");"
+            },
+            {
+              "number": 66,
+              "text": "        }"
+            },
+            {
+              "number": 67,
+              "text": "        gas10: GasFlowSink {"
+            },
+            {
+              "number": 68,
+              "text": "            @display(\"p=512,374\");"
+            },
+            {
+              "number": 69,
+              "text": "        }"
+            },
+            {
+              "number": 70,
+              "text": "        gas1: GasFlowSink {"
+            },
+            {
+              "number": 71,
+              "text": "            @display(\"p=3039,2920\");"
+            },
+            {
+              "number": 72,
+              "text": "        }"
+            },
+            {
+              "number": 73,
+              "text": "        gas4: GasFlowSink {"
+            },
+            {
+              "number": 74,
+              "text": "            @display(\"p=3694,256\");"
+            },
+            {
+              "number": 75,
+              "text": "        }"
+            },
+            {
+              "number": 76,
+              "text": "        valve21: Valve {"
+            },
+            {
+              "number": 77,
+              "text": "            @display(\"p=1429,2459\");"
+            },
+            {
+              "number": 78,
+              "text": "        }"
+            },
+            {
+              "number": 79,
+              "text": "        gas21: GasFlowSink {"
+            },
+            {
+              "number": 80,
+              "text": "            @display(\"p=1429,2914\");"
+            },
+            {
+              "number": 81,
+              "text": "        }"
+            },
+            {
+              "number": 82,
+              "text": "        receivingStationInput: ReceivingStationInput {"
+            },
+            {
+              "number": 83,
+              "text": "            @display(\"p=842,2527\");"
+            },
+            {
+              "number": 84,
+              "text": "        }"
+            },
+            {
+              "number": 85,
+              "text": "    connections:"
+            },
+            {
+              "number": 86,
+              "text": "        gas_1_1.out++ --> GasPipe {  diameter = 600mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 12.845km; ValveInitialOpening = 1; elevationChange = 4; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_4.in++;"
+            },
+            {
+              "number": 87,
+              "text": "        gas_2_1.out++ --> GasPipe {  diameter = 750mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 11.975km; ValveInitialOpening = 1; elevationChange = 14; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_8.in++;"
+            },
+            {
+              "number": 88,
+              "text": "        gas_2_1.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 17.9km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_6.in++;"
+            },
+            {
+              "number": 89,
+              "text": "        gas_2_1.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 17.279km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_17.in++;"
+            },
+            {
+              "number": 90,
+              "text": "        gas_1_8.out++ --> GasPipe {  diameter = 600mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 7.840km; ValveInitialOpening = 1; elevationChange = 2; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_7.in++;"
+            },
+            {
+              "number": 91,
+              "text": "        gas_1_7.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 10.042km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_1.in++;"
+            },
+            {
+              "number": 92,
+              "text": "        gas_1_6.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 20km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_9.in++;"
+            },
+            {
+              "number": 93,
+              "text": "        gas_1_17.out++ --> GasPipe {  diameter = 400mm; wallThickness = 9.5mm; heatTransferCoefficient = 52; Length = 80km; ValveInitialOpening = 1; elevationChange = 5; T = 296.15K; epsilon = 0.045mm; delta = 0.6106; z = 0.95; } --> gas_1_10.in++;"
+            },
+            {
+              "number": 94,
+              "text": "        gas_1_1.out++ --> GasPipe --> valve1.in++;"
+            },
+            {
+              "number": 95,
+              "text": "        gas_1_4.out++ --> GasPipe --> valve4.in++;"
+            },
+            {
+              "number": 96,
+              "text": "        gas_1_10.out++ --> GasPipe --> valve10.in++;"
+            },
+            {
+              "number": 97,
+              "text": "        gas_1_9.out++ --> GasPipe --> valve9.in++;"
+            },
+            {
+              "number": 98,
+              "text": "        valve9.out++ --> GasPipe --> gas9.in++;"
+            },
+            {
+              "number": 99,
+              "text": "        valve10.out++ --> GasPipe --> gas10.in++;"
+            },
+            {
+              "number": 100,
+              "text": "        valve4.out++ --> GasPipe --> gas4.in++;"
+            },
+            {
+              "number": 101,
+              "text": "        valve1.out++ --> GasPipe --> gas1.in++;"
+            },
+            {
+              "number": 102,
+              "text": "        gas_2_1.out++ --> IdealChannel --> valve21.in++;"
+            },
+            {
+              "number": 103,
+              "text": "        valve21.out++ --> IdealChannel --> gas21.in++;"
+            },
+            {
+              "number": 104,
+              "text": "        receivingStationInput.out++ --> IdealChannel --> gas_2_1.in++;"
+            },
+            {
+              "number": 105,
+              "text": "}"
+            },
+            {
+              "number": 106,
+              "text": ""
+            }
+          ],
+          "endswith_newline": true
+        }
       },
       "nodes": [
         {
@@ -253,6 +1573,685 @@
       ],
       "edges": [],
       "mechanismRelationships": []
+    },
+    {
+      "name": "OPEN_DSS",
+      "simulator": "opendss",
+      "version": "1.0",
+      "metadata": {
+        "directory": "opendss",
+        "opendss_files": {
+          "order": [
+            "master.dss",
+            "circuit.dss",
+            "lines.dss",
+            "transformers.dss",
+            "loads.dss",
+            "capacitors.dss"
+          ],
+          "files": {
+            "master.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "Clear"
+                },
+                {
+                  "number": 2,
+                  "text": "New Circuit.Feeder basekv=12.47 pu=1.00 phases=3"
+                },
+                {
+                  "number": 3,
+                  "text": "Redirect circuit.dss"
+                },
+                {
+                  "number": 4,
+                  "text": "Redirect lines.dss"
+                },
+                {
+                  "number": 5,
+                  "text": "Redirect transformers.dss"
+                },
+                {
+                  "number": 6,
+                  "text": "Redirect loads.dss"
+                },
+                {
+                  "number": 7,
+                  "text": "Redirect capacitors.dss"
+                },
+                {
+                  "number": 8,
+                  "text": "Solve Mode=Snap"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "clear"
+                },
+                {
+                  "type": "new",
+                  "element": "Circuit.Feeder",
+                  "params": [
+                    {
+                      "key": "basekv",
+                      "value": "12.47"
+                    },
+                    {
+                      "key": "pu",
+                      "value": "1.00"
+                    },
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "type": "redirect",
+                  "target": "circuit.dss"
+                },
+                {
+                  "type": "redirect",
+                  "target": "lines.dss"
+                },
+                {
+                  "type": "redirect",
+                  "target": "transformers.dss"
+                },
+                {
+                  "type": "redirect",
+                  "target": "loads.dss"
+                },
+                {
+                  "type": "redirect",
+                  "target": "capacitors.dss"
+                },
+                {
+                  "type": "solve",
+                  "params": [
+                    {
+                      "key": "Mode",
+                      "value": "Snap"
+                    }
+                  ]
+                }
+              ]
+            },
+            "circuit.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "New Vsource.Source phases=3 bus1=SourceBus kv=12.47 pu=1.00 angle=0 frequency=60"
+                },
+                {
+                  "number": 2,
+                  "text": "New BusCoords.SourceBus x=0 y=0"
+                },
+                {
+                  "number": 3,
+                  "text": "New BusCoords.Bus1 x=1.2 y=0.5"
+                },
+                {
+                  "number": 4,
+                  "text": "New BusCoords.Bus2 x=2.4 y=0.5"
+                },
+                {
+                  "number": 5,
+                  "text": "set voltagebases=[12.47]"
+                },
+                {
+                  "number": 6,
+                  "text": "CalcVoltageBases"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "new",
+                  "element": "Vsource.Source",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "bus1",
+                      "value": "SourceBus"
+                    },
+                    {
+                      "key": "kv",
+                      "value": "12.47"
+                    },
+                    {
+                      "key": "pu",
+                      "value": "1.00"
+                    },
+                    {
+                      "key": "angle",
+                      "value": "0"
+                    },
+                    {
+                      "key": "frequency",
+                      "value": "60"
+                    }
+                  ]
+                },
+                {
+                  "type": "new",
+                  "element": "BusCoords.SourceBus",
+                  "params": [
+                    {
+                      "key": "x",
+                      "value": "0"
+                    },
+                    {
+                      "key": "y",
+                      "value": "0"
+                    }
+                  ]
+                },
+                {
+                  "type": "new",
+                  "element": "BusCoords.Bus1",
+                  "params": [
+                    {
+                      "key": "x",
+                      "value": "1.2"
+                    },
+                    {
+                      "key": "y",
+                      "value": "0.5"
+                    }
+                  ]
+                },
+                {
+                  "type": "new",
+                  "element": "BusCoords.Bus2",
+                  "params": [
+                    {
+                      "key": "x",
+                      "value": "2.4"
+                    },
+                    {
+                      "key": "y",
+                      "value": "0.5"
+                    }
+                  ]
+                },
+                {
+                  "type": "set",
+                  "params": [
+                    {
+                      "key": "voltagebases",
+                      "value": "[12.47]"
+                    }
+                  ]
+                },
+                {
+                  "type": "command",
+                  "tokens": [
+                    "CalcVoltageBases"
+                  ]
+                }
+              ]
+            },
+            "lines.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "New Line.Line1 phases=3 bus1=SourceBus bus2=Bus1 length=0.5 units=km r1=0.058 x1=0.120 c1=3.4"
+                },
+                {
+                  "number": 2,
+                  "text": "New Line.Line2 phases=3 bus1=Bus1 bus2=Bus2 length=0.8 units=km r1=0.058 x1=0.120 c1=3.4"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "new",
+                  "element": "Line.Line1",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "bus1",
+                      "value": "SourceBus"
+                    },
+                    {
+                      "key": "bus2",
+                      "value": "Bus1"
+                    },
+                    {
+                      "key": "length",
+                      "value": "0.5"
+                    },
+                    {
+                      "key": "units",
+                      "value": "km"
+                    },
+                    {
+                      "key": "r1",
+                      "value": "0.058"
+                    },
+                    {
+                      "key": "x1",
+                      "value": "0.120"
+                    },
+                    {
+                      "key": "c1",
+                      "value": "3.4"
+                    }
+                  ]
+                },
+                {
+                  "type": "new",
+                  "element": "Line.Line2",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "bus1",
+                      "value": "Bus1"
+                    },
+                    {
+                      "key": "bus2",
+                      "value": "Bus2"
+                    },
+                    {
+                      "key": "length",
+                      "value": "0.8"
+                    },
+                    {
+                      "key": "units",
+                      "value": "km"
+                    },
+                    {
+                      "key": "r1",
+                      "value": "0.058"
+                    },
+                    {
+                      "key": "x1",
+                      "value": "0.120"
+                    },
+                    {
+                      "key": "c1",
+                      "value": "3.4"
+                    }
+                  ]
+                }
+              ]
+            },
+            "transformers.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "New Transformer.SubXFMR phases=3 windings=2 buses=[SourceBus,Bus1] conns=[delta,wye] kvs=[12.47,0.48] kvas=[1000,1000] xhl=7.0 %loadloss=1.0"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "new",
+                  "element": "Transformer.SubXFMR",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "windings",
+                      "value": "2"
+                    },
+                    {
+                      "key": "buses",
+                      "value": "[SourceBus,Bus1]"
+                    },
+                    {
+                      "key": "conns",
+                      "value": "[delta,wye]"
+                    },
+                    {
+                      "key": "kvs",
+                      "value": "[12.47,0.48]"
+                    },
+                    {
+                      "key": "kvas",
+                      "value": "[1000,1000]"
+                    },
+                    {
+                      "key": "xhl",
+                      "value": "7.0"
+                    },
+                    {
+                      "key": "%loadloss",
+                      "value": "1.0"
+                    }
+                  ]
+                }
+              ]
+            },
+            "loads.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "New Load.Load1 phases=3 bus1=Bus1 kw=450 kvar=100 kv=0.48 model=1"
+                },
+                {
+                  "number": 2,
+                  "text": "New Load.Load2 phases=3 bus1=Bus2 kw=300 kvar=80 kv=0.48 model=1"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "new",
+                  "element": "Load.Load1",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "bus1",
+                      "value": "Bus1"
+                    },
+                    {
+                      "key": "kw",
+                      "value": "450"
+                    },
+                    {
+                      "key": "kvar",
+                      "value": "100"
+                    },
+                    {
+                      "key": "kv",
+                      "value": "0.48"
+                    },
+                    {
+                      "key": "model",
+                      "value": "1"
+                    }
+                  ]
+                },
+                {
+                  "type": "new",
+                  "element": "Load.Load2",
+                  "params": [
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    },
+                    {
+                      "key": "bus1",
+                      "value": "Bus2"
+                    },
+                    {
+                      "key": "kw",
+                      "value": "300"
+                    },
+                    {
+                      "key": "kvar",
+                      "value": "80"
+                    },
+                    {
+                      "key": "kv",
+                      "value": "0.48"
+                    },
+                    {
+                      "key": "model",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            "capacitors.dss": {
+              "lines": [
+                {
+                  "number": 1,
+                  "text": "New Capacitor.Cap1 bus1=Bus2 kvar=150 kv=12.47 phases=3"
+                }
+              ],
+              "endswith_newline": true,
+              "commands": [
+                {
+                  "type": "new",
+                  "element": "Capacitor.Cap1",
+                  "params": [
+                    {
+                      "key": "bus1",
+                      "value": "Bus2"
+                    },
+                    {
+                      "key": "kvar",
+                      "value": "150"
+                    },
+                    {
+                      "key": "kv",
+                      "value": "12.47"
+                    },
+                    {
+                      "key": "phases",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "nodes": [
+        {
+          "id": "circuit:Feeder",
+          "type": "dss_circuit",
+          "attrs": {
+            "basekv": 12.47,
+            "pu": 1,
+            "phases": 3
+          }
+        },
+        {
+          "id": "vsource:Source",
+          "type": "dss_vsource",
+          "attrs": {
+            "phases": 3,
+            "bus1": "SourceBus",
+            "kv": 12.47,
+            "pu": 1,
+            "angle": 0,
+            "frequency": 60
+          }
+        },
+        {
+          "id": "bus:SourceBus",
+          "type": "dss_bus",
+          "attrs": {
+            "name": "SourceBus",
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "bus:Bus1",
+          "type": "dss_bus",
+          "attrs": {
+            "name": "Bus1",
+            "x": 1.2,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "bus:Bus2",
+          "type": "dss_bus",
+          "attrs": {
+            "name": "Bus2",
+            "x": 2.4,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "line:Line1",
+          "type": "dss_line",
+          "attrs": {
+            "phases": 3,
+            "bus1": "SourceBus",
+            "bus2": "Bus1",
+            "length": 0.5,
+            "units": "km",
+            "r1": 0.058,
+            "x1": 0.12,
+            "c1": 3.4
+          }
+        },
+        {
+          "id": "line:Line2",
+          "type": "dss_line",
+          "attrs": {
+            "phases": 3,
+            "bus1": "Bus1",
+            "bus2": "Bus2",
+            "length": 0.8,
+            "units": "km",
+            "r1": 0.058,
+            "x1": 0.12,
+            "c1": 3.4
+          }
+        },
+        {
+          "id": "transformer:SubXFMR",
+          "type": "dss_transformer",
+          "attrs": {
+            "phases": 3,
+            "windings": 2,
+            "buses": [
+              "SourceBus",
+              "Bus1"
+            ],
+            "conns": [
+              "delta",
+              "wye"
+            ],
+            "kvs": [
+              12.47,
+              0.48
+            ],
+            "kvas": [
+              1000,
+              1000
+            ],
+            "xhl": 7,
+            "%loadloss": 1
+          }
+        },
+        {
+          "id": "load:Load1",
+          "type": "dss_load",
+          "attrs": {
+            "phases": 3,
+            "bus1": "Bus1",
+            "kw": 450,
+            "kvar": 100,
+            "kv": 0.48,
+            "model": 1
+          }
+        },
+        {
+          "id": "load:Load2",
+          "type": "dss_load",
+          "attrs": {
+            "phases": 3,
+            "bus1": "Bus2",
+            "kw": 300,
+            "kvar": 80,
+            "kv": 0.48,
+            "model": 1
+          }
+        },
+        {
+          "id": "capacitor:Cap1",
+          "type": "dss_capacitor",
+          "attrs": {
+            "bus1": "Bus2",
+            "kvar": 150,
+            "kv": 12.47,
+            "phases": 3
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "vsource:Source",
+          "source": "bus:SourceBus",
+          "target": "vsource:Source",
+          "type": "dss_vsource",
+          "attrs": {
+            "element": "vsource:Source"
+          }
+        },
+        {
+          "id": "line:Line1",
+          "source": "bus:SourceBus",
+          "target": "bus:Bus1",
+          "type": "dss_line",
+          "attrs": {
+            "line": "line:Line1"
+          }
+        },
+        {
+          "id": "line:Line2",
+          "source": "bus:Bus1",
+          "target": "bus:Bus2",
+          "type": "dss_line",
+          "attrs": {
+            "line": "line:Line2"
+          }
+        },
+        {
+          "id": "transformer:SubXFMR",
+          "source": "bus:SourceBus",
+          "target": "bus:Bus1",
+          "type": "dss_transformer",
+          "attrs": {
+            "transformer": "transformer:SubXFMR"
+          }
+        },
+        {
+          "id": "load:Load1",
+          "source": "bus:Bus1",
+          "target": "load:Load1",
+          "type": "dss_load",
+          "attrs": {
+            "element": "load:Load1"
+          }
+        },
+        {
+          "id": "load:Load2",
+          "source": "bus:Bus2",
+          "target": "load:Load2",
+          "type": "dss_load",
+          "attrs": {
+            "element": "load:Load2"
+          }
+        },
+        {
+          "id": "capacitor:Cap1",
+          "source": "bus:Bus2",
+          "target": "capacitor:Cap1",
+          "type": "dss_capacitor",
+          "attrs": {
+            "element": "capacitor:Cap1"
+          }
+        }
+      ],
+      "mechanismRelationships": []
     }
   ],
   "mechanismRelationships": [
@@ -337,5 +2336,536 @@
         "class": "StopSignalInteraction"
       }
     }
-  ]
+  ],
+  "metadata": {
+    "exchange_raw_text": {
+      "lines": [
+        {
+          "number": 1,
+          "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+        },
+        {
+          "number": 2,
+          "text": "<!DOCTYPE objectModel SYSTEM \"hla.dtd\">"
+        },
+        {
+          "number": 3,
+          "text": "<objectModel DTDversion=\"1516.2\" name=\"Tank Pipe Gas Power Traffic Simulation FOM\" type=\"FOM\" version=\"1.0\" date=\"2025-08-27\" other=\"Tank, Pipe, Gas, Power and Traffic System Simulation\">"
+        },
+        {
+          "number": 4,
+          "text": ""
+        },
+        {
+          "number": 5,
+          "text": "<objects>"
+        },
+        {
+          "number": 6,
+          "text": "    <objectClass name=\"HLAobjectRoot\" sharing=\"Neither\">"
+        },
+        {
+          "number": 7,
+          "text": "        <attribute name=\"HLAprivilegeToDeleteObject\" dataType=\"NA\" updateType=\"NA\" updateCondition=\"NA\" ownership=\"DivestAcquire\" sharing=\"PublishSubscribe\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 8,
+          "text": "        "
+        },
+        {
+          "number": 9,
+          "text": "        <!-- Tank仿真器发送给Pipe的数据对象类 -->"
+        },
+        {
+          "number": 10,
+          "text": "        <objectClass name=\"TankToPipeData\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 11,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 12,
+          "text": "            <attribute name=\"TankNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 13,
+          "text": "            <attribute name=\"Pressure\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 14,
+          "text": "            <attribute name=\"Flow\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 15,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 16,
+          "text": "        "
+        },
+        {
+          "number": 17,
+          "text": "        <!-- Pipe仿真器发送给Gas的数据对象类 -->"
+        },
+        {
+          "number": 18,
+          "text": "        <objectClass name=\"PipeNodeData\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 19,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 20,
+          "text": "            <attribute name=\"PipeNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 21,
+          "text": "            <attribute name=\"Temperature\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 22,
+          "text": "            <attribute name=\"Pressure\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 23,
+          "text": "            <attribute name=\"Flow\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 24,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 25,
+          "text": "        "
+        },
+        {
+          "number": 26,
+          "text": "        <!-- Gas仿真器发送给Power的数据对象类 -->"
+        },
+        {
+          "number": 27,
+          "text": "        <objectClass name=\"GasNodeData\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 28,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 29,
+          "text": "            <attribute name=\"GasNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 30,
+          "text": "            <attribute name=\"GasFlow\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 31,
+          "text": "            <attribute name=\"GasPressure\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 32,
+          "text": "            <attribute name=\"GasTemperature\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 33,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 34,
+          "text": "        "
+        },
+        {
+          "number": 35,
+          "text": "        <!-- Power仿真器发送给Pipe的数据对象类1 - KW功率数据 -->"
+        },
+        {
+          "number": 36,
+          "text": "        <objectClass name=\"PowerToPipeData1\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 37,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 38,
+          "text": "            <attribute name=\"PowerNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 39,
+          "text": "            <attribute name=\"LNG1_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 40,
+          "text": "            <attribute name=\"LNG2_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 41,
+          "text": "            <attribute name=\"Gasifier1_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 42,
+          "text": "            <attribute name=\"Gasifier2_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 43,
+          "text": "            <attribute name=\"Gasifier3_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 44,
+          "text": "            <attribute name=\"Reserved_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 45,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 46,
+          "text": "        "
+        },
+        {
+          "number": 47,
+          "text": "        <!-- Power仿真器发送给Pipe的数据对象类2 - V电压数据 -->"
+        },
+        {
+          "number": 48,
+          "text": "        <objectClass name=\"PowerToPipeData2\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 49,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 50,
+          "text": "            <attribute name=\"PowerNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 51,
+          "text": "            <attribute name=\"LNG1_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 52,
+          "text": "            <attribute name=\"LNG2_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 53,
+          "text": "            <attribute name=\"Gasifier1_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 54,
+          "text": "            <attribute name=\"Gasifier2_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 55,
+          "text": "            <attribute name=\"Gasifier3_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 56,
+          "text": "            <attribute name=\"Reserved_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 57,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 58,
+          "text": "        "
+        },
+        {
+          "number": 59,
+          "text": "        <!-- Power仿真器发送给Traffic的数据对象类1 - KW功率数据 -->"
+        },
+        {
+          "number": 60,
+          "text": "        <objectClass name=\"PowerToTrafficData1\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 61,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 62,
+          "text": "            <attribute name=\"PowerNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 63,
+          "text": "            <attribute name=\"LNG1_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 64,
+          "text": "            <attribute name=\"LNG2_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 65,
+          "text": "            <attribute name=\"Gasifier1_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 66,
+          "text": "            <attribute name=\"Gasifier2_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 67,
+          "text": "            <attribute name=\"Gasifier3_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 68,
+          "text": "            <attribute name=\"Reserved_KW\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 69,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 70,
+          "text": "        "
+        },
+        {
+          "number": 71,
+          "text": "        <!-- Power仿真器发送给Traffic的数据对象类2 - V电压数据 -->"
+        },
+        {
+          "number": 72,
+          "text": "        <objectClass name=\"PowerToTrafficData2\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 73,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 74,
+          "text": "            <attribute name=\"PowerNode\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 75,
+          "text": "            <attribute name=\"LNG1_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 76,
+          "text": "            <attribute name=\"LNG2_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 77,
+          "text": "            <attribute name=\"Gasifier1_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 78,
+          "text": "            <attribute name=\"Gasifier2_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 79,
+          "text": "            <attribute name=\"Gasifier3_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 80,
+          "text": "            <attribute name=\"Reserved_V\" dataType=\"HLAfloat64LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 81,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 82,
+          "text": "        "
+        },
+        {
+          "number": 83,
+          "text": "        <!-- 停止信号数据对象类 - 所有仿真器都会发布和订阅 -->"
+        },
+        {
+          "number": 84,
+          "text": "        <objectClass name=\"StopSignalData\" sharing=\"PublishSubscribe\">"
+        },
+        {
+          "number": 85,
+          "text": "            <attribute name=\"Step\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 86,
+          "text": "            <attribute name=\"Tag\" dataType=\"HLAinteger32LE\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 87,
+          "text": "            <attribute name=\"FederateName\" dataType=\"HLAunicodeString\" transportation=\"HLAreliable\" order=\"TimeStamp\"/>"
+        },
+        {
+          "number": 88,
+          "text": "        </objectClass>"
+        },
+        {
+          "number": 89,
+          "text": "    </objectClass>"
+        },
+        {
+          "number": 90,
+          "text": "</objects>"
+        },
+        {
+          "number": 91,
+          "text": ""
+        },
+        {
+          "number": 92,
+          "text": "<interactions>"
+        },
+        {
+          "number": 93,
+          "text": "    <interactionClass name=\"HLAinteractionRoot\" sharing=\"Neither\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"Receive\">"
+        },
+        {
+          "number": 94,
+          "text": "        "
+        },
+        {
+          "number": 95,
+          "text": "        <!-- 仿真控制交互类 -->"
+        },
+        {
+          "number": 96,
+          "text": "        <interactionClass name=\"SimulationControl\" sharing=\"PublishSubscribe\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"TimeStamp\">"
+        },
+        {
+          "number": 97,
+          "text": "            <parameter name=\"Command\" dataType=\"HLAunicodeString\"/>"
+        },
+        {
+          "number": 98,
+          "text": "            <parameter name=\"Step\" dataType=\"HLAinteger32LE\"/>"
+        },
+        {
+          "number": 99,
+          "text": "            <parameter name=\"SimTime\" dataType=\"HLAfloat32LE\"/>"
+        },
+        {
+          "number": 100,
+          "text": "        </interactionClass>"
+        },
+        {
+          "number": 101,
+          "text": "        "
+        },
+        {
+          "number": 102,
+          "text": "        <!-- 数据传输完成通知交互类 -->"
+        },
+        {
+          "number": 103,
+          "text": "        <interactionClass name=\"DataTransferComplete\" sharing=\"PublishSubscribe\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"TimeStamp\">"
+        },
+        {
+          "number": 104,
+          "text": "            <parameter name=\"FederateName\" dataType=\"HLAunicodeString\"/>"
+        },
+        {
+          "number": 105,
+          "text": "            <parameter name=\"Step\" dataType=\"HLAinteger32LE\"/>"
+        },
+        {
+          "number": 106,
+          "text": "            <parameter name=\"DataType\" dataType=\"HLAunicodeString\"/>"
+        },
+        {
+          "number": 107,
+          "text": "        </interactionClass>"
+        },
+        {
+          "number": 108,
+          "text": "        "
+        },
+        {
+          "number": 109,
+          "text": "        <!-- 仿真器同步交互类 -->"
+        },
+        {
+          "number": 110,
+          "text": "        <interactionClass name=\"StepSynchronization\" sharing=\"PublishSubscribe\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"TimeStamp\">"
+        },
+        {
+          "number": 111,
+          "text": "            <parameter name=\"Step\" dataType=\"HLAinteger32LE\"/>"
+        },
+        {
+          "number": 112,
+          "text": "            <parameter name=\"FederateName\" dataType=\"HLAunicodeString\"/>"
+        },
+        {
+          "number": 113,
+          "text": "            <parameter name=\"Status\" dataType=\"HLAunicodeString\"/>"
+        },
+        {
+          "number": 114,
+          "text": "        </interactionClass>"
+        },
+        {
+          "number": 115,
+          "text": "        "
+        },
+        {
+          "number": 116,
+          "text": "        <!-- 停止信号交互类 -->"
+        },
+        {
+          "number": 117,
+          "text": "        <interactionClass name=\"StopSignalInteraction\" sharing=\"PublishSubscribe\" dimensions=\"NA\" transportation=\"HLAreliable\" order=\"TimeStamp\">"
+        },
+        {
+          "number": 118,
+          "text": "            <parameter name=\"Step\" dataType=\"HLAinteger32LE\"/>"
+        },
+        {
+          "number": 119,
+          "text": "            <parameter name=\"Tag\" dataType=\"HLAinteger32LE\"/>"
+        },
+        {
+          "number": 120,
+          "text": "        </interactionClass>"
+        },
+        {
+          "number": 121,
+          "text": "    </interactionClass>"
+        },
+        {
+          "number": 122,
+          "text": "</interactions>"
+        },
+        {
+          "number": 123,
+          "text": ""
+        },
+        {
+          "number": 124,
+          "text": "<synchronizations>"
+        },
+        {
+          "number": 125,
+          "text": "    <synchronization label=\"ReadyToRun\" dataType=\"NA\" capability=\"RegisterAchieve\"/>"
+        },
+        {
+          "number": 126,
+          "text": "    <synchronization label=\"StepComplete\" dataType=\"NA\" capability=\"RegisterAchieve\"/>"
+        },
+        {
+          "number": 127,
+          "text": "    <synchronization label=\"ReadyToResign\" dataType=\"NA\" capability=\"RegisterAchieve\"/>"
+        },
+        {
+          "number": 128,
+          "text": "    <synchronization label=\"SimulationEnd\" dataType=\"NA\" capability=\"RegisterAchieve\"/>"
+        },
+        {
+          "number": 129,
+          "text": "</synchronizations>"
+        },
+        {
+          "number": 130,
+          "text": ""
+        },
+        {
+          "number": 131,
+          "text": "</objectModel>"
+        }
+      ],
+      "endswith_newline": false
+    }
+  }
 }

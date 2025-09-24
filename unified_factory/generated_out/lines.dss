@@ -1,0 +1,2 @@
+
+New Line.Line1 bus1=SourceBus bus2=Bus1 length=0.5 units=km r1=0.058 x1=0.12 c1=3.4 New Line.Line2 bus1=Bus1 bus2=Bus2 length=0.8 units=km r1=0.058 x1=0.12 c1=3.4 

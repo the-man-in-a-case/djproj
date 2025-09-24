@@ -1,0 +1,87 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE objectModel SYSTEM "hla.dtd">
+<objectModel DTDversion="1516.2" name="Unified Simulation FOM" type="FOM" version="1.0">
+<objects>
+<objectClass name="TankToPipeData" sharing="PublishSubscribe">
+<attribute name="Step" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="TankNode" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Pressure" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Flow" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+</objectClass>
+<objectClass name="PowerToPipeData1" sharing="PublishSubscribe">
+<attribute name="Step" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="PowerNode" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier3_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Reserved_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+</objectClass>
+<objectClass name="PowerToPipeData2" sharing="PublishSubscribe">
+<attribute name="Step" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="PowerNode" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier3_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Reserved_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+</objectClass>
+<objectClass name="PowerToTrafficData1" sharing="PublishSubscribe">
+<attribute name="Step" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="PowerNode" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier3_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Reserved_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+</objectClass>
+<objectClass name="PowerToTrafficData2" sharing="PublishSubscribe">
+<attribute name="Step" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="PowerNode" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="LNG2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Gasifier3_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+<attribute name="Reserved_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+</objectClass>
+</objects>
+<interactions>
+<interactionClass name="HLAinteractionRoot" sharing="PublishSubscribe">
+<parameter name="Command" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="SimTime" dataType="HLAunicodeString"/>
+<parameter name="FederateName" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="DataType" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="FederateName" dataType="HLAunicodeString"/>
+<parameter name="Status" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="Tag" dataType="HLAunicodeString"/>
+</interactionClass>
+<interactionClass name="SimulationControl" sharing="PublishSubscribe">
+<parameter name="Command" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="SimTime" dataType="HLAunicodeString"/>
+</interactionClass>
+<interactionClass name="DataTransferComplete" sharing="PublishSubscribe">
+<parameter name="FederateName" dataType="HLAunicodeString"/>
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="DataType" dataType="HLAunicodeString"/>
+</interactionClass>
+<interactionClass name="StepSynchronization" sharing="PublishSubscribe">
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="FederateName" dataType="HLAunicodeString"/>
+<parameter name="Status" dataType="HLAunicodeString"/>
+</interactionClass>
+<interactionClass name="StopSignalInteraction" sharing="PublishSubscribe">
+<parameter name="Step" dataType="HLAunicodeString"/>
+<parameter name="Tag" dataType="HLAunicodeString"/>
+</interactionClass>
+</interactions>
+</objectModel>

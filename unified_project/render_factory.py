@@ -19,6 +19,20 @@ def render_layer(env, unified, layer, out_dir: Path):
         (out_dir / 'gas_omnetpp.ini').write_text(tpl.render(unified=unified, layer=layer, global_mechanisms=unified.get('mechanismRelationships',[])), encoding='utf-8')
         tpl2 = env.get_template('gas_topology.ned.j2')
         (out_dir / 'gas_topology.ned').write_text(tpl2.render(unified=unified, layer=layer, global_mechanisms=unified.get('mechanismRelationships',[])), encoding='utf-8')
+    elif name == 'OPEN_DSS':
+        dss_dir = out_dir / 'opendss'
+        dss_dir.mkdir(parents=True, exist_ok=True)
+        templates = {
+            'master.dss': 'opendss_master.dss.j2',
+            'circuit.dss': 'opendss_circuit.dss.j2',
+            'lines.dss': 'opendss_lines.dss.j2',
+            'transformers.dss': 'opendss_transformers.dss.j2',
+            'loads.dss': 'opendss_loads.dss.j2',
+            'capacitors.dss': 'opendss_capacitors.dss.j2'
+        }
+        for file_name, tpl_name in templates.items():
+            tpl = env.get_template(tpl_name)
+            (dss_dir / file_name).write_text(tpl.render(unified=unified, layer=layer, global_mechanisms=unified.get('mechanismRelationships',[])), encoding='utf-8')
 
 def main():
     if len(sys.argv) < 3:

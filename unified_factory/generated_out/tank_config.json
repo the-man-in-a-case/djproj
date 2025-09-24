@@ -1,0 +1,9 @@
+
+{
+  "file_paths": {"data_output": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\tank_send.csv", "hysys_case": "C:\\work\\HYSYS_DOCKER\\tank\\stable.hsc", "stop_signal": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\stop_receive.csv", "valve_commands": "C:\\work\\HYSYS_DOCKER\\tank\\valveChange.csv"},
+  "simulator": {"changeFlow": 25, "runState": 100, "stage": 1},
+  "state": [
+{"flowIn": 90057, "flowOut": 90057, "pressIn": 131.3, "pressOut": 111, "tankV": 160000, "valve": 100}
+]
+  , "influxdb": {"bucket": "tank", "org": "my-org", "org_id": "87c1afa6d561f2c3", "token": "xpb4eogNENqxDiV2UmfW7TNx9litirQM--MGzfPXhXHRWFvrvjLgEQLlO2EIf1hiKpxQS1Y1ZCI-CznCyoyB6Q==", "url": "http://192.168.122.12:8087"}
+}
