@@ -1,3 +1,4 @@
 {% for e in layer.lines if e.type == 'transformer' -%}
-New Transformer.{{e.id}} buses=[{{e.from}},{{e.to}}] {% for k,v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
-{% endfor -%}
+New Transformer.{{ e.id }} phases=3 windings=2 buses=[{{ e.from }},{{ e.to }}] conns=[{{ e.attrs.conns }}] kvs=[{{ e.attrs.kvs }}] kvas=[{{ e.attrs.kvas }}] xhl={{ '%.1f' % e.attrs.xhl }} %loadloss={{ '%.1f' % e.attrs['%loadloss'] }}
+{% endfor %}
+

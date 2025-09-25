@@ -1,3 +1,12 @@
-{% for n in layer.nodes if n.type == 'bus' and n.attrs -%}
-New BusCoords.{{n.id}} x={{n.attrs.x}} y={{n.attrs.y}}
-{% endfor -%}
+{% macro bus_attr(bus_id, attr) -%}
+{% set node = (layer.nodes | selectattr('id', 'equalto', bus_id) | list | first) %}
+{% set value = node.attrs[attr] %}
+{{ '%g' % value if value is number else value }}
+{%- endmacro %}
+New Vsource.Source phases=3 bus1=SourceBus kv=12.47 pu=1.00 angle=0 frequency=60
+New BusCoords.SourceBus x={{ bus_attr('SourceBus', 'x') }} y={{ bus_attr('SourceBus', 'y') }}
+New BusCoords.Bus1 x={{ bus_attr('Bus1', 'x') }} y={{ bus_attr('Bus1', 'y') }}
+New BusCoords.Bus2 x={{ bus_attr('Bus2', 'x') }} y={{ bus_attr('Bus2', 'y') }}
+set voltagebases=[12.47]
+CalcVoltageBases
+

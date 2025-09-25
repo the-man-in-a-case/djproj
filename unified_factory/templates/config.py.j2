@@ -1,41 +1,118 @@
-
 # -*- coding: utf-8 -*-
-""" 自动生成的电力系统仿真配置文件 """
+"""
+电力系统仿真配置文件
+包含所有系统参数和设置，设计为具有可扩展性，可适应不同数量的燃气发电机和负载点
+"""
 
-BASE_DSS_DIRECTORY = {{ layer.metadata.py_config.base_dss_directory | tojson }}
-MASTER_DSS_FILE_NAME = {{ layer.metadata.py_config.master_dss_file_name | tojson }}
+# ==================== 基础路径配置 ====================
+# BASE_DSS_DIRECTORY = "IEEE118Bus_modified"
+# MASTER_DSS_FILE_NAME = "master_file.dss"
 
+BASE_DSS_DIRECTORY = "{{ layer.metadata.py_config.base_dss_directory }}"
+MASTER_DSS_FILE_NAME = "{{ layer.metadata.py_config.master_dss_file_name }}"
+
+# ==================== 燃气发电机配置 ====================
+# 燃气发电机名称列表 - 可根据需要扩展
+# GAS_GENERATOR_NAMES = [
+#     "Gen_at_10_1",
+#     "Gen_at_12_1",
+#     "Gen_at_18_1",
+#     "Gen_at_19_1",
+#     "Gen_at_46_1",
+#     "Gen_at_49_1",
+#     "Gen_at_69_1"
+# ]
+
+{% set names = layer.metadata.py_config.gas_generator_names %}
 GAS_GENERATOR_NAMES = [
-{% for name in layer.metadata.py_config.gas_generator_names -%}
-    {{ name | tojson }}{{ "," if not loop.last }}
-{% endfor -%}
+    "{{ names[0] }}",
+    "{{ names[1] }}",
+    "{{ names[2] }}",
+    "{{ names[3] }}",
+    "{{ names[4] }}",
+    "{{ names[5] }}"
 ]
 
+# 设置每个发电机的目标功率占额定功率的百分比 - 默认为90%，可针对每个发电机单独设置
+# GENERATOR_POWER_PERCENTAGES = {
+#     # 特定发电机的设置
+#     "Gen_at_10_1": 1.0,
+#     "Gen_at_12_1": 1.0,
+#     "Gen_at_18_1": 1.0,
+#     "Gen_at_19_1": 1.0,
+#     "Gen_at_46_1": 1.0,
+#     "Gen_at_49_1": 1.0,
+#     "Gen_at_69_1": 1.0
+# }
+{% set perc = layer.metadata.py_config.generator_power_percentages %}
 GENERATOR_POWER_PERCENTAGES = {
-{% for k, v in layer.metadata.py_config.generator_power_percentages.items() -%}
-    {{ k | tojson }}: {{ v }}{{ "," if not loop.last }}
-{% endfor -%}
+    # 特定发电机的设置
+    "{{ names[0] }}": {{ '%.1f' % perc[names[0]] }},
+    "{{ names[1] }}": {{ '%.1f' % perc[names[1]] }},
+    "{{ names[2] }}": {{ '%.1f' % perc[names[2]] }},
+    "{{ names[3] }}": {{ '%.1f' % perc[names[3]] }},
+    "{{ names[4] }}": {{ '%.1f' % perc[names[4]] }},
+    "{{ names[5] }}": {{ '%.1f' % perc[names[5]] }}
 }
 
+# ==================== 燃气节点与发电机映射关系 ====================
+# 燃气节点与发电机的对应关系，一个燃气节点可以对应一个或多个发电机
+{% set gas_map = layer.metadata.py_config.gas_node_to_generator_map %}
 GAS_NODE_TO_GENERATOR_MAP = {
-{% for gas_node, gens in layer.metadata.py_config.gas_node_to_generator_map.items() -%}
-    {{ gas_node | tojson }}: {{ gens | tojson }}{{ "," if not loop.last }}
-{% endfor -%}
+    "gas9": "{{ gas_map['gas9'] }}",
+    "gas10": "{{ gas_map['gas10'] }}",
+    "gas21": "{{ gas_map['gas21'] }}",
+    "gas4": ["{{ gas_map['gas4'][0] }}", "{{ gas_map['gas4'][1] }}"],  # 这两个发电机使用相同的燃气量
+    "gas1": "{{ gas_map['gas1'] }}"
 }
 
+# 获取任何发电机的功率百分比，如果未特别指定则返回默认值
 def get_generator_power_percentage(gen_name, default=0.9):
     return GENERATOR_POWER_PERCENTAGES.get(gen_name, default)
 
-ALPHA = {{ layer.metadata.py_config.alpha if layer.metadata.py_config.alpha is defined else "0.0" }}
-BETA = {{ layer.metadata.py_config.beta if layer.metadata.py_config.beta is defined else "0.0" }}
-GAMMA = {{ layer.metadata.py_config.gamma if layer.metadata.py_config.gamma is defined else "0.0" }}
+# 热率曲线参数: F_i = α_i + β_i * P_i + γ_i * P_i^2
+ALPHA = {{ '%.1f' % layer.metadata.py_config.alpha }}      # 基础燃气消耗 (MMSCM)
+BETA = {{ '%.5f' % layer.metadata.py_config.beta }}   # 一次项系数 (MMSCM/MW)
+GAMMA = {{ '%.1f' % layer.metadata.py_config.gamma }}      # 二次项系数 (MMSCM/MW²)
 
+# ==================== 压缩机负载配置 ====================
+# 压缩机负载名称列表 - 可根据需要扩展
+{% set loads = layer.metadata.py_config.compressor_load_names %}
 COMPRESSOR_LOAD_NAMES = [
-{% for nm in layer.metadata.py_config.compressor_load_names -%}
-    {{ nm | tojson }}{{ "," if not loop.last }}
-{% endfor -%}
+    "{{ loads[0] }}",
+    "{{ loads[1] }}",
+    "{{ loads[2] }}",
+    "{{ loads[3] }}",
+    "{{ loads[4] }}",
+    "{{ loads[5] }}",
+    "{{ loads[6] }}"
 ]
 
-SIMULATION_SETTINGS = {{ layer.metadata.py_config.simulation_settings | tojson }}
-OUTPUT_FILES = {{ layer.metadata.py_config.output_files | tojson }}
-INFLUXDB_CONFIG = {{ layer.metadata.py_config.influxdb | tojson }}
+# ==================== 仿真参数配置 ====================
+{% set sim = layer.metadata.py_config.simulation_settings %}
+SIMULATION_SETTINGS = {
+    "hour": {{ sim['hour'] }},
+    "mode": "{{ sim['mode'] }}",
+    "maxiterations": {{ sim['maxiterations'] }},
+    "stepsize": "{{ sim['stepsize'] }}",
+    "number": {{ sim['number'] }}
+}
+
+# ==================== 输出文件配置 ====================
+{% set outputs = layer.metadata.py_config.output_files %}
+OUTPUT_FILES = {
+    "power_send": "{{ outputs['power_send'] }}",
+    "all_elements_power": "{{ outputs['all_elements_power'] }}",
+}
+
+# ==================== InfluxDB配置 ====================
+{% set influx = layer.metadata.py_config.influxdb %}
+INFLUXDB_CONFIG = {
+    'url': '{{ influx.url }}',
+    'token': "{{ influx.token }}",
+    'org': "{{ influx.org }}",
+    'bucket': "{{ influx.bucket }}",
+    'org_id': "{{ influx.org_id }}",
+    'id': "{{ influx.id }}",
+    "enable_storage": {{ 'True' if influx.enable_storage else 'False' }}  # 是否启用InfluxDB存储
+}

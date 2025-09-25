@@ -1,3 +1,4 @@
 {% for e in layer.lines if e.type == 'line' -%}
-New Line.{{e.id}} bus1={{e.from}} bus2={{e.to}} {% for k,v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
-{% endfor -%}
+New Line.{{ e.id }} phases=3 bus1={{ e.from }} bus2={{ e.to }} length={{ '%g' % e.attrs.length }} units={{ e.attrs.units }} r1={{ '%.3f' % e.attrs.r1 }} x1={{ '%.3f' % e.attrs.x1 }} c1={{ '%g' % e.attrs.c1 }}
+{% endfor %}
+
