@@ -1,0 +1,1061 @@
+{
+  "project": {
+    "name": "multi-sim-project"
+  },
+  "layers": [
+    {
+      "name": "traffic",
+      "simulator": "traffic",
+      "version": "unknown",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "traffic-sim",
+          "type": "traffic_engine",
+          "attrs": {
+            "k": 1.0,
+            "c": 0.0,
+            "stop_threshold": 0.75
+          }
+        }
+      ],
+      "lines": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "gas",
+      "simulator": "omnetpp",
+      "version": "unknown",
+      "metadata": {
+        "general": {
+          "section": "General"
+        },
+        "globals": {},
+        "others": {
+          "network": "topology"
+        }
+      },
+      "nodes": [
+        {
+          "id": "gas_1_1",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.378998,
+            "latitude": 22.635799,
+            "outPressure": 49.5,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_2",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.447996,
+            "latitude": 22.6506,
+            "outPressure": 19.9,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_3",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.406998,
+            "latitude": 22.498699,
+            "outPressure": 0,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_4",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.359001,
+            "latitude": 22.521299,
+            "outPressure": 0,
+            "inPressure": 48.3,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_5",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.675003,
+            "latitude": 24.482599,
+            "outPressure": 68.5,
+            "inPressure": 68.5,
+            "inFlow": 540,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_6",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.280998,
+            "latitude": 22.879999,
+            "outPressure": 60.7,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_7",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.333,
+            "latitude": 22.7187,
+            "outPressure": 53.2,
+            "inPressure": 59,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_8",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.323997,
+            "latitude": 22.789,
+            "outPressure": 60.9,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_9",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.259003,
+            "latitude": 23.050501,
+            "outPressure": 57.2,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_10",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.414001,
+            "latitude": 23.5455,
+            "outPressure": 52.6,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_11",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.525002,
+            "latitude": 24.049101,
+            "outPressure": 51.2,
+            "inPressure": 51.4,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_12",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.667999,
+            "latitude": 24.208599,
+            "outPressure": 50.6,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_13",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.429001,
+            "latitude": 23.4685,
+            "outPressure": 0,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_14",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.273003,
+            "latitude": 23.295099,
+            "outPressure": 0,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_16",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.326354870162,
+            "latitude": 22.8736393318874,
+            "outPressure": 0,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_1_17",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.25,
+            "latitude": 22.9548,
+            "outPressure": 0,
+            "inPressure": 0,
+            "inFlow": 0,
+            "outFlow": 0
+          }
+        },
+        {
+          "id": "gas_2_1",
+          "type": "unknown",
+          "attrs": {
+            "longitude": 120.210999,
+            "latitude": 22.8158304,
+            "outFlow": 18325,
+            "outPressure": 7,
+            "inPressure": 0,
+            "inFlow": 0
+          }
+        },
+        {
+          "id": "*",
+          "type": "unknown",
+          "attrs": {
+            "outputJsonFile": "db1.json",
+            "outputFileName": "/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_send.csv"
+          }
+        },
+        {
+          "id": "receivingStationInput",
+          "type": "receiving_station",
+          "attrs": {
+            "fileName": "/opt/PyHLA-1.1.1-Source/examples/updateAttributeValues/gas_receive.csv",
+            "pollInterval": 1,
+            "id": 1
+          }
+        },
+        {
+          "id": "valve1",
+          "type": "valve",
+          "attrs": {
+            "R": 50,
+            "opening": 1
+          }
+        },
+        {
+          "id": "valve4",
+          "type": "valve",
+          "attrs": {
+            "R": 50,
+            "opening": 1
+          }
+        },
+        {
+          "id": "valve9",
+          "type": "valve",
+          "attrs": {
+            "R": 50,
+            "opening": 1
+          }
+        },
+        {
+          "id": "valve10",
+          "type": "valve",
+          "attrs": {
+            "R": 50,
+            "opening": 1
+          }
+        },
+        {
+          "id": "valve21",
+          "type": "valve",
+          "attrs": {
+            "R": 50,
+            "opening": 1
+          }
+        }
+      ],
+      "lines": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "gas_topology",
+      "simulator": "omnetpp",
+      "version": "unknown",
+      "metadata": {},
+      "nodes": [
+        {
+          "id": "gas_1_1",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_4",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_6",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_17",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_8",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_2_1",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_7",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_9",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "gas_1_10",
+          "type": "DistributionStation",
+          "attrs": {}
+        },
+        {
+          "id": "valve1",
+          "type": "Valve",
+          "attrs": {}
+        },
+        {
+          "id": "valve4",
+          "type": "Valve",
+          "attrs": {}
+        },
+        {
+          "id": "valve10",
+          "type": "Valve",
+          "attrs": {}
+        },
+        {
+          "id": "valve9",
+          "type": "Valve",
+          "attrs": {}
+        },
+        {
+          "id": "gas9",
+          "type": "GasFlowSink",
+          "attrs": {}
+        },
+        {
+          "id": "gas10",
+          "type": "GasFlowSink",
+          "attrs": {}
+        },
+        {
+          "id": "gas1",
+          "type": "GasFlowSink",
+          "attrs": {}
+        },
+        {
+          "id": "gas4",
+          "type": "GasFlowSink",
+          "attrs": {}
+        },
+        {
+          "id": "valve21",
+          "type": "Valve",
+          "attrs": {}
+        },
+        {
+          "id": "gas21",
+          "type": "GasFlowSink",
+          "attrs": {}
+        },
+        {
+          "id": "receivingStationInput",
+          "type": "ReceivingStationInput",
+          "attrs": {}
+        }
+      ],
+      "lines": [
+        {
+          "id": "gas_1_1__to__gas_1_4",
+          "type": "GasPipe",
+          "from": "gas_1_1",
+          "to": "gas_1_4",
+          "attrs": {
+            "diameter": 600.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "12.845k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 4.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_2_1__to__gas_1_8",
+          "type": "GasPipe",
+          "from": "gas_2_1",
+          "to": "gas_1_8",
+          "attrs": {
+            "diameter": 750.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "11.975k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 14.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_2_1__to__gas_1_6",
+          "type": "GasPipe",
+          "from": "gas_2_1",
+          "to": "gas_1_6",
+          "attrs": {
+            "diameter": 400.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "17.9k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 5.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_2_1__to__gas_1_17",
+          "type": "GasPipe",
+          "from": "gas_2_1",
+          "to": "gas_1_17",
+          "attrs": {
+            "diameter": 400.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "17.279k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 5.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_1_8__to__gas_1_7",
+          "type": "GasPipe",
+          "from": "gas_1_8",
+          "to": "gas_1_7",
+          "attrs": {
+            "diameter": 600.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "7.840k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 2.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_1_7__to__gas_1_1",
+          "type": "GasPipe",
+          "from": "gas_1_7",
+          "to": "gas_1_1",
+          "attrs": {
+            "diameter": 400.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "10.042k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 5.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_1_6__to__gas_1_9",
+          "type": "GasPipe",
+          "from": "gas_1_6",
+          "to": "gas_1_9",
+          "attrs": {
+            "diameter": 400.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "20k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 5.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        },
+        {
+          "id": "gas_1_17__to__gas_1_10",
+          "type": "GasPipe",
+          "from": "gas_1_17",
+          "to": "gas_1_10",
+          "attrs": {
+            "diameter": 400.0,
+            "wallThickness": 9.5,
+            "heatTransferCoefficient": 52.0,
+            "Length": "80k",
+            "ValveInitialOpening": 1.0,
+            "elevationChange": 5.0,
+            "T": "296.15K",
+            "epsilon": 0.045,
+            "delta": 0.6106,
+            "z": 0.95
+          }
+        }
+      ],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "hysys_orv",
+      "simulator": "hysys_orv",
+      "version": "unknown",
+      "metadata": {
+        "simulation_file": "C:\\work\\HYSYS_DOCKER\\case.hsc",
+        "influxdb": {
+          "url": "http://192.168.122.12:8087",
+          "token": "JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==",
+          "org": "my-org",
+          "bucket": "hysys"
+        }
+      },
+      "nodes": [
+        {
+          "id": "state_1",
+          "type": "state",
+          "attrs": {
+            "state_name": "T1",
+            "lng_in_pressure_kPa": 131.3,
+            "lng_in_temp_C": -162.0,
+            "lng_in_flow": 30000,
+            "lp_out_pressure_kPa": 1000,
+            "hp_out_pressure_kPa": 7200,
+            "seawater_in_flow": 3000000,
+            "seawater_in_pressure_kPa": 101.3,
+            "seawater_in_temp_C": 25,
+            "seawater_out_temp_C": 18.2,
+            "hp_pump_power": 2093910
+          }
+        }
+      ],
+      "lines": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "hysys_tank",
+      "simulator": "hysys_tank",
+      "version": "unknown",
+      "metadata": {
+        "file_paths": {
+          "hysys_case": "C:\\work\\HYSYS_DOCKER\\tank\\stable.hsc",
+          "stop_signal": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\stop_receive.csv",
+          "valve_commands": "C:\\work\\HYSYS_DOCKER\\tank\\valveChange.csv",
+          "data_output": "C:\\work\\HYSYS_DOCKER\\tank\\MySimpleExample\\tank_send.csv"
+        },
+        "influxdb": {
+          "url": "http://192.168.122.12:8087",
+          "token": "xpb4eogNENqxDiV2UmfW7TNx9litirQM--MGzfPXhXHRWFvrvjLgEQLlO2EIf1hiKpxQS1Y1ZCI-CznCyoyB6Q==",
+          "org": "my-org",
+          "bucket": "tank",
+          "org_id": "87c1afa6d561f2c3"
+        },
+        "simulator": {
+          "runState": 100,
+          "changeFlow": 25,
+          "stage": 1
+        }
+      },
+      "nodes": [
+        {
+          "id": "tank_state_1",
+          "type": "state",
+          "attrs": {
+            "pressIn": 131.3,
+            "flowIn": 90057,
+            "pressOut": 111,
+            "flowOut": 90057,
+            "valve": 100,
+            "tankV": 160000
+          }
+        }
+      ],
+      "lines": [],
+      "mechanismRelationships": []
+    },
+    {
+      "name": "power",
+      "simulator": "opendss",
+      "version": "unknown",
+      "metadata": {
+        "files": {
+          "master": "D:\\git\\djproj\\unified_factory\\des\\opendss\\master.dss",
+          "circuit": "D:\\git\\djproj\\unified_factory\\des\\opendss\\circuit.dss",
+          "lines": "D:\\git\\djproj\\unified_factory\\des\\opendss\\lines.dss",
+          "transformers": "D:\\git\\djproj\\unified_factory\\des\\opendss\\transformers.dss",
+          "loads": "D:\\git\\djproj\\unified_factory\\des\\opendss\\loads.dss",
+          "capacitors": "D:\\git\\djproj\\unified_factory\\des\\opendss\\capacitors.dss"
+        },
+        "py_config": {
+          "base_dss_directory": "New_Topo",
+          "master_dss_file_name": "master_file.dss",
+          "alpha": 0.0,
+          "beta": 0.00516,
+          "gamma": 0.0,
+          "simulation_settings": {
+            "hour": 0,
+            "mode": "daily",
+            "maxiterations": 5000,
+            "stepsize": "30s",
+            "number": 1
+          },
+          "output_files": {
+            "power_send": "power_send.csv",
+            "all_elements_power": "all_elements_power.csv"
+          },
+          "influxdb": {
+            "url": "http://localhost:8086",
+            "token": "YOUR_TOKEN_HERE",
+            "org": "my-org",
+            "bucket": "simulation_data",
+            "org_id": "YOUR_ORG_ID",
+            "id": "simulation_instance",
+            "enable_storage": false
+          },
+          "compressor_load_names": [
+            "load_22_73",
+            "load_22_74",
+            "load_22_75",
+            "load_22_76",
+            "load_22_77",
+            "load_22_78",
+            "load_22_79"
+          ],
+          "generator_power_percentages": {
+            "002_1_9": 1.0,
+            "002_1_10": 1.0,
+            "002_1_2_161": 1.0,
+            "002_1_4_345": 1.0,
+            "002_1_4_161": 1.0,
+            "002_1_3": 1.0
+          },
+          "gas_generator_names": [
+            "002_1_9",
+            "002_1_10",
+            "002_1_2_161",
+            "002_1_4_345",
+            "002_1_4_161",
+            "002_1_3"
+          ],
+          "gas_node_to_generator_map": {
+            "gas9": "002_1_9",
+            "gas10": "002_1_10",
+            "gas21": "002_1_2_161",
+            "gas4": [
+              "002_1_4_345",
+              "002_1_4_161"
+            ],
+            "gas1": "002_1_3"
+          }
+        }
+      },
+      "nodes": [
+        {
+          "id": "SourceBus",
+          "type": "bus",
+          "attrs": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        {
+          "id": "Bus1",
+          "type": "bus",
+          "attrs": {
+            "x": 1.2,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "Bus2",
+          "type": "bus",
+          "attrs": {
+            "x": 2.4,
+            "y": 0.5
+          }
+        },
+        {
+          "id": "load_Load1",
+          "type": "load",
+          "attrs": {
+            "bus": "Bus1",
+            "kw": 450,
+            "kvar": 100,
+            "kv": 0.48,
+            "model": 1
+          }
+        },
+        {
+          "id": "load_Load2",
+          "type": "load",
+          "attrs": {
+            "bus": "Bus2",
+            "kw": 300,
+            "kvar": 80,
+            "kv": 0.48,
+            "model": 1
+          }
+        },
+        {
+          "id": "cap_Cap1",
+          "type": "capacitor",
+          "attrs": {
+            "bus": "Bus2",
+            "kvar": 150,
+            "kv": 12.47,
+            "phases": 3
+          }
+        },
+        {
+          "id": "gen_002_1_9",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_9",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_10",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_10",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_2_161",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_2_161",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_4_345",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_4_345",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_4_161",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_4_161",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_3",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_3",
+            "target_ratio": 1.0
+          }
+        }
+      ],
+      "lines": [
+        {
+          "id": "Line1",
+          "type": "line",
+          "from": "SourceBus",
+          "to": "Bus1",
+          "attrs": {
+            "length": 0.5,
+            "units": "km",
+            "r1": 0.058,
+            "x1": 0.12,
+            "c1": 3.4
+          }
+        },
+        {
+          "id": "Line2",
+          "type": "line",
+          "from": "Bus1",
+          "to": "Bus2",
+          "attrs": {
+            "length": 0.8,
+            "units": "km",
+            "r1": 0.058,
+            "x1": 0.12,
+            "c1": 3.4
+          }
+        },
+        {
+          "id": "SubXFMR",
+          "type": "transformer",
+          "from": "SourceBus",
+          "to": "Bus1",
+          "attrs": {
+            "conns": "delta,wye",
+            "kvs": "12.47,0.48",
+            "kvas": "1000,1000",
+            "xhl": 7.0,
+            "%loadloss": 1.0
+          }
+        }
+      ],
+      "mechanismRelationships": [
+        {
+          "type": "gas_to_power",
+          "from": "gas9",
+          "to": [
+            "002_1_9"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas10",
+          "to": [
+            "002_1_10"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas21",
+          "to": [
+            "002_1_2_161"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas4",
+          "to": [
+            "002_1_4_345",
+            "002_1_4_161"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas1",
+          "to": [
+            "002_1_3"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        }
+      ]
+    },
+    {
+      "name": "middleware_exchange",
+      "simulator": "hla_fom",
+      "version": "1.0",
+      "metadata": {},
+      "nodes": [],
+      "lines": [],
+      "mechanismRelationships": [
+        {
+          "type": "object",
+          "name": "TankToPipeData",
+          "from": "tank",
+          "to": "pipedata",
+          "attrs": [
+            "Step",
+            "TankNode",
+            "Pressure",
+            "Flow"
+          ]
+        },
+        {
+          "type": "object",
+          "name": "PowerToPipeData1",
+          "from": "power",
+          "to": "pipedata1",
+          "attrs": [
+            "Step",
+            "PowerNode",
+            "LNG1_KW",
+            "LNG2_KW",
+            "Gasifier1_KW",
+            "Gasifier2_KW",
+            "Gasifier3_KW",
+            "Reserved_KW"
+          ]
+        },
+        {
+          "type": "object",
+          "name": "PowerToPipeData2",
+          "from": "power",
+          "to": "pipedata2",
+          "attrs": [
+            "Step",
+            "PowerNode",
+            "LNG1_V",
+            "LNG2_V",
+            "Gasifier1_V",
+            "Gasifier2_V",
+            "Gasifier3_V",
+            "Reserved_V"
+          ]
+        },
+        {
+          "type": "object",
+          "name": "PowerToTrafficData1",
+          "from": "power",
+          "to": "trafficdata1",
+          "attrs": [
+            "Step",
+            "PowerNode",
+            "LNG1_KW",
+            "LNG2_KW",
+            "Gasifier1_KW",
+            "Gasifier2_KW",
+            "Gasifier3_KW",
+            "Reserved_KW"
+          ]
+        },
+        {
+          "type": "object",
+          "name": "PowerToTrafficData2",
+          "from": "power",
+          "to": "trafficdata2",
+          "attrs": [
+            "Step",
+            "PowerNode",
+            "LNG1_V",
+            "LNG2_V",
+            "Gasifier1_V",
+            "Gasifier2_V",
+            "Gasifier3_V",
+            "Reserved_V"
+          ]
+        },
+        {
+          "type": "interaction",
+          "name": "HLAinteractionRoot",
+          "from": null,
+          "to": null,
+          "attrs": [
+            "Command",
+            "Step",
+            "SimTime",
+            "FederateName",
+            "Step",
+            "DataType",
+            "Step",
+            "FederateName",
+            "Status",
+            "Step",
+            "Tag"
+          ]
+        },
+        {
+          "type": "interaction",
+          "name": "SimulationControl",
+          "from": null,
+          "to": null,
+          "attrs": [
+            "Command",
+            "Step",
+            "SimTime"
+          ]
+        },
+        {
+          "type": "interaction",
+          "name": "DataTransferComplete",
+          "from": null,
+          "to": null,
+          "attrs": [
+            "FederateName",
+            "Step",
+            "DataType"
+          ]
+        },
+        {
+          "type": "interaction",
+          "name": "StepSynchronization",
+          "from": null,
+          "to": null,
+          "attrs": [
+            "Step",
+            "FederateName",
+            "Status"
+          ]
+        },
+        {
+          "type": "interaction",
+          "name": "StopSignalInteraction",
+          "from": null,
+          "to": null,
+          "attrs": [
+            "Step",
+            "Tag"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,3 @@
-
-{% for e in layer.lines if e.type == "line" -%}
-New Line.{{e.id}} bus1={{e.from}} bus2={{e.to}} {% for k, v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
+{% for e in layer.lines if e.type == 'line' -%}
+New Line.{{e.id}} bus1={{e.from}} bus2={{e.to}} {% for k,v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
 {% endfor -%}

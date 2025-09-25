@@ -1,1 +1,1 @@
-# extractor package
+# extractor pkg

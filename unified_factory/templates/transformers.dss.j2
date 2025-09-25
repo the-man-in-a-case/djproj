@@ -1,4 +1,3 @@
-
-{% for e in layer.lines if e.type == "transformer" -%}
-New Transformer.{{e.id}} buses=[{{e.from}},{{e.to}}] {% for k, v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
+{% for e in layer.lines if e.type == 'transformer' -%}
+New Transformer.{{e.id}} buses=[{{e.from}},{{e.to}}] {% for k,v in e.attrs.items() -%}{{k}}={{v}} {% endfor %}
 {% endfor -%}

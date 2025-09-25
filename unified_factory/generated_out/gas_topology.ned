@@ -1,9 +1,7 @@
 
 import ned.IdealChannel;
-
-network topology
-{
-    submodules:
+network topology {
+  submodules:
 gas_1_1: DistributionStation { }
 gas_1_4: DistributionStation { }
 gas_1_6: DistributionStation { }
@@ -24,7 +22,7 @@ gas4: GasFlowSink { }
 valve21: Valve { }
 gas21: GasFlowSink { }
 receivingStationInput: ReceivingStationInput { }
-    connections:
+  connections:
 gas_1_1.out++ --> GasPipe { 
 diameter = 600.0;
 wallThickness = 9.5;

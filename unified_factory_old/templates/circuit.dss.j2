@@ -1,0 +1,5 @@
+
+{# Optional BusCoords #}
+{% for n in layer.nodes if n.type == "bus" and n.attrs -%}
+New BusCoords.{{n.id}} x={{n.attrs.x}} y={{n.attrs.y}}
+{% endfor -%}

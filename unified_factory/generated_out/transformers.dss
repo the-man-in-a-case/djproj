@@ -1,2 +1,1 @@
-
 New Transformer.SubXFMR buses=[SourceBus,Bus1] conns=delta,wye kvs=12.47,0.48 kvas=1000,1000 xhl=7.0 %loadloss=1.0 
