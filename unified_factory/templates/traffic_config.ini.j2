@@ -1,4 +1,9 @@
 [DEFAULT]
-{% for k, v in layer.nodes[0].attrs.items() -%}
-{{k}} = {{v}}
-{% endfor -%}
+{% set attrs = layer.nodes[0].attrs %}
+{% macro fmt(val) -%}
+{%- if val is float and val == val|int -%}{{ val|int }}{%- else -%}{{ val }}{%- endif -%}
+{%- endmacro %}
+k = {{ '%.1f' % attrs.k if attrs.k is number else attrs.k }}
+c = {{ fmt(attrs.c) }}
+stop_threshold = {{ attrs.stop_threshold }}
+

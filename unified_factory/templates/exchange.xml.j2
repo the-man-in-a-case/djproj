@@ -1,23 +1,131 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE objectModel SYSTEM "hla.dtd">
-<objectModel DTDversion="1516.2" name="Unified Simulation FOM" type="FOM" version="{{ layer.version|default('1.0') }}">
+<objectModel DTDversion="1516.2" name="Tank Pipe Gas Power Traffic Simulation FOM" type="FOM" version="1.0" date="2025-08-27" other="Tank, Pipe, Gas, Power and Traffic System Simulation">
+
 <objects>
-{% for r in layer.mechanismRelationships if r.type == "object" -%}
-  <objectClass name="{{r.name}}" sharing="PublishSubscribe">
-  {% for a in r.attrs -%}
-    <attribute name="{{a}}" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
-  {% endfor -%}
-  </objectClass>
-{% endfor -%}
+    <objectClass name="HLAobjectRoot" sharing="Neither">
+        <attribute name="HLAprivilegeToDeleteObject" dataType="NA" updateType="NA" updateCondition="NA" ownership="DivestAcquire" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp"/>
+        
+        <!-- Tank仿真器发送给Pipe的数据对象类 -->
+        <objectClass name="TankToPipeData" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="TankNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Pressure" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Flow" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Pipe仿真器发送给Gas的数据对象类 -->
+        <objectClass name="PipeNodeData" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="PipeNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Temperature" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Pressure" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Flow" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Gas仿真器发送给Power的数据对象类 -->
+        <objectClass name="GasNodeData" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="GasNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="GasFlow" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="GasPressure" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="GasTemperature" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Power仿真器发送给Pipe的数据对象类1 - KW功率数据 -->
+        <objectClass name="PowerToPipeData1" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="PowerNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier3_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Reserved_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Power仿真器发送给Pipe的数据对象类2 - V电压数据 -->
+        <objectClass name="PowerToPipeData2" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="PowerNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier3_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Reserved_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Power仿真器发送给Traffic的数据对象类1 - KW功率数据 -->
+        <objectClass name="PowerToTrafficData1" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="PowerNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier1_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier2_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier3_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Reserved_KW" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- Power仿真器发送给Traffic的数据对象类2 - V电压数据 -->
+        <objectClass name="PowerToTrafficData2" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="PowerNode" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="LNG2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier1_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier2_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Gasifier3_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Reserved_V" dataType="HLAfloat64LE" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+        
+        <!-- 停止信号数据对象类 - 所有仿真器都会发布和订阅 -->
+        <objectClass name="StopSignalData" sharing="PublishSubscribe">
+            <attribute name="Step" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="Tag" dataType="HLAinteger32LE" transportation="HLAreliable" order="TimeStamp"/>
+            <attribute name="FederateName" dataType="HLAunicodeString" transportation="HLAreliable" order="TimeStamp"/>
+        </objectClass>
+    </objectClass>
 </objects>
+
 <interactions>
-{% for r in layer.mechanismRelationships if r.type == "interaction" -%}
-  <interactionClass name="{{r.name}}" sharing="PublishSubscribe">
-  {% for p in r.attrs -%}
-    <parameter name="{{p}}" dataType="HLAunicodeString"/>
-  {% endfor -%}
-  </interactionClass>
-{% endfor -%}
+    <interactionClass name="HLAinteractionRoot" sharing="Neither" dimensions="NA" transportation="HLAreliable" order="Receive">
+        
+        <!-- 仿真控制交互类 -->
+        <interactionClass name="SimulationControl" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp">
+            <parameter name="Command" dataType="HLAunicodeString"/>
+            <parameter name="Step" dataType="HLAinteger32LE"/>
+            <parameter name="SimTime" dataType="HLAfloat32LE"/>
+        </interactionClass>
+        
+        <!-- 数据传输完成通知交互类 -->
+        <interactionClass name="DataTransferComplete" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp">
+            <parameter name="FederateName" dataType="HLAunicodeString"/>
+            <parameter name="Step" dataType="HLAinteger32LE"/>
+            <parameter name="DataType" dataType="HLAunicodeString"/>
+        </interactionClass>
+        
+        <!-- 仿真器同步交互类 -->
+        <interactionClass name="StepSynchronization" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp">
+            <parameter name="Step" dataType="HLAinteger32LE"/>
+            <parameter name="FederateName" dataType="HLAunicodeString"/>
+            <parameter name="Status" dataType="HLAunicodeString"/>
+        </interactionClass>
+        
+        <!-- 停止信号交互类 -->
+        <interactionClass name="StopSignalInteraction" sharing="PublishSubscribe" dimensions="NA" transportation="HLAreliable" order="TimeStamp">
+            <parameter name="Step" dataType="HLAinteger32LE"/>
+            <parameter name="Tag" dataType="HLAinteger32LE"/>
+        </interactionClass>
+    </interactionClass>
 </interactions>
+
+<synchronizations>
+    <synchronization label="ReadyToRun" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="StepComplete" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="ReadyToResign" dataType="NA" capability="RegisterAchieve"/>
+    <synchronization label="SimulationEnd" dataType="NA" capability="RegisterAchieve"/>
+</synchronizations>
+
 </objectModel>

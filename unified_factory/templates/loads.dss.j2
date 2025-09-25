@@ -1,3 +1,4 @@
 {% for n in layer.nodes if n.type == 'load' -%}
-New Load.{{n.id | replace('load_','')}} bus1={{n.attrs.bus}} {% for k,v in n.attrs.items() if k!='bus' -%}{{k}}={{v}} {% endfor %}
-{% endfor -%}
+New Load.{{ n.id | replace('load_','') }} phases=3 bus1={{ n.attrs.bus }} kw={{ '%g' % n.attrs.kw }} kvar={{ '%g' % n.attrs.kvar }} kv={{ '%g' % n.attrs.kv }} model={{ '%g' % n.attrs.model }}
+{% endfor %}
+

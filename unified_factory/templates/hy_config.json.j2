@@ -1,12 +1,25 @@
-
 {
-  "simulation_file": "{{ layer.metadata.simulation_file if layer.metadata.simulation_file is defined else 'C:\\work\\HYSYS_DOCKER\\case.hsc' }}",
+  "simulation_file": "C:\\work\\HYSYS_DOCKER\\case.hsc",
   "states": [
-  {% for n in layer.nodes if n.type == "state" -%}
-    {{ n.attrs | tojson }}{{ "," if not loop.last }}
-  {% endfor -%}
+    {
+      "state_name": "T1",
+      "lng_in_pressure_kPa": 131.3,
+      "lng_in_temp_C": -162.0,
+      "lng_in_flow": 30000,
+      "lp_out_pressure_kPa": 1000,
+      "hp_out_pressure_kPa": 7200,
+      "seawater_in_flow": 3000000,
+      "seawater_in_pressure_kPa": 101.3,
+      "seawater_in_temp_C": 25,
+      "seawater_out_temp_C": 18.2,
+      "hp_pump_power": 2093910
+    }
   ],
-  {% if layer.metadata.influxdb is defined %}
-  "influxdb": {{ layer.metadata.influxdb | tojson }}
-  {% endif %}
+  "influxdb": {
+    "url": "http://192.168.122.12:8087",
+    "token": "JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==",
+    "org": "my-org",
+    "bucket": "hysys"
+  }
 }
+
