@@ -1,2 +1,2 @@
-
-New Load.Load1 bus1=Bus1 kw=450 kvar=100 kv=0.48 model=1 New Load.Load2 bus1=Bus2 kw=300 kvar=80 kv=0.48 model=1 
+New Load.Load1 phases=3 bus1=Bus1 kw=450 kvar=100 kv=0.48 model=1
+New Load.Load2 phases=3 bus1=Bus2 kw=300 kvar=80 kv=0.48 model=1

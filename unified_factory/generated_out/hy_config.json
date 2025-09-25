@@ -1,8 +1,24 @@
-
 {
-  "simulation_file": "C:\work\HYSYS_DOCKER\case.hsc",
+  "simulation_file": "C:\\work\\HYSYS_DOCKER\\case.hsc",
   "states": [
-{"hp_out_pressure_kPa": 7200, "hp_pump_power": 2093910, "lng_in_flow": 30000, "lng_in_pressure_kPa": 131.3, "lng_in_temp_C": -162.0, "lp_out_pressure_kPa": 1000, "seawater_in_flow": 3000000, "seawater_in_pressure_kPa": 101.3, "seawater_in_temp_C": 25, "seawater_out_temp_C": 18.2, "state_name": "T1"}
-],
-  "influxdb": {"bucket": "hysys", "org": "my-org", "token": "JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==", "url": "http://192.168.122.12:8087"}
+    {
+      "state_name": "T1",
+      "lng_in_pressure_kPa": 131.3,
+      "lng_in_temp_C": -162.0,
+      "lng_in_flow": 30000,
+      "lp_out_pressure_kPa": 1000,
+      "hp_out_pressure_kPa": 7200,
+      "seawater_in_flow": 3000000,
+      "seawater_in_pressure_kPa": 101.3,
+      "seawater_in_temp_C": 25,
+      "seawater_out_temp_C": 18.2,
+      "hp_pump_power": 2093910
+    }
+  ],
+  "influxdb": {
+    "url": "http://192.168.122.12:8087",
+    "token": "JfLctn-QZ4opgwkV2l8We8cD1KI4S_q3-QFvC-FDRFY0mM1zYP0XTZycUJ4BJyggq-YHAjXF2sOknSluIHgV2g==",
+    "org": "my-org",
+    "bucket": "hysys"
+  }
 }
