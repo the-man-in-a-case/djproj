@@ -38,7 +38,7 @@
       "nodes": [
         {
           "id": "gas_1_1",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.378998,
             "latitude": 22.635799,
@@ -50,7 +50,7 @@
         },
         {
           "id": "gas_1_2",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.447996,
             "latitude": 22.6506,
@@ -62,7 +62,7 @@
         },
         {
           "id": "gas_1_3",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.406998,
             "latitude": 22.498699,
@@ -74,7 +74,7 @@
         },
         {
           "id": "gas_1_4",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.359001,
             "latitude": 22.521299,
@@ -86,7 +86,7 @@
         },
         {
           "id": "gas_1_5",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.675003,
             "latitude": 24.482599,
@@ -98,7 +98,7 @@
         },
         {
           "id": "gas_1_6",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.280998,
             "latitude": 22.879999,
@@ -110,7 +110,7 @@
         },
         {
           "id": "gas_1_7",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.333,
             "latitude": 22.7187,
@@ -122,7 +122,7 @@
         },
         {
           "id": "gas_1_8",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.323997,
             "latitude": 22.789,
@@ -134,7 +134,7 @@
         },
         {
           "id": "gas_1_9",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.259003,
             "latitude": 23.050501,
@@ -146,7 +146,7 @@
         },
         {
           "id": "gas_1_10",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.414001,
             "latitude": 23.5455,
@@ -158,7 +158,7 @@
         },
         {
           "id": "gas_1_11",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.525002,
             "latitude": 24.049101,
@@ -170,7 +170,7 @@
         },
         {
           "id": "gas_1_12",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.667999,
             "latitude": 24.208599,
@@ -182,7 +182,7 @@
         },
         {
           "id": "gas_1_13",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.429001,
             "latitude": 23.4685,
@@ -194,7 +194,7 @@
         },
         {
           "id": "gas_1_14",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.273003,
             "latitude": 23.295099,
@@ -206,7 +206,7 @@
         },
         {
           "id": "gas_1_16",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.326354870162,
             "latitude": 22.8736393318874,
@@ -218,7 +218,7 @@
         },
         {
           "id": "gas_1_17",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.25,
             "latitude": 22.9548,
@@ -230,7 +230,7 @@
         },
         {
           "id": "gas_2_1",
-          "type": "gas_station",
+          "type": "unknown",
           "attrs": {
             "longitude": 120.210999,
             "latitude": 22.8158304,
@@ -638,29 +638,100 @@
       "version": "unknown",
       "metadata": {
         "files": {
-          "master": "/mnt/data/master.dss",
-          "circuit": "/mnt/data/circuit.dss",
-          "lines": "/mnt/data/lines.dss",
-          "transformers": "/mnt/data/transformers.dss",
-          "loads": "/mnt/data/loads.dss",
-          "capacitors": "/mnt/data/capacitors.dss"
+          "master": "D:\\git\\djproj\\unified_factory\\des\\opendss\\master.dss",
+          "circuit": "D:\\git\\djproj\\unified_factory\\des\\opendss\\circuit.dss",
+          "lines": "D:\\git\\djproj\\unified_factory\\des\\opendss\\lines.dss",
+          "transformers": "D:\\git\\djproj\\unified_factory\\des\\opendss\\transformers.dss",
+          "loads": "D:\\git\\djproj\\unified_factory\\des\\opendss\\loads.dss",
+          "capacitors": "D:\\git\\djproj\\unified_factory\\des\\opendss\\capacitors.dss"
+        },
+        "py_config": {
+          "base_dss_directory": "New_Topo",
+          "master_dss_file_name": "master_file.dss",
+          "alpha": 0.0,
+          "beta": 0.00516,
+          "gamma": 0.0,
+          "simulation_settings": {
+            "hour": 0,
+            "mode": "daily",
+            "maxiterations": 5000,
+            "stepsize": "30s",
+            "number": 1
+          },
+          "output_files": {
+            "power_send": "power_send.csv",
+            "all_elements_power": "all_elements_power.csv"
+          },
+          "influxdb": {
+            "url": "http://localhost:8086",
+            "token": "YOUR_TOKEN_HERE",
+            "org": "my-org",
+            "bucket": "simulation_data",
+            "org_id": "YOUR_ORG_ID",
+            "id": "simulation_instance",
+            "enable_storage": false
+          },
+          "compressor_load_names": [
+            "load_22_73",
+            "load_22_74",
+            "load_22_75",
+            "load_22_76",
+            "load_22_77",
+            "load_22_78",
+            "load_22_79"
+          ],
+          "generator_power_percentages": {
+            "002_1_9": 1.0,
+            "002_1_10": 1.0,
+            "002_1_2_161": 1.0,
+            "002_1_4_345": 1.0,
+            "002_1_4_161": 1.0,
+            "002_1_3": 1.0
+          },
+          "gas_generator_names": [
+            "002_1_9",
+            "002_1_10",
+            "002_1_2_161",
+            "002_1_4_345",
+            "002_1_4_161",
+            "002_1_3"
+          ],
+          "gas_node_to_generator_map": {
+            "gas9": "002_1_9",
+            "gas10": "002_1_10",
+            "gas21": "002_1_2_161",
+            "gas4": [
+              "002_1_4_345",
+              "002_1_4_161"
+            ],
+            "gas1": "002_1_3"
+          }
         }
       },
       "nodes": [
         {
           "id": "SourceBus",
           "type": "bus",
-          "attrs": {}
+          "attrs": {
+            "x": 0.0,
+            "y": 0.0
+          }
         },
         {
           "id": "Bus1",
           "type": "bus",
-          "attrs": {}
+          "attrs": {
+            "x": 1.2,
+            "y": 0.5
+          }
         },
         {
           "id": "Bus2",
           "type": "bus",
-          "attrs": {}
+          "attrs": {
+            "x": 2.4,
+            "y": 0.5
+          }
         },
         {
           "id": "load_Load1",
@@ -692,6 +763,54 @@
             "kvar": 150,
             "kv": 12.47,
             "phases": 3
+          }
+        },
+        {
+          "id": "gen_002_1_9",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_9",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_10",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_10",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_2_161",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_2_161",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_4_345",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_4_345",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_4_161",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_4_161",
+            "target_ratio": 1.0
+          }
+        },
+        {
+          "id": "gen_002_1_3",
+          "type": "generator",
+          "attrs": {
+            "name": "002_1_3",
+            "target_ratio": 1.0
           }
         }
       ],
@@ -736,7 +855,59 @@
           }
         }
       ],
-      "mechanismRelationships": []
+      "mechanismRelationships": [
+        {
+          "type": "gas_to_power",
+          "from": "gas9",
+          "to": [
+            "002_1_9"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas10",
+          "to": [
+            "002_1_10"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas21",
+          "to": [
+            "002_1_2_161"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas4",
+          "to": [
+            "002_1_4_345",
+            "002_1_4_161"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        },
+        {
+          "type": "gas_to_power",
+          "from": "gas1",
+          "to": [
+            "002_1_3"
+          ],
+          "attrs": {
+            "mapping": "gas_node_to_generator"
+          }
+        }
+      ]
     },
     {
       "name": "middleware_exchange",
@@ -749,8 +920,8 @@
         {
           "type": "object",
           "name": "TankToPipeData",
-          "from": null,
-          "to": null,
+          "from": "tank",
+          "to": "pipedata",
           "attrs": [
             "Step",
             "TankNode",
@@ -761,8 +932,8 @@
         {
           "type": "object",
           "name": "PowerToPipeData1",
-          "from": null,
-          "to": null,
+          "from": "power",
+          "to": "pipedata1",
           "attrs": [
             "Step",
             "PowerNode",
@@ -777,8 +948,8 @@
         {
           "type": "object",
           "name": "PowerToPipeData2",
-          "from": null,
-          "to": null,
+          "from": "power",
+          "to": "pipedata2",
           "attrs": [
             "Step",
             "PowerNode",
@@ -793,8 +964,8 @@
         {
           "type": "object",
           "name": "PowerToTrafficData1",
-          "from": null,
-          "to": null,
+          "from": "power",
+          "to": "trafficdata1",
           "attrs": [
             "Step",
             "PowerNode",
@@ -809,8 +980,8 @@
         {
           "type": "object",
           "name": "PowerToTrafficData2",
-          "from": null,
-          "to": null,
+          "from": "power",
+          "to": "trafficdata2",
           "attrs": [
             "Step",
             "PowerNode",

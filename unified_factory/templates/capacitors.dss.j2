@@ -1,4 +1,3 @@
-
-{% for n in layer.nodes if n.type == "capacitor" -%}
-New Capacitor.{{n.id | replace('cap_','')}} bus1={{n.attrs.bus}} {% for k, v in n.attrs.items() if k != 'bus' -%}{{k}}={{v}} {% endfor %}
+{% for n in layer.nodes if n.type == 'capacitor' -%}
+New Capacitor.{{n.id | replace('cap_','')}} bus1={{n.attrs.bus}} {% for k,v in n.attrs.items() if k!='bus' -%}{{k}}={{v}} {% endfor %}
 {% endfor -%}

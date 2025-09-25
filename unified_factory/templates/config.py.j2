@@ -1,0 +1,41 @@
+
+# -*- coding: utf-8 -*-
+""" 自动生成的电力系统仿真配置文件 """
+
+BASE_DSS_DIRECTORY = {{ layer.metadata.py_config.base_dss_directory | tojson }}
+MASTER_DSS_FILE_NAME = {{ layer.metadata.py_config.master_dss_file_name | tojson }}
+
+GAS_GENERATOR_NAMES = [
+{% for name in layer.metadata.py_config.gas_generator_names -%}
+    {{ name | tojson }}{{ "," if not loop.last }}
+{% endfor -%}
+]
+
+GENERATOR_POWER_PERCENTAGES = {
+{% for k, v in layer.metadata.py_config.generator_power_percentages.items() -%}
+    {{ k | tojson }}: {{ v }}{{ "," if not loop.last }}
+{% endfor -%}
+}
+
+GAS_NODE_TO_GENERATOR_MAP = {
+{% for gas_node, gens in layer.metadata.py_config.gas_node_to_generator_map.items() -%}
+    {{ gas_node | tojson }}: {{ gens | tojson }}{{ "," if not loop.last }}
+{% endfor -%}
+}
+
+def get_generator_power_percentage(gen_name, default=0.9):
+    return GENERATOR_POWER_PERCENTAGES.get(gen_name, default)
+
+ALPHA = {{ layer.metadata.py_config.alpha if layer.metadata.py_config.alpha is defined else "0.0" }}
+BETA = {{ layer.metadata.py_config.beta if layer.metadata.py_config.beta is defined else "0.0" }}
+GAMMA = {{ layer.metadata.py_config.gamma if layer.metadata.py_config.gamma is defined else "0.0" }}
+
+COMPRESSOR_LOAD_NAMES = [
+{% for nm in layer.metadata.py_config.compressor_load_names -%}
+    {{ nm | tojson }}{{ "," if not loop.last }}
+{% endfor -%}
+]
+
+SIMULATION_SETTINGS = {{ layer.metadata.py_config.simulation_settings | tojson }}
+OUTPUT_FILES = {{ layer.metadata.py_config.output_files | tojson }}
+INFLUXDB_CONFIG = {{ layer.metadata.py_config.influxdb | tojson }}

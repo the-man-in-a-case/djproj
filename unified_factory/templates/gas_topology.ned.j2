@@ -1,18 +1,16 @@
 
 import ned.IdealChannel;
-
-network topology
-{
-    submodules:
-    {% for n in layer.nodes -%}
-        {{n.id}}: {{n.type}} { }
-    {% endfor %}
-    connections:
-    {% for e in layer.lines -%}
-        {{e.from}}.out++ --> GasPipe { 
-        {% for k, v in e.attrs.items() -%}
-            {{k}} = {{v}};
-        {% endfor -%}
-        } --> {{e.to}}.in++;
-    {% endfor %}
+network topology {
+  submodules:
+  {% for n in layer.nodes -%}
+    {{n.id}}: {{n.type}} { }
+  {% endfor %}
+  connections:
+  {% for e in layer.lines -%}
+    {{e.from}}.out++ --> GasPipe { 
+    {% for k, v in e.attrs.items() -%}
+      {{k}} = {{v}};
+    {% endfor -%}
+    } --> {{e.to}}.in++;
+  {% endfor %}
 }
